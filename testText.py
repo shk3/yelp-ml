@@ -45,7 +45,7 @@ n = 0
 skip_flag = False
 results = []
 for (i, row) in enumerate(src):
-    time.sleep(0.01)
+    # time.sleep(0.01)
     if i % PRINT_INTERVAL == 0 and not skip_flag:
         print('[%6d] ' % i, end='')
     myrow = json.loads(row)
