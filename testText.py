@@ -53,7 +53,10 @@ for (i, row) in enumerate(src):
         try:
             if 'text_polarity' not in myrow:
                 text = myrow['text']
-                score, label = getTextFeatures(text)
+                if text != '':
+                    score, label = getTextFeatures(text)
+                else:
+                    score = 0
                 if score is None:
                     score = 0
                 score = float(score)
@@ -64,7 +67,7 @@ for (i, row) in enumerate(src):
         except:
             if i % PRINT_INTERVAL != 0:
                 print('[%6d] ' % i, end='')
-                print('', myrow)
+                # print('', myrow)
             print ("Unexpected error:", sys.exc_info()[0])
     print(json.dumps(myrow), file=dst)
     if i % PRINT_INTERVAL == 0 and not skip_flag:
