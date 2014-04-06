@@ -11,33 +11,58 @@ import csv
 
 def create_csv(review_dict,user_dict,business_dict):
         
-    headers = ['word_count,word_cap_count']    
+    headers = ['word_count', 'word_cap_count']
     with open('feature_review.csv', 'w') as csvfile:
-        csvwriter = csv.writer(csvfile, delimiter=" ", lineterminator = '\n', quotechar='"', quoting=csv.QUOTE_MINIMAL)
-        csvwriter.writerow(headers)
-     
+        csvwriter = csv.DictWriter(csvfile, 
+            fieldnames=headers, 
+            delimiter=',',
+            quotechar='"', 
+            quoting=csv.QUOTE_MINIMAL,
+            lineterminator='\n')
+        csvwriter.writeheader()
+        
         for review_obj in review_dict:
-            feature_data = [`review_obj['review_wc']`+","+`review_obj['review_cap_wc']`]
+            feature_data = {
+                'word_count': review_obj['review_wc'], 
+                'word_cap_count': review_obj['review_cap_wc'],
+            }
             #pprint.pprint(feature_data)
             csvwriter.writerow(feature_data)
                
-    headers = ['avg_stars,fans,review_count']    
+    headers = ['avg_stars', 'fans', 'review_count']
     with open('feature_user.csv', 'w') as csvfile:
-        csvwriter = csv.writer(csvfile, delimiter=" ", lineterminator = '\n', quotechar='"', quoting=csv.QUOTE_MINIMAL)
-        csvwriter.writerow(headers)
+        csvwriter = csv.DictWriter(csvfile, 
+            fieldnames=headers, 
+            delimiter=',',
+            quotechar='"', 
+            quoting=csv.QUOTE_MINIMAL,
+            lineterminator='\n')
+        csvwriter.writeheader()
      
         for user_obj in user_dict:
-            feature_data = [`user_obj['average_stars']`+","+`user_obj['fans']`+","+`user_obj['review_count']`]
+            feature_data = {
+                'avg_stars': user_obj['average_stars'],
+                'fans': user_obj['fans'],
+                'review_count': user_obj['review_count'],
+            }
             #pprint.pprint(feature_data)
             csvwriter.writerow(feature_data)        
             
-    headers = ['stars,total_reviews']    
+    headers = ['stars', 'total_reviews']
     with open('feature_business.csv', 'w') as csvfile:
-        csvwriter = csv.writer(csvfile, delimiter=" ", lineterminator = '\n', quotechar='"', quoting=csv.QUOTE_MINIMAL)
-        csvwriter.writerow(headers)
+        csvwriter = csv.DictWriter(csvfile, 
+            fieldnames=headers, 
+            delimiter=',',
+            quotechar='"', 
+            quoting=csv.QUOTE_MINIMAL,
+            lineterminator='\n')
+        csvwriter.writeheader()
      
         for business_obj in business_dict:
-            feature_data = [`business_obj['stars']`+","+`business_obj['review_count']`]
+            feature_data = {
+                'stars': business_obj['stars'],
+                'total_reviews': business_obj['review_count'],
+            }
             #pprint.pprint(feature_data)
             csvwriter.writerow(feature_data)
             
