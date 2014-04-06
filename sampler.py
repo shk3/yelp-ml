@@ -4,7 +4,7 @@ import os, random, sys
 from pprint import pprint
 
 if len(sys.argv) < 2:
-    print('USAGE: %s <size of trainning set>' % sys.argv[0])
+    print('USAGE: %s <size of training set>' % sys.argv[0])
     print('This script only samples review dataset csv.')
     exit(2)
 
@@ -24,6 +24,8 @@ print('Total: %d' % population)
 samples = random.sample(xrange(population), TRAINING_SIZE)
 for i, line in enumerate(src):
     line_str = str(line).strip()
+    if i % 1000 == 0:
+        print('[%d]' % (i + 1))
     if i == 0:
         print(line_str, file=training)
         print(line_str, file=testing)
