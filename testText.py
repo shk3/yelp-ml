@@ -64,7 +64,7 @@ for (i, row) in enumerate(src):
         except:
             if i % PRINT_INTERVAL != 0:
                 print('[%6d] ' % i, end='')
-                print('', score, myrow)
+                print('', myrow)
             print ("Unexpected error:", sys.exc_info()[0])
     print(json.dumps(myrow), file=dst)
     if i % PRINT_INTERVAL == 0 and not skip_flag:
