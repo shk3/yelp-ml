@@ -11,7 +11,7 @@ import csv
 
 def create_csv(review_dict,user_dict,business_dict):
         
-    headers = ['true_stars', 'word_count', 'word_cap_count', 'text_polarity']
+    headers = ['review_id', 'true_stars', 'word_count', 'word_cap_count', 'text_polarity']
     with open('feature_review.csv', 'w') as csvfile:
         csvwriter = csv.DictWriter(csvfile, 
             fieldnames=headers, 
@@ -21,8 +21,11 @@ def create_csv(review_dict,user_dict,business_dict):
             lineterminator='\n')
         csvwriter.writeheader()
         
+        i = 0
         for review_obj in review_dict:
+            i += 1
             feature_data = {
+                'review_id': i,
                 'true_stars': review_obj['stars'],
                 'word_count': review_obj['review_wc'], 
                 'word_cap_count': review_obj['review_cap_wc'],
