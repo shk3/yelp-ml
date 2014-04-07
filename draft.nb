@@ -1,0 +1,4423 @@
+(* Content-type: application/mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 7.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       145,          7]
+NotebookDataLength[    162056,       4414]
+NotebookOptionsPosition[    161364,       4387]
+NotebookOutlinePosition[    161708,       4402]
+CellTagsIndexPosition[    161665,       4399]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Distribution", "Title",
+ CellChangeTimes->{{3.605797870078397*^9, 3.6057978721145134`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"features", "=", 
+  RowBox[{
+   RowBox[{
+   "Import", "[", 
+    "\"\<K:\\\\Learning\\\\Spring_2014\\\\EECE5698_MachLearning\\\\proj\\\\\
+yelp-ml\\\\data\\\\feature_review_training.csv\>\"", "]"}], "[", 
+   RowBox[{"[", 
+    RowBox[{
+     RowBox[{"2", ";;"}], ",", "All"}], "]"}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.605797910505709*^9, 3.6057979823878207`*^9}, {
+  3.605801814709017*^9, 3.605801828261792*^9}}],
+
+Cell[BoxData[
+ InterpretationBox[
+  TagBox[
+   PanelBox[GridBox[{
+      {
+       StyleBox[
+        StyleBox[
+         DynamicBox[ToBoxes[
+           FEPrivate`FrontEndResource["FEStrings", "sizeExplanation"], 
+           StandardForm],
+          ImageSizeCache->{299., {3., 9.}}],
+         StripOnInput->False,
+         DynamicUpdating->True], "Panel",
+        StripOnInput->False,
+        Background->None]},
+      {
+       ItemBox[
+        TagBox[
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"{", 
+            RowBox[{"17", ",", "5", ",", "86", ",", "22", ",", "0.75143`"}], 
+            "}"}], ",", 
+           RowBox[{"{", 
+            RowBox[{"26", ",", "5", ",", "64", ",", "16", ",", "0.635435`"}], 
+            "}"}], ",", 
+           RowBox[{"{", 
+            RowBox[{
+            "29", ",", "5", ",", "228", ",", "32", ",", "0.0435395`"}], "}"}],
+            ",", 
+           RowBox[{"{", 
+            RowBox[{"45", ",", "2", ",", "12", ",", "2", ",", 
+             RowBox[{"-", "0.84299`"}]}], "}"}], ",", 
+           RowBox[{"{", 
+            RowBox[{"66", ",", "5", ",", "230", ",", "28", ",", "0.50984`"}], 
+            "}"}], ",", 
+           RowBox[{"{", 
+            RowBox[{"77", ",", "4", ",", "174", ",", "17", ",", "0.20253`"}], 
+            "}"}], ",", 
+           RowBox[{"{", 
+            RowBox[{"83", ",", "5", ",", "532", ",", "81", ",", "0.309162`"}],
+             "}"}], ",", 
+           RowBox[{"{", 
+            RowBox[{"91", ",", "5", ",", "30", ",", "3", ",", "0.414414`"}], 
+            "}"}], ",", 
+           RowBox[{"{", 
+            RowBox[{
+            "105", ",", "4", ",", "107", ",", "13", ",", "0.631235`"}], "}"}],
+            ",", 
+           RowBox[{"{", 
+            RowBox[{"121", ",", "4", ",", "71", ",", "7", ",", "0.18169`"}], 
+            "}"}], ",", 
+           RowBox[{"{", 
+            RowBox[{"127", ",", "5", ",", "13", ",", "2", ",", "0.82023`"}], 
+            "}"}], ",", 
+           RowBox[{"{", 
+            RowBox[{
+            "130", ",", "4", ",", "105", ",", "34", ",", "0.0027746`"}], 
+            "}"}], ",", 
+           RowBox[{"{", 
+            RowBox[{"134", ",", "4", ",", "68", ",", "6", ",", "0.267196`"}], 
+            "}"}], ",", 
+           RowBox[{"{", 
+            RowBox[{
+            "143", ",", "5", ",", "236", ",", "35", ",", "0.689535`"}], "}"}],
+            ",", 
+           RowBox[{"\[LeftSkeleton]", "19972", "\[RightSkeleton]"}], ",", 
+           RowBox[{"{", 
+            RowBox[{
+            "334674", ",", "4", ",", "171", ",", "14", ",", "0.556945`"}], 
+            "}"}], ",", 
+           RowBox[{"{", 
+            RowBox[{
+            "334680", ",", "5", ",", "268", ",", "29", ",", "0.408412`"}], 
+            "}"}], ",", 
+           RowBox[{"{", 
+            RowBox[{
+            "334704", ",", "5", ",", "30", ",", "3", ",", "0.165282`"}], 
+            "}"}], ",", 
+           RowBox[{"{", 
+            RowBox[{
+            "334737", ",", "5", ",", "309", ",", "53", ",", "0.452282`"}], 
+            "}"}], ",", 
+           RowBox[{"{", 
+            RowBox[{
+            "334745", ",", "3", ",", "90", ",", "8", ",", "0.0202718`"}], 
+            "}"}], ",", 
+           RowBox[{"{", 
+            RowBox[{
+            "334752", ",", "5", ",", "439", ",", "37", ",", "0.421485`"}], 
+            "}"}], ",", 
+           RowBox[{"{", 
+            RowBox[{
+            "334753", ",", "4", ",", "205", ",", "20", ",", "0.210273`"}], 
+            "}"}], ",", 
+           RowBox[{"{", 
+            RowBox[{
+            "334805", ",", "4", ",", "62", ",", "12", ",", "0.619725`"}], 
+            "}"}], ",", 
+           RowBox[{"{", 
+            RowBox[{
+            "334816", ",", "5", ",", "112", ",", "47", ",", "0.426851`"}], 
+            "}"}], ",", 
+           RowBox[{"{", 
+            RowBox[{
+            "334836", ",", "5", ",", "185", ",", "27", ",", "0.355054`"}], 
+            "}"}], ",", 
+           RowBox[{"{", 
+            RowBox[{
+            "334867", ",", "5", ",", "370", ",", "64", ",", "0.169352`"}], 
+            "}"}], ",", 
+           RowBox[{"{", 
+            RowBox[{"334901", ",", "3", ",", "145", ",", "8", ",", 
+             RowBox[{"-", "0.309523`"}]}], "}"}], ",", 
+           RowBox[{"{", 
+            RowBox[{
+            "334915", ",", "4", ",", "297", ",", "45", ",", "0.245567`"}], 
+            "}"}], ",", 
+           RowBox[{"{", 
+            RowBox[{
+            "335018", ",", "4", ",", "56", ",", "13", ",", "0.651985`"}], 
+            "}"}]}], "}"}],
+         Short[#, 5]& ],
+        Background->GrayLevel[1],
+        BaseStyle->{Deployed -> False},
+        Frame->True,
+        FrameStyle->GrayLevel[0, 0.2],
+        StripOnInput->False]},
+      {
+       RowBox[{
+        ButtonBox[
+         StyleBox[
+          StyleBox[
+           DynamicBox[ToBoxes[
+             FEPrivate`FrontEndResource["FEStrings", "sizeShowLess"], 
+             StandardForm],
+            ImageSizeCache->{54., {1., 9.}}],
+           StripOnInput->False,
+           DynamicUpdating->True], "Panel",
+          StripOnInput->False,
+          Background->None],
+         Appearance->Automatic,
+         ButtonFunction:>OutputSizeLimit`ButtonFunction[
+          Identity, 4, 23630862491081587554, 5/2],
+         Enabled->True,
+         Evaluator->Automatic,
+         Method->"Queued"], "\[ThinSpace]", 
+        ButtonBox[
+         StyleBox[
+          StyleBox[
+           DynamicBox[ToBoxes[
+             FEPrivate`FrontEndResource["FEStrings", "sizeShowMore"], 
+             StandardForm],
+            ImageSizeCache->{60., {1., 9.}}],
+           StripOnInput->False,
+           DynamicUpdating->True], "Panel",
+          StripOnInput->False,
+          Background->None],
+         Appearance->Automatic,
+         ButtonFunction:>OutputSizeLimit`ButtonFunction[
+          Identity, 4, 23630862491081587554, 5 2],
+         Enabled->True,
+         Evaluator->Automatic,
+         Method->"Queued"], "\[ThinSpace]", 
+        ButtonBox[
+         StyleBox[
+          StyleBox[
+           DynamicBox[ToBoxes[
+             FEPrivate`FrontEndResource["FEStrings", "sizeShowAll"], 
+             StandardForm],
+            ImageSizeCache->{92., {3., 9.}}],
+           StripOnInput->False,
+           DynamicUpdating->True], "Panel",
+          StripOnInput->False,
+          Background->None],
+         Appearance->Automatic,
+         ButtonFunction:>OutputSizeLimit`ButtonFunction[
+          Identity, 4, 23630862491081587554, Infinity],
+         Enabled->True,
+         Evaluator->Automatic,
+         Method->"Queued"], "\[ThinSpace]", 
+        ButtonBox[
+         StyleBox[
+          StyleBox[
+           DynamicBox[ToBoxes[
+             FEPrivate`FrontEndResource["FEStrings", "sizeChangeLimit"], 
+             StandardForm],
+            ImageSizeCache->{78., {1., 9.}}],
+           StripOnInput->False,
+           DynamicUpdating->True], "Panel",
+          StripOnInput->False,
+          Background->None],
+         Appearance->Automatic,
+         ButtonFunction:>FrontEndExecute[{
+            FrontEnd`SetOptions[
+            FrontEnd`$FrontEnd, 
+             FrontEnd`PreferencesSettings -> {"Page" -> "Evaluation"}], 
+            FrontEnd`FrontEndToken["PreferencesDialog"]}],
+         Evaluator->None,
+         Method->"Preemptive"]}]}
+     },
+     GridBoxAlignment->{
+      "Columns" -> {{Left}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}}, 
+       "RowsIndexed" -> {}},
+     GridBoxDividers->{
+      "Columns" -> {{False}}, "ColumnsIndexed" -> {}, "Rows" -> {{False}}, 
+       "RowsIndexed" -> {}},
+     GridBoxItemSize->{
+      "Columns" -> {{Automatic}}, "ColumnsIndexed" -> {}, "Rows" -> {{1.}}, 
+       "RowsIndexed" -> {}},
+     GridBoxSpacings->{"Columns" -> {
+         Offset[0.27999999999999997`], {
+          Offset[0.5599999999999999]}, 
+         Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+         Offset[0.2], {
+          Offset[1.2]}, 
+         Offset[0.2]}, "RowsIndexed" -> {}}],
+    DefaultBaseStyle->{},
+    FrameMargins->5],
+   Deploy,
+   DefaultBaseStyle->{Deployed -> True}],
+  Out[4]]], "Output",
+ CellChangeTimes->{
+  3.605797952062086*^9, 3.6057979936664658`*^9, {3.6058018188602543`*^9, 
+   3.605801831828996*^9}}]
+}, Open  ]],
+
+Cell[BoxData[""], "Input",
+ CellChangeTimes->{{3.6043596124093127`*^9, 3.604359655742791*^9}, 
+   3.6043597024984655`*^9, {3.6043607246129274`*^9, 3.604360749210334*^9}, {
+   3.6058018377873373`*^9, 3.605801838147358*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{"Histogram", "[", 
+  RowBox[{
+   RowBox[{"features", "[", 
+    RowBox[{"[", 
+     RowBox[{"All", ",", "3"}], "]"}], "]"}], ",", 
+   RowBox[{"LabelingFunction", "\[Rule]", "Above"}]}], 
+  "]"}], "\[IndentingNewLine]", 
+ RowBox[{"N", "[", 
+  RowBox[{"Mean", "[", 
+   RowBox[{"features", "[", 
+    RowBox[{"[", 
+     RowBox[{"All", ",", "3"}], "]"}], "]"}], "]"}], "]"}]}], "Input",
+ CellChangeTimes->{{3.604359705421633*^9, 3.6043597085328107`*^9}, {
+  3.604361103307587*^9, 3.604361104345647*^9}, {3.605797904677376*^9, 
+  3.60579790492339*^9}, {3.605801840966519*^9, 3.6058018699671774`*^9}, {
+  3.6058019012069645`*^9, 3.6058019411572495`*^9}, {3.605802155853529*^9, 
+  3.605802167471194*^9}}],
+
+Cell[BoxData[
+ GraphicsBox[
+  {RGBColor[0.798413061722744, 0.824719615472648, 0.968322270542458], 
+   EdgeForm[Opacity[0.7]], {}, 
+   {RGBColor[0.798413061722744, 0.824719615472648, 0.968322270542458], 
+    EdgeForm[Opacity[0.7]], {
+     DynamicBox[{
+       FEPrivate`If[
+        CurrentValue["MouseOver"], 
+        EdgeForm[{
+          GrayLevel[0.5], 
+          AbsoluteThickness[1.5], 
+          Opacity[0.66]}], {}, {}], 
+       RectangleBox[{0, 0}, {10, 525}]},
+      ImageSizeCache->{{22.750000000000004`, 30.256907378335953`}, {
+       50.01090587620061, 220.10548423104683`}}], InsetBox[
+      StyleBox["525",
+       StripOnInput->False,
+       FrontFaceColor->GrayLevel[0],
+       BackFaceColor->GrayLevel[0],
+       GraphicsColor->GrayLevel[0],
+       FontColor->GrayLevel[0]], Offset[{0, 4}, {5, 525}], 
+      ImageScaled[{0.5, 0}]]}, {
+     DynamicBox[{
+       FEPrivate`If[
+        CurrentValue["MouseOver"], 
+        EdgeForm[{
+          GrayLevel[0.5], 
+          AbsoluteThickness[1.5], 
+          Opacity[0.66]}], {}, {}], 
+       RectangleBox[{10, 0}, {20, 969}]},
+      ImageSizeCache->{{29.756907378335953`, 
+       37.263814756671906`}, {-93.41765181818357, 220.10548423104683`}}], 
+     InsetBox[
+      StyleBox["969",
+       StripOnInput->False,
+       FrontFaceColor->GrayLevel[0],
+       BackFaceColor->GrayLevel[0],
+       GraphicsColor->GrayLevel[0],
+       FontColor->GrayLevel[0]], Offset[{0, 4}, {15, 969}], 
+      ImageScaled[{0.5, 0}]]}, {
+     DynamicBox[{
+       FEPrivate`If[
+        CurrentValue["MouseOver"], 
+        EdgeForm[{
+          GrayLevel[0.5], 
+          AbsoluteThickness[1.5], 
+          Opacity[0.66]}], {}, {}], 
+       RectangleBox[{20, 0}, {30, 1140}]},
+      ImageSizeCache->{{36.763814756671906`, 
+       44.27072213500786}, {-148.65702876804778`, 220.10548423104683`}}], 
+     InsetBox[
+      StyleBox["1140",
+       StripOnInput->False,
+       FrontFaceColor->GrayLevel[0],
+       BackFaceColor->GrayLevel[0],
+       GraphicsColor->GrayLevel[0],
+       FontColor->GrayLevel[0]], Offset[{0, 4}, {25, 1140}], 
+      ImageScaled[{0.5, 0}]]}, {
+     DynamicBox[{
+       FEPrivate`If[
+        CurrentValue["MouseOver"], 
+        EdgeForm[{
+          GrayLevel[0.5], 
+          AbsoluteThickness[1.5], 
+          Opacity[0.66]}], {}, {}], 
+       RectangleBox[{30, 0}, {40, 1167}]},
+      ImageSizeCache->{{43.77072213500786, 
+       51.277629513343804`}, {-157.37903565486846`, 220.10548423104683`}}], 
+     InsetBox[
+      StyleBox["1167",
+       StripOnInput->False,
+       FrontFaceColor->GrayLevel[0],
+       BackFaceColor->GrayLevel[0],
+       GraphicsColor->GrayLevel[0],
+       FontColor->GrayLevel[0]], Offset[{0, 4}, {35, 1167}], 
+      ImageScaled[{0.5, 0}]]}, {
+     DynamicBox[{
+       FEPrivate`If[
+        CurrentValue["MouseOver"], 
+        EdgeForm[{
+          GrayLevel[0.5], 
+          AbsoluteThickness[1.5], 
+          Opacity[0.66]}], {}, {}], 
+       RectangleBox[{40, 0}, {50, 1278}]},
+      ImageSizeCache->{{50.777629513343804`, 
+       58.28453689167975}, {-193.2361750784645, 220.10548423104683`}}], 
+     InsetBox[
+      StyleBox["1278",
+       StripOnInput->False,
+       FrontFaceColor->GrayLevel[0],
+       BackFaceColor->GrayLevel[0],
+       GraphicsColor->GrayLevel[0],
+       FontColor->GrayLevel[0]], Offset[{0, 4}, {45, 1278}], 
+      ImageScaled[{0.5, 0}]]}, {
+     DynamicBox[{
+       FEPrivate`If[
+        CurrentValue["MouseOver"], 
+        EdgeForm[{
+          GrayLevel[0.5], 
+          AbsoluteThickness[1.5], 
+          Opacity[0.66]}], {}, {}], 
+       RectangleBox[{50, 0}, {60, 1252}]},
+      ImageSizeCache->{{57.78453689167975, 
+       65.2914442700157}, {-184.83720548374833`, 220.10548423104683`}}], 
+     InsetBox[
+      StyleBox["1252",
+       StripOnInput->False,
+       FrontFaceColor->GrayLevel[0],
+       BackFaceColor->GrayLevel[0],
+       GraphicsColor->GrayLevel[0],
+       FontColor->GrayLevel[0]], Offset[{0, 4}, {55, 1252}], 
+      ImageScaled[{0.5, 0}]]}, {
+     DynamicBox[{
+       FEPrivate`If[
+        CurrentValue["MouseOver"], 
+        EdgeForm[{
+          GrayLevel[0.5], 
+          AbsoluteThickness[1.5], 
+          Opacity[0.66]}], {}, {}], 
+       RectangleBox[{60, 0}, {70, 1108}]},
+      ImageSizeCache->{{64.7914442700157, 
+       72.29835164835166}, {-138.3198354207048, 220.10548423104683`}}], 
+     InsetBox[
+      StyleBox["1108",
+       StripOnInput->False,
+       FrontFaceColor->GrayLevel[0],
+       BackFaceColor->GrayLevel[0],
+       GraphicsColor->GrayLevel[0],
+       FontColor->GrayLevel[0]], Offset[{0, 4}, {65, 1108}], 
+      ImageScaled[{0.5, 0}]]}, {
+     DynamicBox[{
+       FEPrivate`If[
+        CurrentValue["MouseOver"], 
+        EdgeForm[{
+          GrayLevel[0.5], 
+          AbsoluteThickness[1.5], 
+          Opacity[0.66]}], {}, {}], 
+       RectangleBox[{70, 0}, {80, 1105}]},
+      ImageSizeCache->{{71.79835164835166, 
+       79.30525902668761}, {-137.35072354439137`, 220.10548423104683`}}], 
+     InsetBox[
+      StyleBox["1105",
+       StripOnInput->False,
+       FrontFaceColor->GrayLevel[0],
+       BackFaceColor->GrayLevel[0],
+       GraphicsColor->GrayLevel[0],
+       FontColor->GrayLevel[0]], Offset[{0, 4}, {75, 1105}], 
+      ImageScaled[{0.5, 0}]]}, {
+     DynamicBox[{
+       FEPrivate`If[
+        CurrentValue["MouseOver"], 
+        EdgeForm[{
+          GrayLevel[0.5], 
+          AbsoluteThickness[1.5], 
+          Opacity[0.66]}], {}, {}], 
+       RectangleBox[{80, 0}, {90, 1027}]},
+      ImageSizeCache->{{78.80525902668761, 
+       86.31216640502356}, {-112.15381476024282`, 220.10548423104683`}}], 
+     InsetBox[
+      StyleBox["1027",
+       StripOnInput->False,
+       FrontFaceColor->GrayLevel[0],
+       BackFaceColor->GrayLevel[0],
+       GraphicsColor->GrayLevel[0],
+       FontColor->GrayLevel[0]], Offset[{0, 4}, {85, 1027}], 
+      ImageScaled[{0.5, 0}]]}, {
+     DynamicBox[{
+       FEPrivate`If[
+        CurrentValue["MouseOver"], 
+        EdgeForm[{
+          GrayLevel[0.5], 
+          AbsoluteThickness[1.5], 
+          Opacity[0.66]}], {}, {}], 
+       RectangleBox[{90, 0}, {100, 947}]},
+      ImageSizeCache->{{85.81216640502356, 
+       93.3190737833595}, {-86.3108313918853, 220.10548423104683`}}], InsetBox[
+      StyleBox["947",
+       StripOnInput->False,
+       FrontFaceColor->GrayLevel[0],
+       BackFaceColor->GrayLevel[0],
+       GraphicsColor->GrayLevel[0],
+       FontColor->GrayLevel[0]], Offset[{0, 4}, {95, 947}], 
+      ImageScaled[{0.5, 0}]]}, {
+     DynamicBox[{
+       FEPrivate`If[
+        CurrentValue["MouseOver"], 
+        EdgeForm[{
+          GrayLevel[0.5], 
+          AbsoluteThickness[1.5], 
+          Opacity[0.66]}], {}, {}], 
+       RectangleBox[{100, 0}, {110, 840}]},
+      ImageSizeCache->{{92.8190737833595, 
+       100.32598116169545`}, {-51.7458411367071, 220.10548423104683`}}], 
+     InsetBox[
+      StyleBox["840",
+       StripOnInput->False,
+       FrontFaceColor->GrayLevel[0],
+       BackFaceColor->GrayLevel[0],
+       GraphicsColor->GrayLevel[0],
+       FontColor->GrayLevel[0]], Offset[{0, 4}, {105, 840}], 
+      ImageScaled[{0.5, 0}]]}, {
+     DynamicBox[{
+       FEPrivate`If[
+        CurrentValue["MouseOver"], 
+        EdgeForm[{
+          GrayLevel[0.5], 
+          AbsoluteThickness[1.5], 
+          Opacity[0.66]}], {}, {}], 
+       RectangleBox[{110, 0}, {120, 819}]},
+      ImageSizeCache->{{99.82598116169545, 
+       107.3328885400314}, {-44.96205800251323, 220.10548423104683`}}], 
+     InsetBox[
+      StyleBox["819",
+       StripOnInput->False,
+       FrontFaceColor->GrayLevel[0],
+       BackFaceColor->GrayLevel[0],
+       GraphicsColor->GrayLevel[0],
+       FontColor->GrayLevel[0]], Offset[{0, 4}, {115, 819}], 
+      ImageScaled[{0.5, 0}]]}, {
+     DynamicBox[{
+       FEPrivate`If[
+        CurrentValue["MouseOver"], 
+        EdgeForm[{
+          GrayLevel[0.5], 
+          AbsoluteThickness[1.5], 
+          Opacity[0.66]}], {}, {}], 
+       RectangleBox[{120, 0}, {130, 733}]},
+      ImageSizeCache->{{106.8328885400314, 
+       114.33979591836736`}, {-17.180850881528926`, 220.10548423104683`}}], 
+     InsetBox[
+      StyleBox["733",
+       StripOnInput->False,
+       FrontFaceColor->GrayLevel[0],
+       BackFaceColor->GrayLevel[0],
+       GraphicsColor->GrayLevel[0],
+       FontColor->GrayLevel[0]], Offset[{0, 4}, {125, 733}], 
+      ImageScaled[{0.5, 0}]]}, {
+     DynamicBox[{
+       FEPrivate`If[
+        CurrentValue["MouseOver"], 
+        EdgeForm[{
+          GrayLevel[0.5], 
+          AbsoluteThickness[1.5], 
+          Opacity[0.66]}], {}, {}], 
+       RectangleBox[{130, 0}, {140, 643}]},
+      ImageSizeCache->{{113.83979591836736`, 121.34670329670331`}, {
+       11.892505407873273`, 220.10548423104683`}}], InsetBox[
+      StyleBox["643",
+       StripOnInput->False,
+       FrontFaceColor->GrayLevel[0],
+       BackFaceColor->GrayLevel[0],
+       GraphicsColor->GrayLevel[0],
+       FontColor->GrayLevel[0]], Offset[{0, 4}, {135, 643}], 
+      ImageScaled[{0.5, 0}]]}, {
+     DynamicBox[{
+       FEPrivate`If[
+        CurrentValue["MouseOver"], 
+        EdgeForm[{
+          GrayLevel[0.5], 
+          AbsoluteThickness[1.5], 
+          Opacity[0.66]}], {}, {}], 
+       RectangleBox[{140, 0}, {150, 585}]},
+      ImageSizeCache->{{120.84670329670331`, 128.35361067503925`}, {
+       30.628668349932497`, 220.10548423104683`}}], InsetBox[
+      StyleBox["585",
+       StripOnInput->False,
+       FrontFaceColor->GrayLevel[0],
+       BackFaceColor->GrayLevel[0],
+       GraphicsColor->GrayLevel[0],
+       FontColor->GrayLevel[0]], Offset[{0, 4}, {145, 585}], 
+      ImageScaled[{0.5, 0}]]}, {
+     DynamicBox[{
+       FEPrivate`If[
+        CurrentValue["MouseOver"], 
+        EdgeForm[{
+          GrayLevel[0.5], 
+          AbsoluteThickness[1.5], 
+          Opacity[0.66]}], {}, {}], 
+       RectangleBox[{150, 0}, {160, 516}]},
+      ImageSizeCache->{{127.85361067503925`, 135.36051805337522`}, {
+       52.918241505140855`, 220.10548423104683`}}], InsetBox[
+      StyleBox["516",
+       StripOnInput->False,
+       FrontFaceColor->GrayLevel[0],
+       BackFaceColor->GrayLevel[0],
+       GraphicsColor->GrayLevel[0],
+       FontColor->GrayLevel[0]], Offset[{0, 4}, {155, 516}], 
+      ImageScaled[{0.5, 0}]]}, {
+     DynamicBox[{
+       FEPrivate`If[
+        CurrentValue["MouseOver"], 
+        EdgeForm[{
+          GrayLevel[0.5], 
+          AbsoluteThickness[1.5], 
+          Opacity[0.66]}], {}, {}], 
+       RectangleBox[{160, 0}, {170, 449}]},
+      ImageSizeCache->{{134.86051805337522`, 142.36742543171115`}, {
+       74.56174007614027, 220.10548423104683`}}], InsetBox[
+      StyleBox["449",
+       StripOnInput->False,
+       FrontFaceColor->GrayLevel[0],
+       BackFaceColor->GrayLevel[0],
+       GraphicsColor->GrayLevel[0],
+       FontColor->GrayLevel[0]], Offset[{0, 4}, {165, 449}], 
+      ImageScaled[{0.5, 0}]]}, {
+     DynamicBox[{
+       FEPrivate`If[
+        CurrentValue["MouseOver"], 
+        EdgeForm[{
+          GrayLevel[0.5], 
+          AbsoluteThickness[1.5], 
+          Opacity[0.66]}], {}, {}], 
+       RectangleBox[{170, 0}, {180, 438}]},
+      ImageSizeCache->{{141.86742543171115`, 149.37433281004712`}, {
+       78.11515028928943, 220.10548423104683`}}], InsetBox[
+      StyleBox["438",
+       StripOnInput->False,
+       FrontFaceColor->GrayLevel[0],
+       BackFaceColor->GrayLevel[0],
+       GraphicsColor->GrayLevel[0],
+       FontColor->GrayLevel[0]], Offset[{0, 4}, {175, 438}], 
+      ImageScaled[{0.5, 0}]]}, {
+     DynamicBox[{
+       FEPrivate`If[
+        CurrentValue["MouseOver"], 
+        EdgeForm[{
+          GrayLevel[0.5], 
+          AbsoluteThickness[1.5], 
+          Opacity[0.66]}], {}, {}], 
+       RectangleBox[{180, 0}, {190, 396}]},
+      ImageSizeCache->{{148.87433281004712`, 156.38124018838306`}, {
+       91.68271655767711, 220.10548423104683`}}], InsetBox[
+      StyleBox["396",
+       StripOnInput->False,
+       FrontFaceColor->GrayLevel[0],
+       BackFaceColor->GrayLevel[0],
+       GraphicsColor->GrayLevel[0],
+       FontColor->GrayLevel[0]], Offset[{0, 4}, {185, 396}], 
+      ImageScaled[{0.5, 0}]]}, {
+     DynamicBox[{
+       FEPrivate`If[
+        CurrentValue["MouseOver"], 
+        EdgeForm[{
+          GrayLevel[0.5], 
+          AbsoluteThickness[1.5], 
+          Opacity[0.66]}], {}, {}], 
+       RectangleBox[{190, 0}, {200, 341}]},
+      ImageSizeCache->{{155.88124018838306`, 163.388147566719}, {
+       109.44976762342291`, 220.10548423104683`}}], InsetBox[
+      StyleBox["341",
+       StripOnInput->False,
+       FrontFaceColor->GrayLevel[0],
+       BackFaceColor->GrayLevel[0],
+       GraphicsColor->GrayLevel[0],
+       FontColor->GrayLevel[0]], Offset[{0, 4}, {195, 341}], 
+      ImageScaled[{0.5, 0}]]}, {
+     DynamicBox[{
+       FEPrivate`If[
+        CurrentValue["MouseOver"], 
+        EdgeForm[{
+          GrayLevel[0.5], 
+          AbsoluteThickness[1.5], 
+          Opacity[0.66]}], {}, {}], 
+       RectangleBox[{200, 0}, {210, 356}]},
+      ImageSizeCache->{{162.888147566719, 170.39505494505497`}, {
+       104.60420824185587`, 220.10548423104683`}}], InsetBox[
+      StyleBox["356",
+       StripOnInput->False,
+       FrontFaceColor->GrayLevel[0],
+       BackFaceColor->GrayLevel[0],
+       GraphicsColor->GrayLevel[0],
+       FontColor->GrayLevel[0]], Offset[{0, 4}, {205, 356}], 
+      ImageScaled[{0.5, 0}]]}, {
+     DynamicBox[{
+       FEPrivate`If[
+        CurrentValue["MouseOver"], 
+        EdgeForm[{
+          GrayLevel[0.5], 
+          AbsoluteThickness[1.5], 
+          Opacity[0.66]}], {}, {}], 
+       RectangleBox[{210, 0}, {220, 294}]},
+      ImageSizeCache->{{169.89505494505497`, 177.4019623233909}, {
+       124.63252035233296`, 220.10548423104683`}}], InsetBox[
+      StyleBox["294",
+       StripOnInput->False,
+       FrontFaceColor->GrayLevel[0],
+       BackFaceColor->GrayLevel[0],
+       GraphicsColor->GrayLevel[0],
+       FontColor->GrayLevel[0]], Offset[{0, 4}, {215, 294}], 
+      ImageScaled[{0.5, 0}]]}, {
+     DynamicBox[{
+       FEPrivate`If[
+        CurrentValue["MouseOver"], 
+        EdgeForm[{
+          GrayLevel[0.5], 
+          AbsoluteThickness[1.5], 
+          Opacity[0.66]}], {}, {}], 
+       RectangleBox[{220, 0}, {230, 245}]},
+      ImageSizeCache->{{176.9019623233909, 184.40886970172687`}, {
+       140.46134766545194`, 220.10548423104683`}}], InsetBox[
+      StyleBox["245",
+       StripOnInput->False,
+       FrontFaceColor->GrayLevel[0],
+       BackFaceColor->GrayLevel[0],
+       GraphicsColor->GrayLevel[0],
+       FontColor->GrayLevel[0]], Offset[{0, 4}, {225, 245}], 
+      ImageScaled[{0.5, 0}]]}, {
+     DynamicBox[{
+       FEPrivate`If[
+        CurrentValue["MouseOver"], 
+        EdgeForm[{
+          GrayLevel[0.5], 
+          AbsoluteThickness[1.5], 
+          Opacity[0.66]}], {}, {}], 
+       RectangleBox[{230, 0}, {240, 216}]},
+      ImageSizeCache->{{183.90886970172687`, 191.4157770800628}, {
+       149.82942913648154`, 220.10548423104683`}}], InsetBox[
+      StyleBox["216",
+       StripOnInput->False,
+       FrontFaceColor->GrayLevel[0],
+       BackFaceColor->GrayLevel[0],
+       GraphicsColor->GrayLevel[0],
+       FontColor->GrayLevel[0]], Offset[{0, 4}, {235, 216}], 
+      ImageScaled[{0.5, 0}]]}, {
+     DynamicBox[{
+       FEPrivate`If[
+        CurrentValue["MouseOver"], 
+        EdgeForm[{
+          GrayLevel[0.5], 
+          AbsoluteThickness[1.5], 
+          Opacity[0.66]}], {}, {}], 
+       RectangleBox[{240, 0}, {250, 251}]},
+      ImageSizeCache->{{190.9157770800628, 198.42268445839875`}, {
+       138.5231239128251, 220.10548423104683`}}], InsetBox[
+      StyleBox["251",
+       StripOnInput->False,
+       FrontFaceColor->GrayLevel[0],
+       BackFaceColor->GrayLevel[0],
+       GraphicsColor->GrayLevel[0],
+       FontColor->GrayLevel[0]], Offset[{0, 4}, {245, 251}], 
+      ImageScaled[{0.5, 0}]]}, {
+     DynamicBox[{
+       FEPrivate`If[
+        CurrentValue["MouseOver"], 
+        EdgeForm[{
+          GrayLevel[0.5], 
+          AbsoluteThickness[1.5], 
+          Opacity[0.66]}], {}, {}], 
+       RectangleBox[{250, 0}, {260, 181}]},
+      ImageSizeCache->{{197.92268445839875`, 205.42959183673472`}, {
+       161.13573436013795`, 220.10548423104683`}}], InsetBox[
+      StyleBox["181",
+       StripOnInput->False,
+       FrontFaceColor->GrayLevel[0],
+       BackFaceColor->GrayLevel[0],
+       GraphicsColor->GrayLevel[0],
+       FontColor->GrayLevel[0]], Offset[{0, 4}, {255, 181}], 
+      ImageScaled[{0.5, 0}]]}, {
+     DynamicBox[{
+       FEPrivate`If[
+        CurrentValue["MouseOver"], 
+        EdgeForm[{
+          GrayLevel[0.5], 
+          AbsoluteThickness[1.5], 
+          Opacity[0.66]}], {}, {}], 
+       RectangleBox[{260, 0}, {270, 198}]},
+      ImageSizeCache->{{204.92959183673472`, 212.43649921507065`}, {
+       155.64410039436197`, 220.10548423104683`}}], InsetBox[
+      StyleBox["198",
+       StripOnInput->False,
+       FrontFaceColor->GrayLevel[0],
+       BackFaceColor->GrayLevel[0],
+       GraphicsColor->GrayLevel[0],
+       FontColor->GrayLevel[0]], Offset[{0, 4}, {265, 198}], 
+      ImageScaled[{0.5, 0}]]}, {
+     DynamicBox[{
+       FEPrivate`If[
+        CurrentValue["MouseOver"], 
+        EdgeForm[{
+          GrayLevel[0.5], 
+          AbsoluteThickness[1.5], 
+          Opacity[0.66]}], {}, {}], 
+       RectangleBox[{270, 0}, {280, 171}]},
+      ImageSizeCache->{{211.93649921507065`, 219.44340659340662`}, {
+       164.36610728118262`, 220.10548423104683`}}], InsetBox[
+      StyleBox["171",
+       StripOnInput->False,
+       FrontFaceColor->GrayLevel[0],
+       BackFaceColor->GrayLevel[0],
+       GraphicsColor->GrayLevel[0],
+       FontColor->GrayLevel[0]], Offset[{0, 4}, {275, 171}], 
+      ImageScaled[{0.5, 0}]]}, {
+     DynamicBox[{
+       FEPrivate`If[
+        CurrentValue["MouseOver"], 
+        EdgeForm[{
+          GrayLevel[0.5], 
+          AbsoluteThickness[1.5], 
+          Opacity[0.66]}], {}, {}], 
+       RectangleBox[{280, 0}, {290, 131}]},
+      ImageSizeCache->{{218.94340659340662`, 226.45031397174256`}, {
+       177.28759896536138`, 220.10548423104683`}}], InsetBox[
+      StyleBox["131",
+       StripOnInput->False,
+       FrontFaceColor->GrayLevel[0],
+       BackFaceColor->GrayLevel[0],
+       GraphicsColor->GrayLevel[0],
+       FontColor->GrayLevel[0]], Offset[{0, 4}, {285, 131}], 
+      ImageScaled[{0.5, 0}]]}, {
+     DynamicBox[{
+       FEPrivate`If[
+        CurrentValue["MouseOver"], 
+        EdgeForm[{
+          GrayLevel[0.5], 
+          AbsoluteThickness[1.5], 
+          Opacity[0.66]}], {}, {}], 
+       RectangleBox[{290, 0}, {300, 138}]},
+      ImageSizeCache->{{225.95031397174256`, 233.4572213500785}, {
+       175.0263379206301, 220.10548423104683`}}], InsetBox[
+      StyleBox["138",
+       StripOnInput->False,
+       FrontFaceColor->GrayLevel[0],
+       BackFaceColor->GrayLevel[0],
+       GraphicsColor->GrayLevel[0],
+       FontColor->GrayLevel[0]], Offset[{0, 4}, {295, 138}], 
+      ImageScaled[{0.5, 0}]]}, {
+     DynamicBox[{
+       FEPrivate`If[
+        CurrentValue["MouseOver"], 
+        EdgeForm[{
+          GrayLevel[0.5], 
+          AbsoluteThickness[1.5], 
+          Opacity[0.66]}], {}, {}], 
+       RectangleBox[{300, 0}, {310, 131}]},
+      ImageSizeCache->{{232.9572213500785, 240.46412872841447`}, {
+       177.28759896536138`, 220.10548423104683`}}], InsetBox[
+      StyleBox["131",
+       StripOnInput->False,
+       FrontFaceColor->GrayLevel[0],
+       BackFaceColor->GrayLevel[0],
+       GraphicsColor->GrayLevel[0],
+       FontColor->GrayLevel[0]], Offset[{0, 4}, {305, 131}], 
+      ImageScaled[{0.5, 0}]]}, {
+     DynamicBox[{
+       FEPrivate`If[
+        CurrentValue["MouseOver"], 
+        EdgeForm[{
+          GrayLevel[0.5], 
+          AbsoluteThickness[1.5], 
+          Opacity[0.66]}], {}, {}], 
+       RectangleBox[{310, 0}, {320, 113}]},
+      ImageSizeCache->{{239.96412872841447`, 247.4710361067504}, {
+       183.10227022324185`, 220.10548423104683`}}], InsetBox[
+      StyleBox["113",
+       StripOnInput->False,
+       FrontFaceColor->GrayLevel[0],
+       BackFaceColor->GrayLevel[0],
+       GraphicsColor->GrayLevel[0],
+       FontColor->GrayLevel[0]], Offset[{0, 4}, {315, 113}], 
+      ImageScaled[{0.5, 0}]]}, {
+     DynamicBox[{
+       FEPrivate`If[
+        CurrentValue["MouseOver"], 
+        EdgeForm[{
+          GrayLevel[0.5], 
+          AbsoluteThickness[1.5], 
+          Opacity[0.66]}], {}, {}], 
+       RectangleBox[{320, 0}, {330, 93}]},
+      ImageSizeCache->{{246.9710361067504, 254.47794348508637`}, {
+       189.56301606533123`, 220.10548423104683`}}], InsetBox[
+      StyleBox["93",
+       StripOnInput->False,
+       FrontFaceColor->GrayLevel[0],
+       BackFaceColor->GrayLevel[0],
+       GraphicsColor->GrayLevel[0],
+       FontColor->GrayLevel[0]], Offset[{0, 4}, {325, 93}], 
+      ImageScaled[{0.5, 0}]]}, {
+     DynamicBox[{
+       FEPrivate`If[
+        CurrentValue["MouseOver"], 
+        EdgeForm[{
+          GrayLevel[0.5], 
+          AbsoluteThickness[1.5], 
+          Opacity[0.66]}], {}, {}], 
+       RectangleBox[{330, 0}, {340, 102}]},
+      ImageSizeCache->{{253.97794348508637`, 261.4848508634223}, {
+       186.65568043639098`, 220.10548423104683`}}], InsetBox[
+      StyleBox["102",
+       StripOnInput->False,
+       FrontFaceColor->GrayLevel[0],
+       BackFaceColor->GrayLevel[0],
+       GraphicsColor->GrayLevel[0],
+       FontColor->GrayLevel[0]], Offset[{0, 4}, {335, 102}], 
+      ImageScaled[{0.5, 0}]]}, {
+     DynamicBox[{
+       FEPrivate`If[
+        CurrentValue["MouseOver"], 
+        EdgeForm[{
+          GrayLevel[0.5], 
+          AbsoluteThickness[1.5], 
+          Opacity[0.66]}], {}, {}], 
+       RectangleBox[{340, 0}, {350, 87}]},
+      ImageSizeCache->{{260.9848508634223, 268.49175824175825`}, {
+       191.50123981795804`, 220.10548423104683`}}], InsetBox[
+      StyleBox["87",
+       StripOnInput->False,
+       FrontFaceColor->GrayLevel[0],
+       BackFaceColor->GrayLevel[0],
+       GraphicsColor->GrayLevel[0],
+       FontColor->GrayLevel[0]], Offset[{0, 4}, {345, 87}], 
+      ImageScaled[{0.5, 0}]]}, {
+     DynamicBox[{
+       FEPrivate`If[
+        CurrentValue["MouseOver"], 
+        EdgeForm[{
+          GrayLevel[0.5], 
+          AbsoluteThickness[1.5], 
+          Opacity[0.66]}], {}, {}], 
+       RectangleBox[{350, 0}, {360, 75}]},
+      ImageSizeCache->{{267.99175824175825`, 275.49866562009424`}, {
+       195.37768732321166`, 220.10548423104683`}}], InsetBox[
+      StyleBox["75",
+       StripOnInput->False,
+       FrontFaceColor->GrayLevel[0],
+       BackFaceColor->GrayLevel[0],
+       GraphicsColor->GrayLevel[0],
+       FontColor->GrayLevel[0]], Offset[{0, 4}, {355, 75}], 
+      ImageScaled[{0.5, 0}]]}, {
+     DynamicBox[{
+       FEPrivate`If[
+        CurrentValue["MouseOver"], 
+        EdgeForm[{
+          GrayLevel[0.5], 
+          AbsoluteThickness[1.5], 
+          Opacity[0.66]}], {}, {}], 
+       RectangleBox[{360, 0}, {370, 69}]},
+      ImageSizeCache->{{274.99866562009424`, 282.5055729984302}, {
+       197.31591107583847`, 220.10548423104683`}}], InsetBox[
+      StyleBox["69",
+       StripOnInput->False,
+       FrontFaceColor->GrayLevel[0],
+       BackFaceColor->GrayLevel[0],
+       GraphicsColor->GrayLevel[0],
+       FontColor->GrayLevel[0]], Offset[{0, 4}, {365, 69}], 
+      ImageScaled[{0.5, 0}]]}, {
+     DynamicBox[{
+       FEPrivate`If[
+        CurrentValue["MouseOver"], 
+        EdgeForm[{
+          GrayLevel[0.5], 
+          AbsoluteThickness[1.5], 
+          Opacity[0.66]}], {}, {}], 
+       RectangleBox[{370, 0}, {380, 68}]},
+      ImageSizeCache->{{282.0055729984302, 289.5124803767661}, {
+       197.63894836794293`, 220.10548423104683`}}], InsetBox[
+      StyleBox["68",
+       StripOnInput->False,
+       FrontFaceColor->GrayLevel[0],
+       BackFaceColor->GrayLevel[0],
+       GraphicsColor->GrayLevel[0],
+       FontColor->GrayLevel[0]], Offset[{0, 4}, {375, 68}], 
+      ImageScaled[{0.5, 0}]]}, {
+     DynamicBox[{
+       FEPrivate`If[
+        CurrentValue["MouseOver"], 
+        EdgeForm[{
+          GrayLevel[0.5], 
+          AbsoluteThickness[1.5], 
+          Opacity[0.66]}], {}, {}], 
+       RectangleBox[{380, 0}, {390, 63}]},
+      ImageSizeCache->{{289.0124803767661, 296.51938775510206`}, {
+       199.25413482846528`, 220.10548423104683`}}], InsetBox[
+      StyleBox["63",
+       StripOnInput->False,
+       FrontFaceColor->GrayLevel[0],
+       BackFaceColor->GrayLevel[0],
+       GraphicsColor->GrayLevel[0],
+       FontColor->GrayLevel[0]], Offset[{0, 4}, {385, 63}], 
+      ImageScaled[{0.5, 0}]]}, {
+     DynamicBox[{
+       FEPrivate`If[
+        CurrentValue["MouseOver"], 
+        EdgeForm[{
+          GrayLevel[0.5], 
+          AbsoluteThickness[1.5], 
+          Opacity[0.66]}], {}, {}], 
+       RectangleBox[{390, 0}, {400, 46}]},
+      ImageSizeCache->{{296.01938775510206`, 303.526295133438}, {
+       204.74576879424126`, 220.10548423104683`}}], InsetBox[
+      StyleBox["46",
+       StripOnInput->False,
+       FrontFaceColor->GrayLevel[0],
+       BackFaceColor->GrayLevel[0],
+       GraphicsColor->GrayLevel[0],
+       FontColor->GrayLevel[0]], Offset[{0, 4}, {395, 46}], 
+      ImageScaled[{0.5, 0}]]}, {
+     DynamicBox[{
+       FEPrivate`If[
+        CurrentValue["MouseOver"], 
+        EdgeForm[{
+          GrayLevel[0.5], 
+          AbsoluteThickness[1.5], 
+          Opacity[0.66]}], {}, {}], 
+       RectangleBox[{400, 0}, {410, 48}]},
+      ImageSizeCache->{{303.026295133438, 310.53320251177394`}, {
+       204.0996942100323, 220.10548423104683`}}], InsetBox[
+      StyleBox["48",
+       StripOnInput->False,
+       FrontFaceColor->GrayLevel[0],
+       BackFaceColor->GrayLevel[0],
+       GraphicsColor->GrayLevel[0],
+       FontColor->GrayLevel[0]], Offset[{0, 4}, {405, 48}], 
+      ImageScaled[{0.5, 0}]]}, {
+     DynamicBox[{
+       FEPrivate`If[
+        CurrentValue["MouseOver"], 
+        EdgeForm[{
+          GrayLevel[0.5], 
+          AbsoluteThickness[1.5], 
+          Opacity[0.66]}], {}, {}], 
+       RectangleBox[{410, 0}, {420, 57}]},
+      ImageSizeCache->{{310.03320251177394`, 317.54010989010993`}, {
+       201.1923585810921, 220.10548423104683`}}], InsetBox[
+      StyleBox["57",
+       StripOnInput->False,
+       FrontFaceColor->GrayLevel[0],
+       BackFaceColor->GrayLevel[0],
+       GraphicsColor->GrayLevel[0],
+       FontColor->GrayLevel[0]], Offset[{0, 4}, {415, 57}], 
+      ImageScaled[{0.5, 0}]]}, {
+     DynamicBox[{
+       FEPrivate`If[
+        CurrentValue["MouseOver"], 
+        EdgeForm[{
+          GrayLevel[0.5], 
+          AbsoluteThickness[1.5], 
+          Opacity[0.66]}], {}, {}], 
+       RectangleBox[{420, 0}, {430, 50}]},
+      ImageSizeCache->{{317.04010989010993`, 324.54701726844587`}, {
+       203.4536196258234, 220.10548423104683`}}], InsetBox[
+      StyleBox["50",
+       StripOnInput->False,
+       FrontFaceColor->GrayLevel[0],
+       BackFaceColor->GrayLevel[0],
+       GraphicsColor->GrayLevel[0],
+       FontColor->GrayLevel[0]], Offset[{0, 4}, {425, 50}], 
+      ImageScaled[{0.5, 0}]]}, {
+     DynamicBox[{
+       FEPrivate`If[
+        CurrentValue["MouseOver"], 
+        EdgeForm[{
+          GrayLevel[0.5], 
+          AbsoluteThickness[1.5], 
+          Opacity[0.66]}], {}, {}], 
+       RectangleBox[{430, 0}, {440, 39}]},
+      ImageSizeCache->{{324.04701726844587`, 331.5539246467818}, {
+       207.00702983897253`, 220.10548423104683`}}], InsetBox[
+      StyleBox["39",
+       StripOnInput->False,
+       FrontFaceColor->GrayLevel[0],
+       BackFaceColor->GrayLevel[0],
+       GraphicsColor->GrayLevel[0],
+       FontColor->GrayLevel[0]], Offset[{0, 4}, {435, 39}], 
+      ImageScaled[{0.5, 0}]]}, {
+     DynamicBox[{
+       FEPrivate`If[
+        CurrentValue["MouseOver"], 
+        EdgeForm[{
+          GrayLevel[0.5], 
+          AbsoluteThickness[1.5], 
+          Opacity[0.66]}], {}, {}], 
+       RectangleBox[{440, 0}, {450, 33}]},
+      ImageSizeCache->{{331.0539246467818, 338.56083202511775`}, {
+       208.94525359159934`, 220.10548423104683`}}], InsetBox[
+      StyleBox["33",
+       StripOnInput->False,
+       FrontFaceColor->GrayLevel[0],
+       BackFaceColor->GrayLevel[0],
+       GraphicsColor->GrayLevel[0],
+       FontColor->GrayLevel[0]], Offset[{0, 4}, {445, 33}], 
+      ImageScaled[{0.5, 0}]]}, {
+     DynamicBox[{
+       FEPrivate`If[
+        CurrentValue["MouseOver"], 
+        EdgeForm[{
+          GrayLevel[0.5], 
+          AbsoluteThickness[1.5], 
+          Opacity[0.66]}], {}, {}], 
+       RectangleBox[{450, 0}, {460, 27}]},
+      ImageSizeCache->{{338.06083202511775`, 345.56773940345374`}, {
+       210.88347734422618`, 220.10548423104683`}}], InsetBox[
+      StyleBox["27",
+       StripOnInput->False,
+       FrontFaceColor->GrayLevel[0],
+       BackFaceColor->GrayLevel[0],
+       GraphicsColor->GrayLevel[0],
+       FontColor->GrayLevel[0]], Offset[{0, 4}, {455, 27}], 
+      ImageScaled[{0.5, 0}]]}, {
+     DynamicBox[{
+       FEPrivate`If[
+        CurrentValue["MouseOver"], 
+        EdgeForm[{
+          GrayLevel[0.5], 
+          AbsoluteThickness[1.5], 
+          Opacity[0.66]}], {}, {}], 
+       RectangleBox[{460, 0}, {470, 25}]},
+      ImageSizeCache->{{345.06773940345374`, 352.5746467817897}, {
+       211.5295519284351, 220.10548423104683`}}], InsetBox[
+      StyleBox["25",
+       StripOnInput->False,
+       FrontFaceColor->GrayLevel[0],
+       BackFaceColor->GrayLevel[0],
+       GraphicsColor->GrayLevel[0],
+       FontColor->GrayLevel[0]], Offset[{0, 4}, {465, 25}], 
+      ImageScaled[{0.5, 0}]]}, {
+     DynamicBox[{
+       FEPrivate`If[
+        CurrentValue["MouseOver"], 
+        EdgeForm[{
+          GrayLevel[0.5], 
+          AbsoluteThickness[1.5], 
+          Opacity[0.66]}], {}, {}], 
+       RectangleBox[{470, 0}, {480, 30}]},
+      ImageSizeCache->{{352.0746467817897, 359.5815541601256}, {
+       209.91436546791277`, 220.10548423104683`}}], InsetBox[
+      StyleBox["30",
+       StripOnInput->False,
+       FrontFaceColor->GrayLevel[0],
+       BackFaceColor->GrayLevel[0],
+       GraphicsColor->GrayLevel[0],
+       FontColor->GrayLevel[0]], Offset[{0, 4}, {475, 30}], 
+      ImageScaled[{0.5, 0}]]}, {
+     DynamicBox[{
+       FEPrivate`If[
+        CurrentValue["MouseOver"], 
+        EdgeForm[{
+          GrayLevel[0.5], 
+          AbsoluteThickness[1.5], 
+          Opacity[0.66]}], {}, {}], 
+       RectangleBox[{480, 0}, {490, 28}]},
+      ImageSizeCache->{{359.0815541601256, 366.58846153846156`}, {
+       210.5604400521217, 220.10548423104683`}}], InsetBox[
+      StyleBox["28",
+       StripOnInput->False,
+       FrontFaceColor->GrayLevel[0],
+       BackFaceColor->GrayLevel[0],
+       GraphicsColor->GrayLevel[0],
+       FontColor->GrayLevel[0]], Offset[{0, 4}, {485, 28}], 
+      ImageScaled[{0.5, 0}]]}, {
+     DynamicBox[{
+       FEPrivate`If[
+        CurrentValue["MouseOver"], 
+        EdgeForm[{
+          GrayLevel[0.5], 
+          AbsoluteThickness[1.5], 
+          Opacity[0.66]}], {}, {}], 
+       RectangleBox[{490, 0}, {500, 28}]},
+      ImageSizeCache->{{366.08846153846156`, 373.5953689167975}, {
+       210.5604400521217, 220.10548423104683`}}], InsetBox[
+      StyleBox["28",
+       StripOnInput->False,
+       FrontFaceColor->GrayLevel[0],
+       BackFaceColor->GrayLevel[0],
+       GraphicsColor->GrayLevel[0],
+       FontColor->GrayLevel[0]], Offset[{0, 4}, {495, 28}], 
+      ImageScaled[{0.5, 0}]]}, {
+     DynamicBox[{
+       FEPrivate`If[
+        CurrentValue["MouseOver"], 
+        EdgeForm[{
+          GrayLevel[0.5], 
+          AbsoluteThickness[1.5], 
+          Opacity[0.66]}], {}, {}], 
+       RectangleBox[{500, 0}, {510, 22}]},
+      ImageSizeCache->{{373.0953689167975, 380.6022762951335}, {
+       212.4986638047485, 220.10548423104683`}}], InsetBox[
+      StyleBox["22",
+       StripOnInput->False,
+       FrontFaceColor->GrayLevel[0],
+       BackFaceColor->GrayLevel[0],
+       GraphicsColor->GrayLevel[0],
+       FontColor->GrayLevel[0]], Offset[{0, 4}, {505, 22}], 
+      ImageScaled[{0.5, 0}]]}, {
+     DynamicBox[{
+       FEPrivate`If[
+        CurrentValue["MouseOver"], 
+        EdgeForm[{
+          GrayLevel[0.5], 
+          AbsoluteThickness[1.5], 
+          Opacity[0.66]}], {}, {}], 
+       RectangleBox[{510, 0}, {520, 24}]},
+      ImageSizeCache->{{380.1022762951335, 387.60918367346943`}, {
+       211.85258922053958`, 220.10548423104683`}}], InsetBox[
+      StyleBox["24",
+       StripOnInput->False,
+       FrontFaceColor->GrayLevel[0],
+       BackFaceColor->GrayLevel[0],
+       GraphicsColor->GrayLevel[0],
+       FontColor->GrayLevel[0]], Offset[{0, 4}, {515, 24}], 
+      ImageScaled[{0.5, 0}]]}, {
+     DynamicBox[{
+       FEPrivate`If[
+        CurrentValue["MouseOver"], 
+        EdgeForm[{
+          GrayLevel[0.5], 
+          AbsoluteThickness[1.5], 
+          Opacity[0.66]}], {}, {}], 
+       RectangleBox[{520, 0}, {530, 15}]},
+      ImageSizeCache->{{387.10918367346943`, 394.61609105180537`}, {
+       214.7599248494798, 220.10548423104683`}}], InsetBox[
+      StyleBox["15",
+       StripOnInput->False,
+       FrontFaceColor->GrayLevel[0],
+       BackFaceColor->GrayLevel[0],
+       GraphicsColor->GrayLevel[0],
+       FontColor->GrayLevel[0]], Offset[{0, 4}, {525, 15}], 
+      ImageScaled[{0.5, 0}]]}, {
+     DynamicBox[{
+       FEPrivate`If[
+        CurrentValue["MouseOver"], 
+        EdgeForm[{
+          GrayLevel[0.5], 
+          AbsoluteThickness[1.5], 
+          Opacity[0.66]}], {}, {}], 
+       RectangleBox[{530, 0}, {540, 17}]},
+      ImageSizeCache->{{394.11609105180537`, 401.6229984301413}, {
+       214.11385026527086`, 220.10548423104683`}}], InsetBox[
+      StyleBox["17",
+       StripOnInput->False,
+       FrontFaceColor->GrayLevel[0],
+       BackFaceColor->GrayLevel[0],
+       GraphicsColor->GrayLevel[0],
+       FontColor->GrayLevel[0]], Offset[{0, 4}, {535, 17}], 
+      ImageScaled[{0.5, 0}]]}, {
+     DynamicBox[{
+       FEPrivate`If[
+        CurrentValue["MouseOver"], 
+        EdgeForm[{
+          GrayLevel[0.5], 
+          AbsoluteThickness[1.5], 
+          Opacity[0.66]}], {}, {}], 
+       RectangleBox[{540, 0}, {550, 19}]},
+      ImageSizeCache->{{401.1229984301413, 408.62990580847725`}, {
+       213.4677756810619, 220.10548423104683`}}], InsetBox[
+      StyleBox["19",
+       StripOnInput->False,
+       FrontFaceColor->GrayLevel[0],
+       BackFaceColor->GrayLevel[0],
+       GraphicsColor->GrayLevel[0],
+       FontColor->GrayLevel[0]], Offset[{0, 4}, {545, 19}], 
+      ImageScaled[{0.5, 0}]]}, {
+     DynamicBox[{
+       FEPrivate`If[
+        CurrentValue["MouseOver"], 
+        EdgeForm[{
+          GrayLevel[0.5], 
+          AbsoluteThickness[1.5], 
+          Opacity[0.66]}], {}, {}], 
+       RectangleBox[{550, 0}, {560, 15}]},
+      ImageSizeCache->{{408.12990580847725`, 415.63681318681324`}, {
+       214.7599248494798, 220.10548423104683`}}], InsetBox[
+      StyleBox["15",
+       StripOnInput->False,
+       FrontFaceColor->GrayLevel[0],
+       BackFaceColor->GrayLevel[0],
+       GraphicsColor->GrayLevel[0],
+       FontColor->GrayLevel[0]], Offset[{0, 4}, {555, 15}], 
+      ImageScaled[{0.5, 0}]]}, {
+     DynamicBox[{
+       FEPrivate`If[
+        CurrentValue["MouseOver"], 
+        EdgeForm[{
+          GrayLevel[0.5], 
+          AbsoluteThickness[1.5], 
+          Opacity[0.66]}], {}, {}], 
+       RectangleBox[{560, 0}, {570, 15}]},
+      ImageSizeCache->{{415.13681318681324`, 422.6437205651492}, {
+       214.7599248494798, 220.10548423104683`}}], InsetBox[
+      StyleBox["15",
+       StripOnInput->False,
+       FrontFaceColor->GrayLevel[0],
+       BackFaceColor->GrayLevel[0],
+       GraphicsColor->GrayLevel[0],
+       FontColor->GrayLevel[0]], Offset[{0, 4}, {565, 15}], 
+      ImageScaled[{0.5, 0}]]}, {
+     DynamicBox[{
+       FEPrivate`If[
+        CurrentValue["MouseOver"], 
+        EdgeForm[{
+          GrayLevel[0.5], 
+          AbsoluteThickness[1.5], 
+          Opacity[0.66]}], {}, {}], 
+       RectangleBox[{570, 0}, {580, 19}]},
+      ImageSizeCache->{{422.1437205651492, 429.6506279434851}, {
+       213.4677756810619, 220.10548423104683`}}], InsetBox[
+      StyleBox["19",
+       StripOnInput->False,
+       FrontFaceColor->GrayLevel[0],
+       BackFaceColor->GrayLevel[0],
+       GraphicsColor->GrayLevel[0],
+       FontColor->GrayLevel[0]], Offset[{0, 4}, {575, 19}], 
+      ImageScaled[{0.5, 0}]]}, {
+     DynamicBox[{
+       FEPrivate`If[
+        CurrentValue["MouseOver"], 
+        EdgeForm[{
+          GrayLevel[0.5], 
+          AbsoluteThickness[1.5], 
+          Opacity[0.66]}], {}, {}], 
+       RectangleBox[{580, 0}, {590, 13}]},
+      ImageSizeCache->{{429.1506279434851, 436.65753532182106`}, {
+       215.40599943368872`, 220.10548423104683`}}], InsetBox[
+      StyleBox["13",
+       StripOnInput->False,
+       FrontFaceColor->GrayLevel[0],
+       BackFaceColor->GrayLevel[0],
+       GraphicsColor->GrayLevel[0],
+       FontColor->GrayLevel[0]], Offset[{0, 4}, {585, 13}], 
+      ImageScaled[{0.5, 0}]]}, {
+     DynamicBox[{
+       FEPrivate`If[
+        CurrentValue["MouseOver"], 
+        EdgeForm[{
+          GrayLevel[0.5], 
+          AbsoluteThickness[1.5], 
+          Opacity[0.66]}], {}, {}], 
+       RectangleBox[{590, 0}, {600, 17}]},
+      ImageSizeCache->{{436.15753532182106`, 443.664442700157}, {
+       214.11385026527086`, 220.10548423104683`}}], InsetBox[
+      StyleBox["17",
+       StripOnInput->False,
+       FrontFaceColor->GrayLevel[0],
+       BackFaceColor->GrayLevel[0],
+       GraphicsColor->GrayLevel[0],
+       FontColor->GrayLevel[0]], Offset[{0, 4}, {595, 17}], 
+      ImageScaled[{0.5, 0}]]}, {
+     DynamicBox[{
+       FEPrivate`If[
+        CurrentValue["MouseOver"], 
+        EdgeForm[{
+          GrayLevel[0.5], 
+          AbsoluteThickness[1.5], 
+          Opacity[0.66]}], {}, {}], 
+       RectangleBox[{600, 0}, {610, 10}]},
+      ImageSizeCache->{{443.164442700157, 450.671350078493}, {
+       216.37511131000215`, 220.10548423104683`}}], InsetBox[
+      StyleBox["10",
+       StripOnInput->False,
+       FrontFaceColor->GrayLevel[0],
+       BackFaceColor->GrayLevel[0],
+       GraphicsColor->GrayLevel[0],
+       FontColor->GrayLevel[0]], Offset[{0, 4}, {605, 10}], 
+      ImageScaled[{0.5, 0}]]}, {
+     DynamicBox[{
+       FEPrivate`If[
+        CurrentValue["MouseOver"], 
+        EdgeForm[{
+          GrayLevel[0.5], 
+          AbsoluteThickness[1.5], 
+          Opacity[0.66]}], {}, {}], 
+       RectangleBox[{610, 0}, {620, 5}]},
+      ImageSizeCache->{{450.171350078493, 457.67825745682893`}, {
+       217.99029777052448`, 220.10548423104683`}}], InsetBox[
+      StyleBox["5",
+       StripOnInput->False,
+       FrontFaceColor->GrayLevel[0],
+       BackFaceColor->GrayLevel[0],
+       GraphicsColor->GrayLevel[0],
+       FontColor->GrayLevel[0]], Offset[{0, 4}, {615, 5}], 
+      ImageScaled[{0.5, 0}]]}, {
+     DynamicBox[{
+       FEPrivate`If[
+        CurrentValue["MouseOver"], 
+        EdgeForm[{
+          GrayLevel[0.5], 
+          AbsoluteThickness[1.5], 
+          Opacity[0.66]}], {}, {}], 
+       RectangleBox[{620, 0}, {630, 7}]},
+      ImageSizeCache->{{457.17825745682893`, 464.68516483516487`}, {
+       217.34422318631556`, 220.10548423104683`}}], InsetBox[
+      StyleBox["7",
+       StripOnInput->False,
+       FrontFaceColor->GrayLevel[0],
+       BackFaceColor->GrayLevel[0],
+       GraphicsColor->GrayLevel[0],
+       FontColor->GrayLevel[0]], Offset[{0, 4}, {625, 7}], 
+      ImageScaled[{0.5, 0}]]}, {
+     DynamicBox[{
+       FEPrivate`If[
+        CurrentValue["MouseOver"], 
+        EdgeForm[{
+          GrayLevel[0.5], 
+          AbsoluteThickness[1.5], 
+          Opacity[0.66]}], {}, {}], 
+       RectangleBox[{630, 0}, {640, 10}]},
+      ImageSizeCache->{{464.18516483516487`, 471.6920722135008}, {
+       216.37511131000215`, 220.10548423104683`}}], InsetBox[
+      StyleBox["10",
+       StripOnInput->False,
+       FrontFaceColor->GrayLevel[0],
+       BackFaceColor->GrayLevel[0],
+       GraphicsColor->GrayLevel[0],
+       FontColor->GrayLevel[0]], Offset[{0, 4}, {635, 10}], 
+      ImageScaled[{0.5, 0}]]}, {
+     DynamicBox[{
+       FEPrivate`If[
+        CurrentValue["MouseOver"], 
+        EdgeForm[{
+          GrayLevel[0.5], 
+          AbsoluteThickness[1.5], 
+          Opacity[0.66]}], {}, {}], 
+       RectangleBox[{640, 0}, {650, 9}]},
+      ImageSizeCache->{{471.1920722135008, 478.69897959183675`}, {
+       216.6981486021066, 220.10548423104683`}}], InsetBox[
+      StyleBox["9",
+       StripOnInput->False,
+       FrontFaceColor->GrayLevel[0],
+       BackFaceColor->GrayLevel[0],
+       GraphicsColor->GrayLevel[0],
+       FontColor->GrayLevel[0]], Offset[{0, 4}, {645, 9}], 
+      ImageScaled[{0.5, 0}]]}, {
+     DynamicBox[{
+       FEPrivate`If[
+        CurrentValue["MouseOver"], 
+        EdgeForm[{
+          GrayLevel[0.5], 
+          AbsoluteThickness[1.5], 
+          Opacity[0.66]}], {}, {}], 
+       RectangleBox[{650, 0}, {660, 5}]},
+      ImageSizeCache->{{478.19897959183675`, 485.70588697017274`}, {
+       217.99029777052448`, 220.10548423104683`}}], InsetBox[
+      StyleBox["5",
+       StripOnInput->False,
+       FrontFaceColor->GrayLevel[0],
+       BackFaceColor->GrayLevel[0],
+       GraphicsColor->GrayLevel[0],
+       FontColor->GrayLevel[0]], Offset[{0, 4}, {655, 5}], 
+      ImageScaled[{0.5, 0}]]}, {
+     DynamicBox[{
+       FEPrivate`If[
+        CurrentValue["MouseOver"], 
+        EdgeForm[{
+          GrayLevel[0.5], 
+          AbsoluteThickness[1.5], 
+          Opacity[0.66]}], {}, {}], 
+       RectangleBox[{660, 0}, {670, 7}]},
+      ImageSizeCache->{{485.20588697017274`, 492.7127943485087}, {
+       217.34422318631556`, 220.10548423104683`}}], InsetBox[
+      StyleBox["7",
+       StripOnInput->False,
+       FrontFaceColor->GrayLevel[0],
+       BackFaceColor->GrayLevel[0],
+       GraphicsColor->GrayLevel[0],
+       FontColor->GrayLevel[0]], Offset[{0, 4}, {665, 7}], 
+      ImageScaled[{0.5, 0}]]}, {
+     DynamicBox[{
+       FEPrivate`If[
+        CurrentValue["MouseOver"], 
+        EdgeForm[{
+          GrayLevel[0.5], 
+          AbsoluteThickness[1.5], 
+          Opacity[0.66]}], {}, {}], 
+       RectangleBox[{670, 0}, {680, 7}]},
+      ImageSizeCache->{{492.2127943485087, 499.7197017268446}, {
+       217.34422318631556`, 220.10548423104683`}}], InsetBox[
+      StyleBox["7",
+       StripOnInput->False,
+       FrontFaceColor->GrayLevel[0],
+       BackFaceColor->GrayLevel[0],
+       GraphicsColor->GrayLevel[0],
+       FontColor->GrayLevel[0]], Offset[{0, 4}, {675, 7}], 
+      ImageScaled[{0.5, 0}]]}, {
+     DynamicBox[{
+       FEPrivate`If[
+        CurrentValue["MouseOver"], 
+        EdgeForm[{
+          GrayLevel[0.5], 
+          AbsoluteThickness[1.5], 
+          Opacity[0.66]}], {}, {}], 
+       RectangleBox[{680, 0}, {690, 6}]},
+      ImageSizeCache->{{499.2197017268446, 506.72660910518056`}, {
+       217.66726047842002`, 220.10548423104683`}}], InsetBox[
+      StyleBox["6",
+       StripOnInput->False,
+       FrontFaceColor->GrayLevel[0],
+       BackFaceColor->GrayLevel[0],
+       GraphicsColor->GrayLevel[0],
+       FontColor->GrayLevel[0]], Offset[{0, 4}, {685, 6}], 
+      ImageScaled[{0.5, 0}]]}, {
+     DynamicBox[{
+       FEPrivate`If[
+        CurrentValue["MouseOver"], 
+        EdgeForm[{
+          GrayLevel[0.5], 
+          AbsoluteThickness[1.5], 
+          Opacity[0.66]}], {}, {}], 
+       RectangleBox[{690, 0}, {700, 7}]},
+      ImageSizeCache->{{506.22660910518056`, 513.7335164835165}, {
+       217.34422318631556`, 220.10548423104683`}}], InsetBox[
+      StyleBox["7",
+       StripOnInput->False,
+       FrontFaceColor->GrayLevel[0],
+       BackFaceColor->GrayLevel[0],
+       GraphicsColor->GrayLevel[0],
+       FontColor->GrayLevel[0]], Offset[{0, 4}, {695, 7}], 
+      ImageScaled[{0.5, 0}]]}, {
+     DynamicBox[{
+       FEPrivate`If[
+        CurrentValue["MouseOver"], 
+        EdgeForm[{
+          GrayLevel[0.5], 
+          AbsoluteThickness[1.5], 
+          Opacity[0.66]}], {}, {}], 
+       RectangleBox[{700, 0}, {710, 4}]},
+      ImageSizeCache->{{513.2335164835165, 520.7404238618525}, {
+       218.31333506262897`, 220.10548423104683`}}], InsetBox[
+      StyleBox["4",
+       StripOnInput->False,
+       FrontFaceColor->GrayLevel[0],
+       BackFaceColor->GrayLevel[0],
+       GraphicsColor->GrayLevel[0],
+       FontColor->GrayLevel[0]], Offset[{0, 4}, {705, 4}], 
+      ImageScaled[{0.5, 0}]]}, {
+     DynamicBox[{
+       FEPrivate`If[
+        CurrentValue["MouseOver"], 
+        EdgeForm[{
+          GrayLevel[0.5], 
+          AbsoluteThickness[1.5], 
+          Opacity[0.66]}], {}, {}], 
+       RectangleBox[{710, 0}, {720, 5}]},
+      ImageSizeCache->{{520.2404238618525, 527.7473312401885}, {
+       217.99029777052448`, 220.10548423104683`}}], InsetBox[
+      StyleBox["5",
+       StripOnInput->False,
+       FrontFaceColor->GrayLevel[0],
+       BackFaceColor->GrayLevel[0],
+       GraphicsColor->GrayLevel[0],
+       FontColor->GrayLevel[0]], Offset[{0, 4}, {715, 5}], 
+      ImageScaled[{0.5, 0}]]}, {
+     DynamicBox[{
+       FEPrivate`If[
+        CurrentValue["MouseOver"], 
+        EdgeForm[{
+          GrayLevel[0.5], 
+          AbsoluteThickness[1.5], 
+          Opacity[0.66]}], {}, {}], 
+       RectangleBox[{720, 0}, {730, 8}]},
+      ImageSizeCache->{{527.2473312401885, 534.7542386185244}, {
+       217.02118589421107`, 220.10548423104683`}}], InsetBox[
+      StyleBox["8",
+       StripOnInput->False,
+       FrontFaceColor->GrayLevel[0],
+       BackFaceColor->GrayLevel[0],
+       GraphicsColor->GrayLevel[0],
+       FontColor->GrayLevel[0]], Offset[{0, 4}, {725, 8}], 
+      ImageScaled[{0.5, 0}]]}, {
+     DynamicBox[{
+       FEPrivate`If[
+        CurrentValue["MouseOver"], 
+        EdgeForm[{
+          GrayLevel[0.5], 
+          AbsoluteThickness[1.5], 
+          Opacity[0.66]}], {}, {}], 
+       RectangleBox[{730, 0}, {740, 4}]},
+      ImageSizeCache->{{534.2542386185244, 541.7611459968604}, {
+       218.31333506262897`, 220.10548423104683`}}], InsetBox[
+      StyleBox["4",
+       StripOnInput->False,
+       FrontFaceColor->GrayLevel[0],
+       BackFaceColor->GrayLevel[0],
+       GraphicsColor->GrayLevel[0],
+       FontColor->GrayLevel[0]], Offset[{0, 4}, {735, 4}], 
+      ImageScaled[{0.5, 0}]]}, {
+     DynamicBox[{
+       FEPrivate`If[
+        CurrentValue["MouseOver"], 
+        EdgeForm[{
+          GrayLevel[0.5], 
+          AbsoluteThickness[1.5], 
+          Opacity[0.66]}], {}, {}], 
+       RectangleBox[{740, 0}, {750, 4}]},
+      ImageSizeCache->{{541.2611459968604, 548.7680533751962}, {
+       218.31333506262897`, 220.10548423104683`}}], InsetBox[
+      StyleBox["4",
+       StripOnInput->False,
+       FrontFaceColor->GrayLevel[0],
+       BackFaceColor->GrayLevel[0],
+       GraphicsColor->GrayLevel[0],
+       FontColor->GrayLevel[0]], Offset[{0, 4}, {745, 4}], 
+      ImageScaled[{0.5, 0}]]}, {
+     DynamicBox[{
+       FEPrivate`If[
+        CurrentValue["MouseOver"], 
+        EdgeForm[{
+          GrayLevel[0.5], 
+          AbsoluteThickness[1.5], 
+          Opacity[0.66]}], {}, {}], 
+       RectangleBox[{750, 0}, {760, 1}]},
+      ImageSizeCache->{{548.2680533751962, 555.7749607535322}, {
+       219.28244693894237`, 220.10548423104683`}}], InsetBox[
+      StyleBox["1",
+       StripOnInput->False,
+       FrontFaceColor->GrayLevel[0],
+       BackFaceColor->GrayLevel[0],
+       GraphicsColor->GrayLevel[0],
+       FontColor->GrayLevel[0]], Offset[{0, 4}, {755, 1}], 
+      ImageScaled[{0.5, 0}]]}, {}, {
+     DynamicBox[{
+       FEPrivate`If[
+        CurrentValue["MouseOver"], 
+        EdgeForm[{
+          GrayLevel[0.5], 
+          AbsoluteThickness[1.5], 
+          Opacity[0.66]}], {}, {}], 
+       RectangleBox[{770, 0}, {780, 3}]},
+      ImageSizeCache->{{562.2818681318681, 569.7887755102041}, {
+       218.63637235473342`, 220.10548423104683`}}], InsetBox[
+      StyleBox["3",
+       StripOnInput->False,
+       FrontFaceColor->GrayLevel[0],
+       BackFaceColor->GrayLevel[0],
+       GraphicsColor->GrayLevel[0],
+       FontColor->GrayLevel[0]], Offset[{0, 4}, {775, 3}], 
+      ImageScaled[{0.5, 0}]]}, {}, {
+     DynamicBox[{
+       FEPrivate`If[
+        CurrentValue["MouseOver"], 
+        EdgeForm[{
+          GrayLevel[0.5], 
+          AbsoluteThickness[1.5], 
+          Opacity[0.66]}], {}, {}], 
+       RectangleBox[{790, 0}, {800, 1}]},
+      ImageSizeCache->{{576.2956828885401, 583.802590266876}, {
+       219.28244693894237`, 220.10548423104683`}}], InsetBox[
+      StyleBox["1",
+       StripOnInput->False,
+       FrontFaceColor->GrayLevel[0],
+       BackFaceColor->GrayLevel[0],
+       GraphicsColor->GrayLevel[0],
+       FontColor->GrayLevel[0]], Offset[{0, 4}, {795, 1}], 
+      ImageScaled[{0.5, 0}]]}, {
+     DynamicBox[{
+       FEPrivate`If[
+        CurrentValue["MouseOver"], 
+        EdgeForm[{
+          GrayLevel[0.5], 
+          AbsoluteThickness[1.5], 
+          Opacity[0.66]}], {}, {}], 
+       RectangleBox[{800, 0}, {810, 2}]},
+      ImageSizeCache->{{583.302590266876, 590.809497645212}, {
+       218.95940964683788`, 220.10548423104683`}}], InsetBox[
+      StyleBox["2",
+       StripOnInput->False,
+       FrontFaceColor->GrayLevel[0],
+       BackFaceColor->GrayLevel[0],
+       GraphicsColor->GrayLevel[0],
+       FontColor->GrayLevel[0]], Offset[{0, 4}, {805, 2}], 
+      ImageScaled[{0.5, 0}]]}, {
+     DynamicBox[{
+       FEPrivate`If[
+        CurrentValue["MouseOver"], 
+        EdgeForm[{
+          GrayLevel[0.5], 
+          AbsoluteThickness[1.5], 
+          Opacity[0.66]}], {}, {}], 
+       RectangleBox[{810, 0}, {820, 2}]},
+      ImageSizeCache->{{590.309497645212, 597.8164050235479}, {
+       218.95940964683788`, 220.10548423104683`}}], InsetBox[
+      StyleBox["2",
+       StripOnInput->False,
+       FrontFaceColor->GrayLevel[0],
+       BackFaceColor->GrayLevel[0],
+       GraphicsColor->GrayLevel[0],
+       FontColor->GrayLevel[0]], Offset[{0, 4}, {815, 2}], 
+      ImageScaled[{0.5, 0}]]}, {
+     DynamicBox[{
+       FEPrivate`If[
+        CurrentValue["MouseOver"], 
+        EdgeForm[{
+          GrayLevel[0.5], 
+          AbsoluteThickness[1.5], 
+          Opacity[0.66]}], {}, {}], 
+       RectangleBox[{820, 0}, {830, 6}]},
+      ImageSizeCache->{{597.3164050235479, 604.8233124018839}, {
+       217.66726047842002`, 220.10548423104683`}}], InsetBox[
+      StyleBox["6",
+       StripOnInput->False,
+       FrontFaceColor->GrayLevel[0],
+       BackFaceColor->GrayLevel[0],
+       GraphicsColor->GrayLevel[0],
+       FontColor->GrayLevel[0]], Offset[{0, 4}, {825, 6}], 
+      ImageScaled[{0.5, 0}]]}, {
+     DynamicBox[{
+       FEPrivate`If[
+        CurrentValue["MouseOver"], 
+        EdgeForm[{
+          GrayLevel[0.5], 
+          AbsoluteThickness[1.5], 
+          Opacity[0.66]}], {}, {}], 
+       RectangleBox[{830, 0}, {840, 5}]},
+      ImageSizeCache->{{604.3233124018839, 611.8302197802199}, {
+       217.99029777052448`, 220.10548423104683`}}], InsetBox[
+      StyleBox["5",
+       StripOnInput->False,
+       FrontFaceColor->GrayLevel[0],
+       BackFaceColor->GrayLevel[0],
+       GraphicsColor->GrayLevel[0],
+       FontColor->GrayLevel[0]], Offset[{0, 4}, {835, 5}], 
+      ImageScaled[{0.5, 0}]]}, {
+     DynamicBox[{
+       FEPrivate`If[
+        CurrentValue["MouseOver"], 
+        EdgeForm[{
+          GrayLevel[0.5], 
+          AbsoluteThickness[1.5], 
+          Opacity[0.66]}], {}, {}], 
+       RectangleBox[{840, 0}, {850, 4}]},
+      ImageSizeCache->{{611.3302197802199, 618.8371271585557}, {
+       218.31333506262897`, 220.10548423104683`}}], InsetBox[
+      StyleBox["4",
+       StripOnInput->False,
+       FrontFaceColor->GrayLevel[0],
+       BackFaceColor->GrayLevel[0],
+       GraphicsColor->GrayLevel[0],
+       FontColor->GrayLevel[0]], Offset[{0, 4}, {845, 4}], 
+      ImageScaled[{0.5, 0}]]}, {
+     DynamicBox[{
+       FEPrivate`If[
+        CurrentValue["MouseOver"], 
+        EdgeForm[{
+          GrayLevel[0.5], 
+          AbsoluteThickness[1.5], 
+          Opacity[0.66]}], {}, {}], 
+       RectangleBox[{850, 0}, {860, 1}]},
+      ImageSizeCache->{{618.3371271585557, 625.8440345368917}, {
+       219.28244693894237`, 220.10548423104683`}}], InsetBox[
+      StyleBox["1",
+       StripOnInput->False,
+       FrontFaceColor->GrayLevel[0],
+       BackFaceColor->GrayLevel[0],
+       GraphicsColor->GrayLevel[0],
+       FontColor->GrayLevel[0]], Offset[{0, 4}, {855, 1}], 
+      ImageScaled[{0.5, 0}]]}, {
+     DynamicBox[{
+       FEPrivate`If[
+        CurrentValue["MouseOver"], 
+        EdgeForm[{
+          GrayLevel[0.5], 
+          AbsoluteThickness[1.5], 
+          Opacity[0.66]}], {}, {}], 
+       RectangleBox[{860, 0}, {870, 3}]},
+      ImageSizeCache->{{625.3440345368917, 632.8509419152277}, {
+       218.63637235473342`, 220.10548423104683`}}], InsetBox[
+      StyleBox["3",
+       StripOnInput->False,
+       FrontFaceColor->GrayLevel[0],
+       BackFaceColor->GrayLevel[0],
+       GraphicsColor->GrayLevel[0],
+       FontColor->GrayLevel[0]], Offset[{0, 4}, {865, 3}], 
+      ImageScaled[{0.5, 0}]]}, {
+     DynamicBox[{
+       FEPrivate`If[
+        CurrentValue["MouseOver"], 
+        EdgeForm[{
+          GrayLevel[0.5], 
+          AbsoluteThickness[1.5], 
+          Opacity[0.66]}], {}, {}], 
+       RectangleBox[{870, 0}, {880, 5}]},
+      ImageSizeCache->{{632.3509419152277, 639.8578492935636}, {
+       217.99029777052448`, 220.10548423104683`}}], InsetBox[
+      StyleBox["5",
+       StripOnInput->False,
+       FrontFaceColor->GrayLevel[0],
+       BackFaceColor->GrayLevel[0],
+       GraphicsColor->GrayLevel[0],
+       FontColor->GrayLevel[0]], Offset[{0, 4}, {875, 5}], 
+      ImageScaled[{0.5, 0}]]}, {}, {
+     DynamicBox[{
+       FEPrivate`If[
+        CurrentValue["MouseOver"], 
+        EdgeForm[{
+          GrayLevel[0.5], 
+          AbsoluteThickness[1.5], 
+          Opacity[0.66]}], {}, {}], 
+       RectangleBox[{890, 0}, {900, 3}]},
+      ImageSizeCache->{{646.3647566718996, 653.8716640502355}, {
+       218.63637235473342`, 220.10548423104683`}}], InsetBox[
+      StyleBox["3",
+       StripOnInput->False,
+       FrontFaceColor->GrayLevel[0],
+       BackFaceColor->GrayLevel[0],
+       GraphicsColor->GrayLevel[0],
+       FontColor->GrayLevel[0]], Offset[{0, 4}, {895, 3}], 
+      ImageScaled[{0.5, 0}]]}, {
+     DynamicBox[{
+       FEPrivate`If[
+        CurrentValue["MouseOver"], 
+        EdgeForm[{
+          GrayLevel[0.5], 
+          AbsoluteThickness[1.5], 
+          Opacity[0.66]}], {}, {}], 
+       RectangleBox[{900, 0}, {910, 4}]},
+      ImageSizeCache->{{653.3716640502355, 660.8785714285715}, {
+       218.31333506262897`, 220.10548423104683`}}], InsetBox[
+      StyleBox["4",
+       StripOnInput->False,
+       FrontFaceColor->GrayLevel[0],
+       BackFaceColor->GrayLevel[0],
+       GraphicsColor->GrayLevel[0],
+       FontColor->GrayLevel[0]], Offset[{0, 4}, {905, 4}], 
+      ImageScaled[{0.5, 0}]]}, {
+     DynamicBox[{
+       FEPrivate`If[
+        CurrentValue["MouseOver"], 
+        EdgeForm[{
+          GrayLevel[0.5], 
+          AbsoluteThickness[1.5], 
+          Opacity[0.66]}], {}, {}], 
+       RectangleBox[{910, 0}, {920, 4}]},
+      ImageSizeCache->{{660.3785714285715, 667.8854788069075}, {
+       218.31333506262897`, 220.10548423104683`}}], InsetBox[
+      StyleBox["4",
+       StripOnInput->False,
+       FrontFaceColor->GrayLevel[0],
+       BackFaceColor->GrayLevel[0],
+       GraphicsColor->GrayLevel[0],
+       FontColor->GrayLevel[0]], Offset[{0, 4}, {915, 4}], 
+      ImageScaled[{0.5, 0}]]}, {
+     DynamicBox[{
+       FEPrivate`If[
+        CurrentValue["MouseOver"], 
+        EdgeForm[{
+          GrayLevel[0.5], 
+          AbsoluteThickness[1.5], 
+          Opacity[0.66]}], {}, {}], 
+       RectangleBox[{920, 0}, {930, 2}]},
+      ImageSizeCache->{{667.3854788069075, 674.8923861852434}, {
+       218.95940964683788`, 220.10548423104683`}}], InsetBox[
+      StyleBox["2",
+       StripOnInput->False,
+       FrontFaceColor->GrayLevel[0],
+       BackFaceColor->GrayLevel[0],
+       GraphicsColor->GrayLevel[0],
+       FontColor->GrayLevel[0]], Offset[{0, 4}, {925, 2}], 
+      ImageScaled[{0.5, 0}]]}, {}, {
+     DynamicBox[{
+       FEPrivate`If[
+        CurrentValue["MouseOver"], 
+        EdgeForm[{
+          GrayLevel[0.5], 
+          AbsoluteThickness[1.5], 
+          Opacity[0.66]}], {}, {}], 
+       RectangleBox[{940, 0}, {950, 3}]},
+      ImageSizeCache->{{681.3992935635794, 688.9062009419152}, {
+       218.63637235473342`, 220.10548423104683`}}], InsetBox[
+      StyleBox["3",
+       StripOnInput->False,
+       FrontFaceColor->GrayLevel[0],
+       BackFaceColor->GrayLevel[0],
+       GraphicsColor->GrayLevel[0],
+       FontColor->GrayLevel[0]], Offset[{0, 4}, {945, 3}], 
+      ImageScaled[{0.5, 0}]]}, {
+     DynamicBox[{
+       FEPrivate`If[
+        CurrentValue["MouseOver"], 
+        EdgeForm[{
+          GrayLevel[0.5], 
+          AbsoluteThickness[1.5], 
+          Opacity[0.66]}], {}, {}], 
+       RectangleBox[{950, 0}, {960, 2}]},
+      ImageSizeCache->{{688.4062009419152, 695.9131083202512}, {
+       218.95940964683788`, 220.10548423104683`}}], InsetBox[
+      StyleBox["2",
+       StripOnInput->False,
+       FrontFaceColor->GrayLevel[0],
+       BackFaceColor->GrayLevel[0],
+       GraphicsColor->GrayLevel[0],
+       FontColor->GrayLevel[0]], Offset[{0, 4}, {955, 2}], 
+      ImageScaled[{0.5, 0}]]}, {}, {
+     DynamicBox[{
+       FEPrivate`If[
+        CurrentValue["MouseOver"], 
+        EdgeForm[{
+          GrayLevel[0.5], 
+          AbsoluteThickness[1.5], 
+          Opacity[0.66]}], {}, {}], 
+       RectangleBox[{970, 0}, {980, 2}]},
+      ImageSizeCache->{{702.4200156985872, 709.9269230769231}, {
+       218.95940964683788`, 220.10548423104683`}}], InsetBox[
+      StyleBox["2",
+       StripOnInput->False,
+       FrontFaceColor->GrayLevel[0],
+       BackFaceColor->GrayLevel[0],
+       GraphicsColor->GrayLevel[0],
+       FontColor->GrayLevel[0]], Offset[{0, 4}, {975, 2}], 
+      ImageScaled[{0.5, 0}]]}, {
+     DynamicBox[{
+       FEPrivate`If[
+        CurrentValue["MouseOver"], 
+        EdgeForm[{
+          GrayLevel[0.5], 
+          AbsoluteThickness[1.5], 
+          Opacity[0.66]}], {}, {}], 
+       RectangleBox[{980, 0}, {990, 1}]},
+      ImageSizeCache->{{709.4269230769231, 716.9338304552591}, {
+       219.28244693894237`, 220.10548423104683`}}], InsetBox[
+      StyleBox["1",
+       StripOnInput->False,
+       FrontFaceColor->GrayLevel[0],
+       BackFaceColor->GrayLevel[0],
+       GraphicsColor->GrayLevel[0],
+       FontColor->GrayLevel[0]], Offset[{0, 4}, {985, 1}], 
+      ImageScaled[{0.5, 0}]]}, {}, {}, {}, {}, {
+     DynamicBox[{
+       FEPrivate`If[
+        CurrentValue["MouseOver"], 
+        EdgeForm[{
+          GrayLevel[0.5], 
+          AbsoluteThickness[1.5], 
+          Opacity[0.66]}], {}, {}], 
+       RectangleBox[{1030, 0}, {1040, 1}]},
+      ImageSizeCache->{{744.4614599686029, 751.9683673469389}, {
+       219.28244693894237`, 220.10548423104683`}}], InsetBox[
+      StyleBox["1",
+       StripOnInput->False,
+       FrontFaceColor->GrayLevel[0],
+       BackFaceColor->GrayLevel[0],
+       GraphicsColor->GrayLevel[0],
+       FontColor->GrayLevel[0]], Offset[{0, 4}, {1035, 1}], 
+      ImageScaled[{0.5, 0}]]}}, {}, {}},
+  AspectRatio->NCache[GoldenRatio^(-1), 0.6180339887498948],
+  Axes->{True, True},
+  AxesOrigin->{0, 0},
+  FrameTicks->{{Automatic, Automatic}, {Automatic, Automatic}},
+  ImageSize->{768., Automatic},
+  PlotRange->{{0, 1040}, {All, All}},
+  PlotRangePadding->{{
+     Scaled[0.02], 
+     Scaled[0.02]}, {
+     Scaled[0.02], 
+     Scaled[0.1]}},
+  Ticks->{Automatic, Automatic}]], "Output",
+ CellChangeTimes->{3.605802169431306*^9}],
+
+Cell[BoxData["126.9806`"], "Output",
+ CellChangeTimes->{3.6058021694573073`*^9}]
+}, Open  ]],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"ratings", "=", 
+   RowBox[{"Range", "[", 
+    RowBox[{"0", ",", "5", ",", "0.5"}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"Table", "[", "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{"Histogram", "[", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"Select", "[", 
+       RowBox[{"features", ",", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"#", "[", 
+           RowBox[{"[", "2", "]"}], "]"}], "\[Equal]", "r"}], "&"}]}], "]"}], 
+      "[", 
+      RowBox[{"[", 
+       RowBox[{"All", ",", "3"}], "]"}], "]"}], ",", 
+     RowBox[{"LabelingFunction", "\[Rule]", "Above"}], ",", 
+     RowBox[{"PlotLabel", "\[Rule]", 
+      RowBox[{"P", "[", 
+       RowBox[{"C", "|", 
+        RowBox[{"X", "==", "r"}]}], "]"}]}], ",", 
+     RowBox[{"ImageSize", "\[Rule]", "Medium"}]}], "]"}], ",", 
+   "\[IndentingNewLine]", 
+   RowBox[{"{", 
+    RowBox[{"r", ",", "ratings"}], "}"}]}], "\[IndentingNewLine]", 
+  "]"}]}], "Input",
+ CellChangeTimes->{{3.605802357122041*^9, 3.605802365525522*^9}, {
+  3.605802415218364*^9, 3.6058024794780397`*^9}, {3.605802530205941*^9, 
+  3.6058025984858465`*^9}, {3.6058026554501047`*^9, 3.6058026875469403`*^9}, {
+  3.6058027181766925`*^9, 3.605802728685293*^9}, {3.6058028506412687`*^9, 
+  3.605802941658475*^9}, {3.6058029983557177`*^9, 3.605803031856634*^9}, {
+  3.605803076363179*^9, 3.6058030809794436`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   GraphicsBox[
+    {RGBColor[0.798413061722744, 0.824719615472648, 0.968322270542458], 
+     EdgeForm[Opacity[0.7]]},
+    AspectRatio->NCache[GoldenRatio^(-1), 0.6180339887498948],
+    Axes->{True, True},
+    AxesOrigin->{0, 0},
+    FrameTicks->{{Automatic, Automatic}, {Automatic, Automatic}},
+    ImageSize->Medium,
+    PlotLabel->FormBox[
+      RowBox[{"P", "(", 
+        RowBox[{"C", "|", 
+          RowBox[{"X", "\[LongEqual]", "0.`"}]}], ")"}], TraditionalForm],
+    PlotRange->{{All, All}, {All, All}},
+    PlotRangePadding->{{
+       Scaled[0.02], 
+       Scaled[0.02]}, {
+       Scaled[0.02], 
+       Scaled[0.1]}},
+    Ticks->{Automatic, Automatic}], ",", 
+   GraphicsBox[
+    {RGBColor[0.798413061722744, 0.824719615472648, 0.968322270542458], 
+     EdgeForm[Opacity[0.7]]},
+    AspectRatio->NCache[GoldenRatio^(-1), 0.6180339887498948],
+    Axes->{True, True},
+    AxesOrigin->{0, 0},
+    FrameTicks->{{Automatic, Automatic}, {Automatic, Automatic}},
+    ImageSize->Medium,
+    PlotLabel->FormBox[
+      RowBox[{"P", "(", 
+        RowBox[{"C", "|", 
+          RowBox[{"X", "\[LongEqual]", "0.5`"}]}], ")"}], TraditionalForm],
+    PlotRange->{{All, All}, {All, All}},
+    PlotRangePadding->{{
+       Scaled[0.02], 
+       Scaled[0.02]}, {
+       Scaled[0.02], 
+       Scaled[0.1]}},
+    Ticks->{Automatic, Automatic}], ",", 
+   GraphicsBox[
+    {RGBColor[0.798413061722744, 0.824719615472648, 0.968322270542458], 
+     EdgeForm[Opacity[0.7]], {}, 
+     {RGBColor[0.798413061722744, 0.824719615472648, 0.968322270542458], 
+      EdgeForm[Opacity[0.7]], {
+       DynamicBox[{
+         FEPrivate`If[
+          CurrentValue["MouseOver"], 
+          EdgeForm[{
+            GrayLevel[0.5], 
+            AbsoluteThickness[1.5], 
+            Opacity[0.66]}], {}, {}], 
+         RectangleBox[{0, 0}, {50, 360}]},
+        ImageSizeCache->{{17.75, 34.152040816326526`}, {-65.21603561150815, 
+         103.0377867648391}}], InsetBox[
+        StyleBox["360",
+         StripOnInput->False,
+         FrontFaceColor->GrayLevel[0],
+         BackFaceColor->GrayLevel[0],
+         GraphicsColor->GrayLevel[0],
+         FontColor->GrayLevel[0]], Offset[{0, 4}, {25, 360}], 
+        ImageScaled[{0.5, 0}]]}, {
+       DynamicBox[{
+         FEPrivate`If[
+          CurrentValue["MouseOver"], 
+          EdgeForm[{
+            GrayLevel[0.5], 
+            AbsoluteThickness[1.5], 
+            Opacity[0.66]}], {}, {}], 
+         RectangleBox[{50, 0}, {100, 406}]},
+        ImageSizeCache->{{33.652040816326526`, 
+         50.05408163265305}, {-86.65124624848585, 103.0377867648391}}], 
+       InsetBox[
+        StyleBox["406",
+         StripOnInput->False,
+         FrontFaceColor->GrayLevel[0],
+         BackFaceColor->GrayLevel[0],
+         GraphicsColor->GrayLevel[0],
+         FontColor->GrayLevel[0]], Offset[{0, 4}, {75, 406}], 
+        ImageScaled[{0.5, 0}]]}, {
+       DynamicBox[{
+         FEPrivate`If[
+          CurrentValue["MouseOver"], 
+          EdgeForm[{
+            GrayLevel[0.5], 
+            AbsoluteThickness[1.5], 
+            Opacity[0.66]}], {}, {}], 
+         RectangleBox[{100, 0}, {150, 307}]},
+        ImageSizeCache->{{49.55408163265305, 
+         65.95612244897958}, {-40.51894509499036, 103.0377867648391}}], 
+       InsetBox[
+        StyleBox["307",
+         StripOnInput->False,
+         FrontFaceColor->GrayLevel[0],
+         BackFaceColor->GrayLevel[0],
+         GraphicsColor->GrayLevel[0],
+         FontColor->GrayLevel[0]], Offset[{0, 4}, {125, 307}], 
+        ImageScaled[{0.5, 0}]]}, {
+       DynamicBox[{
+         FEPrivate`If[
+          CurrentValue["MouseOver"], 
+          EdgeForm[{
+            GrayLevel[0.5], 
+            AbsoluteThickness[1.5], 
+            Opacity[0.66]}], {}, {}], 
+         RectangleBox[{150, 0}, {200, 200}]},
+        ImageSizeCache->{{65.45612244897958, 81.8581632653061}, {
+         9.34121877797952, 103.0377867648391}}], InsetBox[
+        StyleBox["200",
+         StripOnInput->False,
+         FrontFaceColor->GrayLevel[0],
+         BackFaceColor->GrayLevel[0],
+         GraphicsColor->GrayLevel[0],
+         FontColor->GrayLevel[0]], Offset[{0, 4}, {175, 200}], 
+        ImageScaled[{0.5, 0}]]}, {
+       DynamicBox[{
+         FEPrivate`If[
+          CurrentValue["MouseOver"], 
+          EdgeForm[{
+            GrayLevel[0.5], 
+            AbsoluteThickness[1.5], 
+            Opacity[0.66]}], {}, {}], 
+         RectangleBox[{200, 0}, {250, 123}]},
+        ImageSizeCache->{{81.3581632653061, 97.76020408163264}, {
+         45.22189745292046, 103.0377867648391}}], InsetBox[
+        StyleBox["123",
+         StripOnInput->False,
+         FrontFaceColor->GrayLevel[0],
+         BackFaceColor->GrayLevel[0],
+         GraphicsColor->GrayLevel[0],
+         FontColor->GrayLevel[0]], Offset[{0, 4}, {225, 123}], 
+        ImageScaled[{0.5, 0}]]}, {
+       DynamicBox[{
+         FEPrivate`If[
+          CurrentValue["MouseOver"], 
+          EdgeForm[{
+            GrayLevel[0.5], 
+            AbsoluteThickness[1.5], 
+            Opacity[0.66]}], {}, {}], 
+         RectangleBox[{250, 0}, {300, 79}]},
+        ImageSizeCache->{{97.26020408163264, 113.66224489795916`}, {
+         65.72514241002956, 103.0377867648391}}], InsetBox[
+        StyleBox["79",
+         StripOnInput->False,
+         FrontFaceColor->GrayLevel[0],
+         BackFaceColor->GrayLevel[0],
+         GraphicsColor->GrayLevel[0],
+         FontColor->GrayLevel[0]], Offset[{0, 4}, {275, 79}], 
+        ImageScaled[{0.5, 0}]]}, {
+       DynamicBox[{
+         FEPrivate`If[
+          CurrentValue["MouseOver"], 
+          EdgeForm[{
+            GrayLevel[0.5], 
+            AbsoluteThickness[1.5], 
+            Opacity[0.66]}], {}, {}], 
+         RectangleBox[{300, 0}, {350, 48}]},
+        ImageSizeCache->{{113.16224489795916`, 129.5642857142857}, {
+         80.1706104479928, 103.0377867648391}}], InsetBox[
+        StyleBox["48",
+         StripOnInput->False,
+         FrontFaceColor->GrayLevel[0],
+         BackFaceColor->GrayLevel[0],
+         GraphicsColor->GrayLevel[0],
+         FontColor->GrayLevel[0]], Offset[{0, 4}, {325, 48}], 
+        ImageScaled[{0.5, 0}]]}, {
+       DynamicBox[{
+         FEPrivate`If[
+          CurrentValue["MouseOver"], 
+          EdgeForm[{
+            GrayLevel[0.5], 
+            AbsoluteThickness[1.5], 
+            Opacity[0.66]}], {}, {}], 
+         RectangleBox[{350, 0}, {400, 41}]},
+        ImageSizeCache->{{129.0642857142857, 145.4663265306122}, {
+         83.43249032753289, 103.0377867648391}}], InsetBox[
+        StyleBox["41",
+         StripOnInput->False,
+         FrontFaceColor->GrayLevel[0],
+         BackFaceColor->GrayLevel[0],
+         GraphicsColor->GrayLevel[0],
+         FontColor->GrayLevel[0]], Offset[{0, 4}, {375, 41}], 
+        ImageScaled[{0.5, 0}]]}, {
+       DynamicBox[{
+         FEPrivate`If[
+          CurrentValue["MouseOver"], 
+          EdgeForm[{
+            GrayLevel[0.5], 
+            AbsoluteThickness[1.5], 
+            Opacity[0.66]}], {}, {}], 
+         RectangleBox[{400, 0}, {450, 28}]},
+        ImageSizeCache->{{144.9663265306122, 161.36836734693873`}, {
+         89.49026724667875, 103.0377867648391}}], InsetBox[
+        StyleBox["28",
+         StripOnInput->False,
+         FrontFaceColor->GrayLevel[0],
+         BackFaceColor->GrayLevel[0],
+         GraphicsColor->GrayLevel[0],
+         FontColor->GrayLevel[0]], Offset[{0, 4}, {425, 28}], 
+        ImageScaled[{0.5, 0}]]}, {
+       DynamicBox[{
+         FEPrivate`If[
+          CurrentValue["MouseOver"], 
+          EdgeForm[{
+            GrayLevel[0.5], 
+            AbsoluteThickness[1.5], 
+            Opacity[0.66]}], {}, {}], 
+         RectangleBox[{450, 0}, {500, 23}]},
+        ImageSizeCache->{{160.86836734693873`, 177.27040816326527`}, {
+         91.82018144635025, 103.0377867648391}}], InsetBox[
+        StyleBox["23",
+         StripOnInput->False,
+         FrontFaceColor->GrayLevel[0],
+         BackFaceColor->GrayLevel[0],
+         GraphicsColor->GrayLevel[0],
+         FontColor->GrayLevel[0]], Offset[{0, 4}, {475, 23}], 
+        ImageScaled[{0.5, 0}]]}, {
+       DynamicBox[{
+         FEPrivate`If[
+          CurrentValue["MouseOver"], 
+          EdgeForm[{
+            GrayLevel[0.5], 
+            AbsoluteThickness[1.5], 
+            Opacity[0.66]}], {}, {}], 
+         RectangleBox[{500, 0}, {550, 12}]},
+        ImageSizeCache->{{176.77040816326527`, 193.1724489795918}, {
+         96.94599268562752, 103.0377867648391}}], InsetBox[
+        StyleBox["12",
+         StripOnInput->False,
+         FrontFaceColor->GrayLevel[0],
+         BackFaceColor->GrayLevel[0],
+         GraphicsColor->GrayLevel[0],
+         FontColor->GrayLevel[0]], Offset[{0, 4}, {525, 12}], 
+        ImageScaled[{0.5, 0}]]}, {
+       DynamicBox[{
+         FEPrivate`If[
+          CurrentValue["MouseOver"], 
+          EdgeForm[{
+            GrayLevel[0.5], 
+            AbsoluteThickness[1.5], 
+            Opacity[0.66]}], {}, {}], 
+         RectangleBox[{550, 0}, {600, 16}]},
+        ImageSizeCache->{{192.6724489795918, 209.0744897959183}, {
+         95.08206132589034, 103.0377867648391}}], InsetBox[
+        StyleBox["16",
+         StripOnInput->False,
+         FrontFaceColor->GrayLevel[0],
+         BackFaceColor->GrayLevel[0],
+         GraphicsColor->GrayLevel[0],
+         FontColor->GrayLevel[0]], Offset[{0, 4}, {575, 16}], 
+        ImageScaled[{0.5, 0}]]}, {
+       DynamicBox[{
+         FEPrivate`If[
+          CurrentValue["MouseOver"], 
+          EdgeForm[{
+            GrayLevel[0.5], 
+            AbsoluteThickness[1.5], 
+            Opacity[0.66]}], {}, {}], 
+         RectangleBox[{600, 0}, {650, 9}]},
+        ImageSizeCache->{{208.5744897959183, 224.97653061224486`}, {
+         98.34394120543041, 103.0377867648391}}], InsetBox[
+        StyleBox["9",
+         StripOnInput->False,
+         FrontFaceColor->GrayLevel[0],
+         BackFaceColor->GrayLevel[0],
+         GraphicsColor->GrayLevel[0],
+         FontColor->GrayLevel[0]], Offset[{0, 4}, {625, 9}], 
+        ImageScaled[{0.5, 0}]]}, {
+       DynamicBox[{
+         FEPrivate`If[
+          CurrentValue["MouseOver"], 
+          EdgeForm[{
+            GrayLevel[0.5], 
+            AbsoluteThickness[1.5], 
+            Opacity[0.66]}], {}, {}], 
+         RectangleBox[{650, 0}, {700, 6}]},
+        ImageSizeCache->{{224.47653061224486`, 240.87857142857138`}, {
+         99.7418897252333, 103.0377867648391}}], InsetBox[
+        StyleBox["6",
+         StripOnInput->False,
+         FrontFaceColor->GrayLevel[0],
+         BackFaceColor->GrayLevel[0],
+         GraphicsColor->GrayLevel[0],
+         FontColor->GrayLevel[0]], Offset[{0, 4}, {675, 6}], 
+        ImageScaled[{0.5, 0}]]}, {
+       DynamicBox[{
+         FEPrivate`If[
+          CurrentValue["MouseOver"], 
+          EdgeForm[{
+            GrayLevel[0.5], 
+            AbsoluteThickness[1.5], 
+            Opacity[0.66]}], {}, {}], 
+         RectangleBox[{700, 0}, {750, 2}]},
+        ImageSizeCache->{{240.37857142857138`, 256.7806122448979}, {
+         101.6058210849705, 103.0377867648391}}], InsetBox[
+        StyleBox["2",
+         StripOnInput->False,
+         FrontFaceColor->GrayLevel[0],
+         BackFaceColor->GrayLevel[0],
+         GraphicsColor->GrayLevel[0],
+         FontColor->GrayLevel[0]], Offset[{0, 4}, {725, 2}], 
+        ImageScaled[{0.5, 0}]]}, {
+       DynamicBox[{
+         FEPrivate`If[
+          CurrentValue["MouseOver"], 
+          EdgeForm[{
+            GrayLevel[0.5], 
+            AbsoluteThickness[1.5], 
+            Opacity[0.66]}], {}, {}], 
+         RectangleBox[{750, 0}, {800, 1}]},
+        ImageSizeCache->{{256.2806122448979, 272.6826530612244}, {
+         102.0718039249048, 103.0377867648391}}], InsetBox[
+        StyleBox["1",
+         StripOnInput->False,
+         FrontFaceColor->GrayLevel[0],
+         BackFaceColor->GrayLevel[0],
+         GraphicsColor->GrayLevel[0],
+         FontColor->GrayLevel[0]], Offset[{0, 4}, {775, 1}], 
+        ImageScaled[{0.5, 0}]]}, {
+       DynamicBox[{
+         FEPrivate`If[
+          CurrentValue["MouseOver"], 
+          EdgeForm[{
+            GrayLevel[0.5], 
+            AbsoluteThickness[1.5], 
+            Opacity[0.66]}], {}, {}], 
+         RectangleBox[{800, 0}, {850, 5}]},
+        ImageSizeCache->{{272.1826530612244, 288.58469387755093`}, {
+         100.2078725651676, 103.0377867648391}}], InsetBox[
+        StyleBox["5",
+         StripOnInput->False,
+         FrontFaceColor->GrayLevel[0],
+         BackFaceColor->GrayLevel[0],
+         GraphicsColor->GrayLevel[0],
+         FontColor->GrayLevel[0]], Offset[{0, 4}, {825, 5}], 
+        ImageScaled[{0.5, 0}]]}, {
+       DynamicBox[{
+         FEPrivate`If[
+          CurrentValue["MouseOver"], 
+          EdgeForm[{
+            GrayLevel[0.5], 
+            AbsoluteThickness[1.5], 
+            Opacity[0.66]}], {}, {}], 
+         RectangleBox[{850, 0}, {900, 1}]},
+        ImageSizeCache->{{288.08469387755093`, 304.48673469387745`}, {
+         102.0718039249048, 103.0377867648391}}], InsetBox[
+        StyleBox["1",
+         StripOnInput->False,
+         FrontFaceColor->GrayLevel[0],
+         BackFaceColor->GrayLevel[0],
+         GraphicsColor->GrayLevel[0],
+         FontColor->GrayLevel[0]], Offset[{0, 4}, {875, 1}], 
+        ImageScaled[{0.5, 0}]]}, {
+       DynamicBox[{
+         FEPrivate`If[
+          CurrentValue["MouseOver"], 
+          EdgeForm[{
+            GrayLevel[0.5], 
+            AbsoluteThickness[1.5], 
+            Opacity[0.66]}], {}, {}], 
+         RectangleBox[{900, 0}, {950, 3}]},
+        ImageSizeCache->{{303.98673469387745`, 320.388775510204}, {
+         101.1398382450362, 103.0377867648391}}], InsetBox[
+        StyleBox["3",
+         StripOnInput->False,
+         FrontFaceColor->GrayLevel[0],
+         BackFaceColor->GrayLevel[0],
+         GraphicsColor->GrayLevel[0],
+         FontColor->GrayLevel[0]], Offset[{0, 4}, {925, 3}], 
+        ImageScaled[{0.5, 0}]]}, {}, {
+       DynamicBox[{
+         FEPrivate`If[
+          CurrentValue["MouseOver"], 
+          EdgeForm[{
+            GrayLevel[0.5], 
+            AbsoluteThickness[1.5], 
+            Opacity[0.66]}], {}, {}], 
+         RectangleBox[{1000, 0}, {1050, 1}]},
+        ImageSizeCache->{{335.79081632653055`, 352.19285714285706`}, {
+         102.0718039249048, 103.0377867648391}}], InsetBox[
+        StyleBox["1",
+         StripOnInput->False,
+         FrontFaceColor->GrayLevel[0],
+         BackFaceColor->GrayLevel[0],
+         GraphicsColor->GrayLevel[0],
+         FontColor->GrayLevel[0]], Offset[{0, 4}, {1025, 1}], 
+        ImageScaled[{0.5, 0}]]}}, {}, {}},
+    AspectRatio->NCache[GoldenRatio^(-1), 0.6180339887498948],
+    Axes->{True, True},
+    AxesOrigin->{0, 0},
+    FrameTicks->{{Automatic, Automatic}, {Automatic, Automatic}},
+    ImageSize->Medium,
+    PlotLabel->FormBox[
+      RowBox[{"P", "(", 
+        RowBox[{"C", "|", 
+          RowBox[{"X", "\[LongEqual]", "1.`"}]}], ")"}], TraditionalForm],
+    PlotRange->{{0, 1050}, {All, All}},
+    PlotRangePadding->{{
+       Scaled[0.02], 
+       Scaled[0.02]}, {
+       Scaled[0.02], 
+       Scaled[0.1]}},
+    Ticks->{Automatic, Automatic}], ",", 
+   GraphicsBox[
+    {RGBColor[0.798413061722744, 0.824719615472648, 0.968322270542458], 
+     EdgeForm[Opacity[0.7]]},
+    AspectRatio->NCache[GoldenRatio^(-1), 0.6180339887498948],
+    Axes->{True, True},
+    AxesOrigin->{0, 0},
+    FrameTicks->{{Automatic, Automatic}, {Automatic, Automatic}},
+    ImageSize->Medium,
+    PlotLabel->FormBox[
+      RowBox[{"P", "(", 
+        RowBox[{"C", "|", 
+          RowBox[{"X", "\[LongEqual]", "1.5`"}]}], ")"}], TraditionalForm],
+    PlotRange->{{All, All}, {All, All}},
+    PlotRangePadding->{{
+       Scaled[0.02], 
+       Scaled[0.02]}, {
+       Scaled[0.02], 
+       Scaled[0.1]}},
+    Ticks->{Automatic, Automatic}], ",", 
+   GraphicsBox[
+    {RGBColor[0.798413061722744, 0.824719615472648, 0.968322270542458], 
+     EdgeForm[Opacity[0.7]], {}, 
+     {RGBColor[0.798413061722744, 0.824719615472648, 0.968322270542458], 
+      EdgeForm[Opacity[0.7]], {
+       DynamicBox[{
+         FEPrivate`If[
+          CurrentValue["MouseOver"], 
+          EdgeForm[{
+            GrayLevel[0.5], 
+            AbsoluteThickness[1.5], 
+            Opacity[0.66]}], {}, {}], 
+         RectangleBox[{0, 0}, {50, 290}]},
+        ImageSizeCache->{{17.749999999999996`, 34.8}, {-21.35356386888371, 
+         102.18110965696971`}}], InsetBox[
+        StyleBox["290",
+         StripOnInput->False,
+         FrontFaceColor->GrayLevel[0],
+         BackFaceColor->GrayLevel[0],
+         GraphicsColor->GrayLevel[0],
+         FontColor->GrayLevel[0]], Offset[{0, 4}, {25, 290}], 
+        ImageScaled[{0.5, 0}]]}, {
+       DynamicBox[{
+         FEPrivate`If[
+          CurrentValue["MouseOver"], 
+          EdgeForm[{
+            GrayLevel[0.5], 
+            AbsoluteThickness[1.5], 
+            Opacity[0.66]}], {}, {}], 
+         RectangleBox[{50, 0}, {100, 442}]},
+        ImageSizeCache->{{34.3, 51.349999999999994`}, {-85.84070309622757, 
+         102.18110965696971`}}], InsetBox[
+        StyleBox["442",
+         StripOnInput->False,
+         FrontFaceColor->GrayLevel[0],
+         BackFaceColor->GrayLevel[0],
+         GraphicsColor->GrayLevel[0],
+         FontColor->GrayLevel[0]], Offset[{0, 4}, {75, 442}], 
+        ImageScaled[{0.5, 0}]]}, {
+       DynamicBox[{
+         FEPrivate`If[
+          CurrentValue["MouseOver"], 
+          EdgeForm[{
+            GrayLevel[0.5], 
+            AbsoluteThickness[1.5], 
+            Opacity[0.66]}], {}, {}], 
+         RectangleBox[{100, 0}, {150, 334}]},
+        ImageSizeCache->{{50.849999999999994`, 
+         67.89999999999999}, {-40.0208936452201, 102.18110965696971`}}], 
+       InsetBox[
+        StyleBox["334",
+         StripOnInput->False,
+         FrontFaceColor->GrayLevel[0],
+         BackFaceColor->GrayLevel[0],
+         GraphicsColor->GrayLevel[0],
+         FontColor->GrayLevel[0]], Offset[{0, 4}, {125, 334}], 
+        ImageScaled[{0.5, 0}]]}, {
+       DynamicBox[{
+         FEPrivate`If[
+          CurrentValue["MouseOver"], 
+          EdgeForm[{
+            GrayLevel[0.5], 
+            AbsoluteThickness[1.5], 
+            Opacity[0.66]}], {}, {}], 
+         RectangleBox[{150, 0}, {200, 223}]},
+        ImageSizeCache->{{67.39999999999999, 84.44999999999999}, {
+         7.071688290537594, 102.18110965696971`}}], InsetBox[
+        StyleBox["223",
+         StripOnInput->False,
+         FrontFaceColor->GrayLevel[0],
+         BackFaceColor->GrayLevel[0],
+         GraphicsColor->GrayLevel[0],
+         FontColor->GrayLevel[0]], Offset[{0, 4}, {175, 223}], 
+        ImageScaled[{0.5, 0}]]}, {
+       DynamicBox[{
+         FEPrivate`If[
+          CurrentValue["MouseOver"], 
+          EdgeForm[{
+            GrayLevel[0.5], 
+            AbsoluteThickness[1.5], 
+            Opacity[0.66]}], {}, {}], 
+         RectangleBox[{200, 0}, {250, 151}]},
+        ImageSizeCache->{{83.94999999999999, 100.99999999999999`}, {
+         37.61822792454258, 102.18110965696971`}}], InsetBox[
+        StyleBox["151",
+         StripOnInput->False,
+         FrontFaceColor->GrayLevel[0],
+         BackFaceColor->GrayLevel[0],
+         GraphicsColor->GrayLevel[0],
+         FontColor->GrayLevel[0]], Offset[{0, 4}, {225, 151}], 
+        ImageScaled[{0.5, 0}]]}, {
+       DynamicBox[{
+         FEPrivate`If[
+          CurrentValue["MouseOver"], 
+          EdgeForm[{
+            GrayLevel[0.5], 
+            AbsoluteThickness[1.5], 
+            Opacity[0.66]}], {}, {}], 
+         RectangleBox[{250, 0}, {300, 102}]},
+        ImageSizeCache->{{100.49999999999999`, 117.54999999999998`}, {
+         58.40684517546265, 102.18110965696971`}}], InsetBox[
+        StyleBox["102",
+         StripOnInput->False,
+         FrontFaceColor->GrayLevel[0],
+         BackFaceColor->GrayLevel[0],
+         GraphicsColor->GrayLevel[0],
+         FontColor->GrayLevel[0]], Offset[{0, 4}, {275, 102}], 
+        ImageScaled[{0.5, 0}]]}, {
+       DynamicBox[{
+         FEPrivate`If[
+          CurrentValue["MouseOver"], 
+          EdgeForm[{
+            GrayLevel[0.5], 
+            AbsoluteThickness[1.5], 
+            Opacity[0.66]}], {}, {}], 
+         RectangleBox[{300, 0}, {350, 62}]},
+        ImageSizeCache->{{117.04999999999998`, 134.09999999999997`}, {
+         75.37714497213209, 102.18110965696971`}}], InsetBox[
+        StyleBox["62",
+         StripOnInput->False,
+         FrontFaceColor->GrayLevel[0],
+         BackFaceColor->GrayLevel[0],
+         GraphicsColor->GrayLevel[0],
+         FontColor->GrayLevel[0]], Offset[{0, 4}, {325, 62}], 
+        ImageScaled[{0.5, 0}]]}, {
+       DynamicBox[{
+         FEPrivate`If[
+          CurrentValue["MouseOver"], 
+          EdgeForm[{
+            GrayLevel[0.5], 
+            AbsoluteThickness[1.5], 
+            Opacity[0.66]}], {}, {}], 
+         RectangleBox[{350, 0}, {400, 41}]},
+        ImageSizeCache->{{133.59999999999997`, 150.64999999999998`}, {
+         84.28655236538353, 102.18110965696971`}}], InsetBox[
+        StyleBox["41",
+         StripOnInput->False,
+         FrontFaceColor->GrayLevel[0],
+         BackFaceColor->GrayLevel[0],
+         GraphicsColor->GrayLevel[0],
+         FontColor->GrayLevel[0]], Offset[{0, 4}, {375, 41}], 
+        ImageScaled[{0.5, 0}]]}, {
+       DynamicBox[{
+         FEPrivate`If[
+          CurrentValue["MouseOver"], 
+          EdgeForm[{
+            GrayLevel[0.5], 
+            AbsoluteThickness[1.5], 
+            Opacity[0.66]}], {}, {}], 
+         RectangleBox[{400, 0}, {450, 26}]},
+        ImageSizeCache->{{150.14999999999998`, 167.2}, {90.65041478913457, 
+         102.18110965696971`}}], InsetBox[
+        StyleBox["26",
+         StripOnInput->False,
+         FrontFaceColor->GrayLevel[0],
+         BackFaceColor->GrayLevel[0],
+         GraphicsColor->GrayLevel[0],
+         FontColor->GrayLevel[0]], Offset[{0, 4}, {425, 26}], 
+        ImageScaled[{0.5, 0}]]}, {
+       DynamicBox[{
+         FEPrivate`If[
+          CurrentValue["MouseOver"], 
+          EdgeForm[{
+            GrayLevel[0.5], 
+            AbsoluteThickness[1.5], 
+            Opacity[0.66]}], {}, {}], 
+         RectangleBox[{450, 0}, {500, 21}]},
+        ImageSizeCache->{{166.7, 183.74999999999997`}, {92.77170226371825, 
+         102.18110965696971`}}], InsetBox[
+        StyleBox["21",
+         StripOnInput->False,
+         FrontFaceColor->GrayLevel[0],
+         BackFaceColor->GrayLevel[0],
+         GraphicsColor->GrayLevel[0],
+         FontColor->GrayLevel[0]], Offset[{0, 4}, {475, 21}], 
+        ImageScaled[{0.5, 0}]]}, {
+       DynamicBox[{
+         FEPrivate`If[
+          CurrentValue["MouseOver"], 
+          EdgeForm[{
+            GrayLevel[0.5], 
+            AbsoluteThickness[1.5], 
+            Opacity[0.66]}], {}, {}], 
+         RectangleBox[{500, 0}, {550, 18}]},
+        ImageSizeCache->{{183.24999999999997`, 200.29999999999998`}, {
+         94.04447474846846, 102.18110965696971`}}], InsetBox[
+        StyleBox["18",
+         StripOnInput->False,
+         FrontFaceColor->GrayLevel[0],
+         BackFaceColor->GrayLevel[0],
+         GraphicsColor->GrayLevel[0],
+         FontColor->GrayLevel[0]], Offset[{0, 4}, {525, 18}], 
+        ImageScaled[{0.5, 0}]]}, {
+       DynamicBox[{
+         FEPrivate`If[
+          CurrentValue["MouseOver"], 
+          EdgeForm[{
+            GrayLevel[0.5], 
+            AbsoluteThickness[1.5], 
+            Opacity[0.66]}], {}, {}], 
+         RectangleBox[{550, 0}, {600, 9}]},
+        ImageSizeCache->{{199.79999999999998`, 216.84999999999997`}, {
+         97.86279220271909, 102.18110965696971`}}], InsetBox[
+        StyleBox["9",
+         StripOnInput->False,
+         FrontFaceColor->GrayLevel[0],
+         BackFaceColor->GrayLevel[0],
+         GraphicsColor->GrayLevel[0],
+         FontColor->GrayLevel[0]], Offset[{0, 4}, {575, 9}], 
+        ImageScaled[{0.5, 0}]]}, {
+       DynamicBox[{
+         FEPrivate`If[
+          CurrentValue["MouseOver"], 
+          EdgeForm[{
+            GrayLevel[0.5], 
+            AbsoluteThickness[1.5], 
+            Opacity[0.66]}], {}, {}], 
+         RectangleBox[{600, 0}, {650, 4}]},
+        ImageSizeCache->{{216.34999999999997`, 233.39999999999998`}, {
+         99.98407967730276, 102.18110965696971`}}], InsetBox[
+        StyleBox["4",
+         StripOnInput->False,
+         FrontFaceColor->GrayLevel[0],
+         BackFaceColor->GrayLevel[0],
+         GraphicsColor->GrayLevel[0],
+         FontColor->GrayLevel[0]], Offset[{0, 4}, {625, 4}], 
+        ImageScaled[{0.5, 0}]]}, {
+       DynamicBox[{
+         FEPrivate`If[
+          CurrentValue["MouseOver"], 
+          EdgeForm[{
+            GrayLevel[0.5], 
+            AbsoluteThickness[1.5], 
+            Opacity[0.66]}], {}, {}], 
+         RectangleBox[{650, 0}, {700, 5}]},
+        ImageSizeCache->{{232.89999999999998`, 249.94999999999996`}, {
+         99.55982218238603, 102.18110965696971`}}], InsetBox[
+        StyleBox["5",
+         StripOnInput->False,
+         FrontFaceColor->GrayLevel[0],
+         BackFaceColor->GrayLevel[0],
+         GraphicsColor->GrayLevel[0],
+         FontColor->GrayLevel[0]], Offset[{0, 4}, {675, 5}], 
+        ImageScaled[{0.5, 0}]]}, {
+       DynamicBox[{
+         FEPrivate`If[
+          CurrentValue["MouseOver"], 
+          EdgeForm[{
+            GrayLevel[0.5], 
+            AbsoluteThickness[1.5], 
+            Opacity[0.66]}], {}, {}], 
+         RectangleBox[{700, 0}, {750, 4}]},
+        ImageSizeCache->{{249.44999999999996`, 266.49999999999994`}, {
+         99.98407967730276, 102.18110965696971`}}], InsetBox[
+        StyleBox["4",
+         StripOnInput->False,
+         FrontFaceColor->GrayLevel[0],
+         BackFaceColor->GrayLevel[0],
+         GraphicsColor->GrayLevel[0],
+         FontColor->GrayLevel[0]], Offset[{0, 4}, {725, 4}], 
+        ImageScaled[{0.5, 0}]]}, {}, {
+       DynamicBox[{
+         FEPrivate`If[
+          CurrentValue["MouseOver"], 
+          EdgeForm[{
+            GrayLevel[0.5], 
+            AbsoluteThickness[1.5], 
+            Opacity[0.66]}], {}, {}], 
+         RectangleBox[{800, 0}, {850, 4}]},
+        ImageSizeCache->{{282.54999999999995`, 299.59999999999997`}, {
+         99.98407967730276, 102.18110965696971`}}], InsetBox[
+        StyleBox["4",
+         StripOnInput->False,
+         FrontFaceColor->GrayLevel[0],
+         BackFaceColor->GrayLevel[0],
+         GraphicsColor->GrayLevel[0],
+         FontColor->GrayLevel[0]], Offset[{0, 4}, {825, 4}], 
+        ImageScaled[{0.5, 0}]]}, {
+       DynamicBox[{
+         FEPrivate`If[
+          CurrentValue["MouseOver"], 
+          EdgeForm[{
+            GrayLevel[0.5], 
+            AbsoluteThickness[1.5], 
+            Opacity[0.66]}], {}, {}], 
+         RectangleBox[{850, 0}, {900, 4}]},
+        ImageSizeCache->{{299.09999999999997`, 316.15}, {99.98407967730276, 
+         102.18110965696971`}}], InsetBox[
+        StyleBox["4",
+         StripOnInput->False,
+         FrontFaceColor->GrayLevel[0],
+         BackFaceColor->GrayLevel[0],
+         GraphicsColor->GrayLevel[0],
+         FontColor->GrayLevel[0]], Offset[{0, 4}, {875, 4}], 
+        ImageScaled[{0.5, 0}]]}, {
+       DynamicBox[{
+         FEPrivate`If[
+          CurrentValue["MouseOver"], 
+          EdgeForm[{
+            GrayLevel[0.5], 
+            AbsoluteThickness[1.5], 
+            Opacity[0.66]}], {}, {}], 
+         RectangleBox[{900, 0}, {950, 3}]},
+        ImageSizeCache->{{315.65, 332.7}, {100.4083371722195, 
+         102.18110965696971`}}], InsetBox[
+        StyleBox["3",
+         StripOnInput->False,
+         FrontFaceColor->GrayLevel[0],
+         BackFaceColor->GrayLevel[0],
+         GraphicsColor->GrayLevel[0],
+         FontColor->GrayLevel[0]], Offset[{0, 4}, {925, 3}], 
+        ImageScaled[{0.5, 0}]]}, {
+       DynamicBox[{
+         FEPrivate`If[
+          CurrentValue["MouseOver"], 
+          EdgeForm[{
+            GrayLevel[0.5], 
+            AbsoluteThickness[1.5], 
+            Opacity[0.66]}], {}, {}], 
+         RectangleBox[{950, 0}, {1000, 1}]},
+        ImageSizeCache->{{332.2, 349.24999999999994`}, {101.25685216205298`, 
+         102.18110965696971`}}], InsetBox[
+        StyleBox["1",
+         StripOnInput->False,
+         FrontFaceColor->GrayLevel[0],
+         BackFaceColor->GrayLevel[0],
+         GraphicsColor->GrayLevel[0],
+         FontColor->GrayLevel[0]], Offset[{0, 4}, {975, 1}], 
+        ImageScaled[{0.5, 0}]]}}, {}, {}},
+    AspectRatio->NCache[GoldenRatio^(-1), 0.6180339887498948],
+    Axes->{True, True},
+    AxesOrigin->{0, 0},
+    FrameTicks->{{Automatic, Automatic}, {Automatic, Automatic}},
+    ImageSize->Medium,
+    PlotLabel->FormBox[
+      RowBox[{"P", "(", 
+        RowBox[{"C", "|", 
+          RowBox[{"X", "\[LongEqual]", "2.`"}]}], ")"}], TraditionalForm],
+    PlotRange->{{0, 1000}, {All, All}},
+    PlotRangePadding->{{
+       Scaled[0.02], 
+       Scaled[0.02]}, {
+       Scaled[0.02], 
+       Scaled[0.1]}},
+    Ticks->{Automatic, Automatic}], ",", 
+   GraphicsBox[
+    {RGBColor[0.798413061722744, 0.824719615472648, 0.968322270542458], 
+     EdgeForm[Opacity[0.7]]},
+    AspectRatio->NCache[GoldenRatio^(-1), 0.6180339887498948],
+    Axes->{True, True},
+    AxesOrigin->{0, 0},
+    FrameTicks->{{Automatic, Automatic}, {Automatic, Automatic}},
+    ImageSize->Medium,
+    PlotLabel->FormBox[
+      RowBox[{"P", "(", 
+        RowBox[{"C", "|", 
+          RowBox[{"X", "\[LongEqual]", "2.5`"}]}], ")"}], TraditionalForm],
+    PlotRange->{{All, All}, {All, All}},
+    PlotRangePadding->{{
+       Scaled[0.02], 
+       Scaled[0.02]}, {
+       Scaled[0.02], 
+       Scaled[0.1]}},
+    Ticks->{Automatic, Automatic}], ",", 
+   GraphicsBox[
+    {RGBColor[0.798413061722744, 0.824719615472648, 0.968322270542458], 
+     EdgeForm[Opacity[0.7]], {}, 
+     {RGBColor[0.798413061722744, 0.824719615472648, 0.968322270542458], 
+      EdgeForm[Opacity[0.7]], {
+       DynamicBox[{
+         FEPrivate`If[
+          CurrentValue["MouseOver"], 
+          EdgeForm[{
+            GrayLevel[0.5], 
+            AbsoluteThickness[1.5], 
+            Opacity[0.66]}], {}, {}], 
+         RectangleBox[{0, 0}, {20, 135}]},
+        ImageSizeCache->{{17.750000000000004`, 25.355167173252283`}, {
+         20.677147480227376`, 103.03778676483914`}}], InsetBox[
+        StyleBox["135",
+         StripOnInput->False,
+         FrontFaceColor->GrayLevel[0],
+         BackFaceColor->GrayLevel[0],
+         GraphicsColor->GrayLevel[0],
+         FontColor->GrayLevel[0]], Offset[{0, 4}, {10, 135}], 
+        ImageScaled[{0.5, 0}]]}, {
+       DynamicBox[{
+         FEPrivate`If[
+          CurrentValue["MouseOver"], 
+          EdgeForm[{
+            GrayLevel[0.5], 
+            AbsoluteThickness[1.5], 
+            Opacity[0.66]}], {}, {}], 
+         RectangleBox[{20, 0}, {40, 253}]},
+        ImageSizeCache->{{24.855167173252283`, 
+         32.46033434650457}, {-50.875115005581435`, 103.03778676483914`}}], 
+       InsetBox[
+        StyleBox["253",
+         StripOnInput->False,
+         FrontFaceColor->GrayLevel[0],
+         BackFaceColor->GrayLevel[0],
+         GraphicsColor->GrayLevel[0],
+         FontColor->GrayLevel[0]], Offset[{0, 4}, {30, 253}], 
+        ImageScaled[{0.5, 0}]]}, {
+       DynamicBox[{
+         FEPrivate`If[
+          CurrentValue["MouseOver"], 
+          EdgeForm[{
+            GrayLevel[0.5], 
+            AbsoluteThickness[1.5], 
+            Opacity[0.66]}], {}, {}], 
+         RectangleBox[{40, 0}, {60, 312}]},
+        ImageSizeCache->{{31.960334346504567`, 
+         39.56550151975684}, {-86.65124624848583, 103.03778676483914`}}], 
+       InsetBox[
+        StyleBox["312",
+         StripOnInput->False,
+         FrontFaceColor->GrayLevel[0],
+         BackFaceColor->GrayLevel[0],
+         GraphicsColor->GrayLevel[0],
+         FontColor->GrayLevel[0]], Offset[{0, 4}, {50, 312}], 
+        ImageScaled[{0.5, 0}]]}, {
+       DynamicBox[{
+         FEPrivate`If[
+          CurrentValue["MouseOver"], 
+          EdgeForm[{
+            GrayLevel[0.5], 
+            AbsoluteThickness[1.5], 
+            Opacity[0.66]}], {}, {}], 
+         RectangleBox[{60, 0}, {80, 264}]},
+        ImageSizeCache->{{39.06550151975684, 
+         46.67066869300912}, {-57.54524116951275, 103.03778676483914`}}], 
+       InsetBox[
+        StyleBox["264",
+         StripOnInput->False,
+         FrontFaceColor->GrayLevel[0],
+         BackFaceColor->GrayLevel[0],
+         GraphicsColor->GrayLevel[0],
+         FontColor->GrayLevel[0]], Offset[{0, 4}, {70, 264}], 
+        ImageScaled[{0.5, 0}]]}, {
+       DynamicBox[{
+         FEPrivate`If[
+          CurrentValue["MouseOver"], 
+          EdgeForm[{
+            GrayLevel[0.5], 
+            AbsoluteThickness[1.5], 
+            Opacity[0.66]}], {}, {}], 
+         RectangleBox[{80, 0}, {100, 265}]},
+        ImageSizeCache->{{46.17066869300912, 
+         53.7758358662614}, {-58.151616275324685`, 103.03778676483914`}}], 
+       InsetBox[
+        StyleBox["265",
+         StripOnInput->False,
+         FrontFaceColor->GrayLevel[0],
+         BackFaceColor->GrayLevel[0],
+         GraphicsColor->GrayLevel[0],
+         FontColor->GrayLevel[0]], Offset[{0, 4}, {90, 265}], 
+        ImageScaled[{0.5, 0}]]}, {
+       DynamicBox[{
+         FEPrivate`If[
+          CurrentValue["MouseOver"], 
+          EdgeForm[{
+            GrayLevel[0.5], 
+            AbsoluteThickness[1.5], 
+            Opacity[0.66]}], {}, {}], 
+         RectangleBox[{100, 0}, {120, 246}]},
+        ImageSizeCache->{{53.2758358662614, 
+         60.881003039513686`}, {-46.63048926489786, 103.03778676483914`}}], 
+       InsetBox[
+        StyleBox["246",
+         StripOnInput->False,
+         FrontFaceColor->GrayLevel[0],
+         BackFaceColor->GrayLevel[0],
+         GraphicsColor->GrayLevel[0],
+         FontColor->GrayLevel[0]], Offset[{0, 4}, {110, 246}], 
+        ImageScaled[{0.5, 0}]]}, {
+       DynamicBox[{
+         FEPrivate`If[
+          CurrentValue["MouseOver"], 
+          EdgeForm[{
+            GrayLevel[0.5], 
+            AbsoluteThickness[1.5], 
+            Opacity[0.66]}], {}, {}], 
+         RectangleBox[{120, 0}, {140, 213}]},
+        ImageSizeCache->{{60.381003039513686`, 
+         67.98617021276597}, {-26.62011077310386, 103.03778676483914`}}], 
+       InsetBox[
+        StyleBox["213",
+         StripOnInput->False,
+         FrontFaceColor->GrayLevel[0],
+         BackFaceColor->GrayLevel[0],
+         GraphicsColor->GrayLevel[0],
+         FontColor->GrayLevel[0]], Offset[{0, 4}, {130, 213}], 
+        ImageScaled[{0.5, 0}]]}, {
+       DynamicBox[{
+         FEPrivate`If[
+          CurrentValue["MouseOver"], 
+          EdgeForm[{
+            GrayLevel[0.5], 
+            AbsoluteThickness[1.5], 
+            Opacity[0.66]}], {}, {}], 
+         RectangleBox[{140, 0}, {160, 180}]},
+        ImageSizeCache->{{67.48617021276597, 
+         75.09133738601824}, {-6.609732281309874, 103.03778676483914`}}], 
+       InsetBox[
+        StyleBox["180",
+         StripOnInput->False,
+         FrontFaceColor->GrayLevel[0],
+         BackFaceColor->GrayLevel[0],
+         GraphicsColor->GrayLevel[0],
+         FontColor->GrayLevel[0]], Offset[{0, 4}, {150, 180}], 
+        ImageScaled[{0.5, 0}]]}, {
+       DynamicBox[{
+         FEPrivate`If[
+          CurrentValue["MouseOver"], 
+          EdgeForm[{
+            GrayLevel[0.5], 
+            AbsoluteThickness[1.5], 
+            Opacity[0.66]}], {}, {}], 
+         RectangleBox[{160, 0}, {180, 169}]},
+        ImageSizeCache->{{74.59133738601824, 82.19650455927052}, {
+         0.06039388262145451, 103.03778676483914`}}], InsetBox[
+        StyleBox["169",
+         StripOnInput->False,
+         FrontFaceColor->GrayLevel[0],
+         BackFaceColor->GrayLevel[0],
+         GraphicsColor->GrayLevel[0],
+         FontColor->GrayLevel[0]], Offset[{0, 4}, {170, 169}], 
+        ImageScaled[{0.5, 0}]]}, {
+       DynamicBox[{
+         FEPrivate`If[
+          CurrentValue["MouseOver"], 
+          EdgeForm[{
+            GrayLevel[0.5], 
+            AbsoluteThickness[1.5], 
+            Opacity[0.66]}], {}, {}], 
+         RectangleBox[{180, 0}, {200, 141}]},
+        ImageSizeCache->{{81.69650455927052, 89.3016717325228}, {
+         17.038896845355737`, 103.03778676483914`}}], InsetBox[
+        StyleBox["141",
+         StripOnInput->False,
+         FrontFaceColor->GrayLevel[0],
+         BackFaceColor->GrayLevel[0],
+         GraphicsColor->GrayLevel[0],
+         FontColor->GrayLevel[0]], Offset[{0, 4}, {190, 141}], 
+        ImageScaled[{0.5, 0}]]}, {
+       DynamicBox[{
+         FEPrivate`If[
+          CurrentValue["MouseOver"], 
+          EdgeForm[{
+            GrayLevel[0.5], 
+            AbsoluteThickness[1.5], 
+            Opacity[0.66]}], {}, {}], 
+         RectangleBox[{200, 0}, {220, 103}]},
+        ImageSizeCache->{{88.8016717325228, 96.40683890577509}, {
+         40.08115086620943, 103.03778676483914`}}], InsetBox[
+        StyleBox["103",
+         StripOnInput->False,
+         FrontFaceColor->GrayLevel[0],
+         BackFaceColor->GrayLevel[0],
+         GraphicsColor->GrayLevel[0],
+         FontColor->GrayLevel[0]], Offset[{0, 4}, {210, 103}], 
+        ImageScaled[{0.5, 0}]]}, {
+       DynamicBox[{
+         FEPrivate`If[
+          CurrentValue["MouseOver"], 
+          EdgeForm[{
+            GrayLevel[0.5], 
+            AbsoluteThickness[1.5], 
+            Opacity[0.66]}], {}, {}], 
+         RectangleBox[{220, 0}, {240, 76}]},
+        ImageSizeCache->{{95.90683890577509, 103.51200607902736`}, {
+         56.453278723131774`, 103.03778676483914`}}], InsetBox[
+        StyleBox["76",
+         StripOnInput->False,
+         FrontFaceColor->GrayLevel[0],
+         BackFaceColor->GrayLevel[0],
+         GraphicsColor->GrayLevel[0],
+         FontColor->GrayLevel[0]], Offset[{0, 4}, {230, 76}], 
+        ImageScaled[{0.5, 0}]]}, {
+       DynamicBox[{
+         FEPrivate`If[
+          CurrentValue["MouseOver"], 
+          EdgeForm[{
+            GrayLevel[0.5], 
+            AbsoluteThickness[1.5], 
+            Opacity[0.66]}], {}, {}], 
+         RectangleBox[{240, 0}, {260, 81}]},
+        ImageSizeCache->{{103.01200607902736`, 110.61717325227964`}, {
+         53.421403194072084`, 103.03778676483914`}}], InsetBox[
+        StyleBox["81",
+         StripOnInput->False,
+         FrontFaceColor->GrayLevel[0],
+         BackFaceColor->GrayLevel[0],
+         GraphicsColor->GrayLevel[0],
+         FontColor->GrayLevel[0]], Offset[{0, 4}, {250, 81}], 
+        ImageScaled[{0.5, 0}]]}, {
+       DynamicBox[{
+         FEPrivate`If[
+          CurrentValue["MouseOver"], 
+          EdgeForm[{
+            GrayLevel[0.5], 
+            AbsoluteThickness[1.5], 
+            Opacity[0.66]}], {}, {}], 
+         RectangleBox[{260, 0}, {280, 73}]},
+        ImageSizeCache->{{110.11717325227964`, 117.72234042553193`}, {
+         58.272404040567594`, 103.03778676483914`}}], InsetBox[
+        StyleBox["73",
+         StripOnInput->False,
+         FrontFaceColor->GrayLevel[0],
+         BackFaceColor->GrayLevel[0],
+         GraphicsColor->GrayLevel[0],
+         FontColor->GrayLevel[0]], Offset[{0, 4}, {270, 73}], 
+        ImageScaled[{0.5, 0}]]}, {
+       DynamicBox[{
+         FEPrivate`If[
+          CurrentValue["MouseOver"], 
+          EdgeForm[{
+            GrayLevel[0.5], 
+            AbsoluteThickness[1.5], 
+            Opacity[0.66]}], {}, {}], 
+         RectangleBox[{280, 0}, {300, 45}]},
+        ImageSizeCache->{{117.22234042553193`, 124.82750759878421`}, {
+         75.25090700330189, 103.03778676483914`}}], InsetBox[
+        StyleBox["45",
+         StripOnInput->False,
+         FrontFaceColor->GrayLevel[0],
+         BackFaceColor->GrayLevel[0],
+         GraphicsColor->GrayLevel[0],
+         FontColor->GrayLevel[0]], Offset[{0, 4}, {290, 45}], 
+        ImageScaled[{0.5, 0}]]}, {
+       DynamicBox[{
+         FEPrivate`If[
+          CurrentValue["MouseOver"], 
+          EdgeForm[{
+            GrayLevel[0.5], 
+            AbsoluteThickness[1.5], 
+            Opacity[0.66]}], {}, {}], 
+         RectangleBox[{300, 0}, {320, 39}]},
+        ImageSizeCache->{{124.32750759878421`, 131.93267477203648`}, {
+         78.88915763817351, 103.03778676483914`}}], InsetBox[
+        StyleBox["39",
+         StripOnInput->False,
+         FrontFaceColor->GrayLevel[0],
+         BackFaceColor->GrayLevel[0],
+         GraphicsColor->GrayLevel[0],
+         FontColor->GrayLevel[0]], Offset[{0, 4}, {310, 39}], 
+        ImageScaled[{0.5, 0}]]}, {
+       DynamicBox[{
+         FEPrivate`If[
+          CurrentValue["MouseOver"], 
+          EdgeForm[{
+            GrayLevel[0.5], 
+            AbsoluteThickness[1.5], 
+            Opacity[0.66]}], {}, {}], 
+         RectangleBox[{320, 0}, {340, 33}]},
+        ImageSizeCache->{{131.43267477203648`, 139.03784194528876`}, {
+         82.52740827304515, 103.03778676483914`}}], InsetBox[
+        StyleBox["33",
+         StripOnInput->False,
+         FrontFaceColor->GrayLevel[0],
+         BackFaceColor->GrayLevel[0],
+         GraphicsColor->GrayLevel[0],
+         FontColor->GrayLevel[0]], Offset[{0, 4}, {330, 33}], 
+        ImageScaled[{0.5, 0}]]}, {
+       DynamicBox[{
+         FEPrivate`If[
+          CurrentValue["MouseOver"], 
+          EdgeForm[{
+            GrayLevel[0.5], 
+            AbsoluteThickness[1.5], 
+            Opacity[0.66]}], {}, {}], 
+         RectangleBox[{340, 0}, {360, 26}]},
+        ImageSizeCache->{{138.53784194528876`, 146.14300911854104`}, {
+         86.77203401372873, 103.03778676483914`}}], InsetBox[
+        StyleBox["26",
+         StripOnInput->False,
+         FrontFaceColor->GrayLevel[0],
+         BackFaceColor->GrayLevel[0],
+         GraphicsColor->GrayLevel[0],
+         FontColor->GrayLevel[0]], Offset[{0, 4}, {350, 26}], 
+        ImageScaled[{0.5, 0}]]}, {
+       DynamicBox[{
+         FEPrivate`If[
+          CurrentValue["MouseOver"], 
+          EdgeForm[{
+            GrayLevel[0.5], 
+            AbsoluteThickness[1.5], 
+            Opacity[0.66]}], {}, {}], 
+         RectangleBox[{360, 0}, {380, 22}]},
+        ImageSizeCache->{{145.64300911854104`, 153.24817629179333`}, {
+         89.19753443697648, 103.03778676483914`}}], InsetBox[
+        StyleBox["22",
+         StripOnInput->False,
+         FrontFaceColor->GrayLevel[0],
+         BackFaceColor->GrayLevel[0],
+         GraphicsColor->GrayLevel[0],
+         FontColor->GrayLevel[0]], Offset[{0, 4}, {370, 22}], 
+        ImageScaled[{0.5, 0}]]}, {
+       DynamicBox[{
+         FEPrivate`If[
+          CurrentValue["MouseOver"], 
+          EdgeForm[{
+            GrayLevel[0.5], 
+            AbsoluteThickness[1.5], 
+            Opacity[0.66]}], {}, {}], 
+         RectangleBox[{380, 0}, {400, 14}]},
+        ImageSizeCache->{{152.74817629179333`, 160.3533434650456}, {
+         94.04853528347199, 103.03778676483914`}}], InsetBox[
+        StyleBox["14",
+         StripOnInput->False,
+         FrontFaceColor->GrayLevel[0],
+         BackFaceColor->GrayLevel[0],
+         GraphicsColor->GrayLevel[0],
+         FontColor->GrayLevel[0]], Offset[{0, 4}, {390, 14}], 
+        ImageScaled[{0.5, 0}]]}, {
+       DynamicBox[{
+         FEPrivate`If[
+          CurrentValue["MouseOver"], 
+          EdgeForm[{
+            GrayLevel[0.5], 
+            AbsoluteThickness[1.5], 
+            Opacity[0.66]}], {}, {}], 
+         RectangleBox[{400, 0}, {420, 19}]},
+        ImageSizeCache->{{159.8533434650456, 167.4585106382979}, {
+         91.0166597544123, 103.03778676483914`}}], InsetBox[
+        StyleBox["19",
+         StripOnInput->False,
+         FrontFaceColor->GrayLevel[0],
+         BackFaceColor->GrayLevel[0],
+         GraphicsColor->GrayLevel[0],
+         FontColor->GrayLevel[0]], Offset[{0, 4}, {410, 19}], 
+        ImageScaled[{0.5, 0}]]}, {
+       DynamicBox[{
+         FEPrivate`If[
+          CurrentValue["MouseOver"], 
+          EdgeForm[{
+            GrayLevel[0.5], 
+            AbsoluteThickness[1.5], 
+            Opacity[0.66]}], {}, {}], 
+         RectangleBox[{420, 0}, {440, 17}]},
+        ImageSizeCache->{{166.9585106382979, 174.56367781155018`}, {
+         92.22940996603617, 103.03778676483914`}}], InsetBox[
+        StyleBox["17",
+         StripOnInput->False,
+         FrontFaceColor->GrayLevel[0],
+         BackFaceColor->GrayLevel[0],
+         GraphicsColor->GrayLevel[0],
+         FontColor->GrayLevel[0]], Offset[{0, 4}, {430, 17}], 
+        ImageScaled[{0.5, 0}]]}, {
+       DynamicBox[{
+         FEPrivate`If[
+          CurrentValue["MouseOver"], 
+          EdgeForm[{
+            GrayLevel[0.5], 
+            AbsoluteThickness[1.5], 
+            Opacity[0.66]}], {}, {}], 
+         RectangleBox[{440, 0}, {460, 11}]},
+        ImageSizeCache->{{174.06367781155018`, 181.66884498480243`}, {
+         95.86766060090781, 103.03778676483914`}}], InsetBox[
+        StyleBox["11",
+         StripOnInput->False,
+         FrontFaceColor->GrayLevel[0],
+         BackFaceColor->GrayLevel[0],
+         GraphicsColor->GrayLevel[0],
+         FontColor->GrayLevel[0]], Offset[{0, 4}, {450, 11}], 
+        ImageScaled[{0.5, 0}]]}, {
+       DynamicBox[{
+         FEPrivate`If[
+          CurrentValue["MouseOver"], 
+          EdgeForm[{
+            GrayLevel[0.5], 
+            AbsoluteThickness[1.5], 
+            Opacity[0.66]}], {}, {}], 
+         RectangleBox[{460, 0}, {480, 10}]},
+        ImageSizeCache->{{181.16884498480243`, 188.77401215805472`}, {
+         96.47403570671975, 103.03778676483914`}}], InsetBox[
+        StyleBox["10",
+         StripOnInput->False,
+         FrontFaceColor->GrayLevel[0],
+         BackFaceColor->GrayLevel[0],
+         GraphicsColor->GrayLevel[0],
+         FontColor->GrayLevel[0]], Offset[{0, 4}, {470, 10}], 
+        ImageScaled[{0.5, 0}]]}, {
+       DynamicBox[{
+         FEPrivate`If[
+          CurrentValue["MouseOver"], 
+          EdgeForm[{
+            GrayLevel[0.5], 
+            AbsoluteThickness[1.5], 
+            Opacity[0.66]}], {}, {}], 
+         RectangleBox[{480, 0}, {500, 11}]},
+        ImageSizeCache->{{188.27401215805472`, 195.879179331307}, {
+         95.86766060090781, 103.03778676483914`}}], InsetBox[
+        StyleBox["11",
+         StripOnInput->False,
+         FrontFaceColor->GrayLevel[0],
+         BackFaceColor->GrayLevel[0],
+         GraphicsColor->GrayLevel[0],
+         FontColor->GrayLevel[0]], Offset[{0, 4}, {490, 11}], 
+        ImageScaled[{0.5, 0}]]}, {
+       DynamicBox[{
+         FEPrivate`If[
+          CurrentValue["MouseOver"], 
+          EdgeForm[{
+            GrayLevel[0.5], 
+            AbsoluteThickness[1.5], 
+            Opacity[0.66]}], {}, {}], 
+         RectangleBox[{500, 0}, {520, 10}]},
+        ImageSizeCache->{{195.379179331307, 202.98434650455928`}, {
+         96.47403570671975, 103.03778676483914`}}], InsetBox[
+        StyleBox["10",
+         StripOnInput->False,
+         FrontFaceColor->GrayLevel[0],
+         BackFaceColor->GrayLevel[0],
+         GraphicsColor->GrayLevel[0],
+         FontColor->GrayLevel[0]], Offset[{0, 4}, {510, 10}], 
+        ImageScaled[{0.5, 0}]]}, {
+       DynamicBox[{
+         FEPrivate`If[
+          CurrentValue["MouseOver"], 
+          EdgeForm[{
+            GrayLevel[0.5], 
+            AbsoluteThickness[1.5], 
+            Opacity[0.66]}], {}, {}], 
+         RectangleBox[{520, 0}, {540, 2}]},
+        ImageSizeCache->{{202.48434650455928`, 210.08951367781157`}, {
+         101.32503655321526`, 103.03778676483914`}}], InsetBox[
+        StyleBox["2",
+         StripOnInput->False,
+         FrontFaceColor->GrayLevel[0],
+         BackFaceColor->GrayLevel[0],
+         GraphicsColor->GrayLevel[0],
+         FontColor->GrayLevel[0]], Offset[{0, 4}, {530, 2}], 
+        ImageScaled[{0.5, 0}]]}, {
+       DynamicBox[{
+         FEPrivate`If[
+          CurrentValue["MouseOver"], 
+          EdgeForm[{
+            GrayLevel[0.5], 
+            AbsoluteThickness[1.5], 
+            Opacity[0.66]}], {}, {}], 
+         RectangleBox[{540, 0}, {560, 6}]},
+        ImageSizeCache->{{209.58951367781157`, 217.19468085106385`}, {
+         98.8995361299675, 103.03778676483914`}}], InsetBox[
+        StyleBox["6",
+         StripOnInput->False,
+         FrontFaceColor->GrayLevel[0],
+         BackFaceColor->GrayLevel[0],
+         GraphicsColor->GrayLevel[0],
+         FontColor->GrayLevel[0]], Offset[{0, 4}, {550, 6}], 
+        ImageScaled[{0.5, 0}]]}, {
+       DynamicBox[{
+         FEPrivate`If[
+          CurrentValue["MouseOver"], 
+          EdgeForm[{
+            GrayLevel[0.5], 
+            AbsoluteThickness[1.5], 
+            Opacity[0.66]}], {}, {}], 
+         RectangleBox[{560, 0}, {580, 5}]},
+        ImageSizeCache->{{216.69468085106385`, 224.29984802431613`}, {
+         99.50591123577945, 103.03778676483914`}}], InsetBox[
+        StyleBox["5",
+         StripOnInput->False,
+         FrontFaceColor->GrayLevel[0],
+         BackFaceColor->GrayLevel[0],
+         GraphicsColor->GrayLevel[0],
+         FontColor->GrayLevel[0]], Offset[{0, 4}, {570, 5}], 
+        ImageScaled[{0.5, 0}]]}, {
+       DynamicBox[{
+         FEPrivate`If[
+          CurrentValue["MouseOver"], 
+          EdgeForm[{
+            GrayLevel[0.5], 
+            AbsoluteThickness[1.5], 
+            Opacity[0.66]}], {}, {}], 
+         RectangleBox[{580, 0}, {600, 1}]},
+        ImageSizeCache->{{223.79984802431613`, 231.40501519756842`}, {
+         101.9314116590272, 103.03778676483914`}}], InsetBox[
+        StyleBox["1",
+         StripOnInput->False,
+         FrontFaceColor->GrayLevel[0],
+         BackFaceColor->GrayLevel[0],
+         GraphicsColor->GrayLevel[0],
+         FontColor->GrayLevel[0]], Offset[{0, 4}, {590, 1}], 
+        ImageScaled[{0.5, 0}]]}, {
+       DynamicBox[{
+         FEPrivate`If[
+          CurrentValue["MouseOver"], 
+          EdgeForm[{
+            GrayLevel[0.5], 
+            AbsoluteThickness[1.5], 
+            Opacity[0.66]}], {}, {}], 
+         RectangleBox[{600, 0}, {620, 4}]},
+        ImageSizeCache->{{230.90501519756842`, 238.5101823708207}, {
+         100.11228634159139`, 103.03778676483914`}}], InsetBox[
+        StyleBox["4",
+         StripOnInput->False,
+         FrontFaceColor->GrayLevel[0],
+         BackFaceColor->GrayLevel[0],
+         GraphicsColor->GrayLevel[0],
+         FontColor->GrayLevel[0]], Offset[{0, 4}, {610, 4}], 
+        ImageScaled[{0.5, 0}]]}, {
+       DynamicBox[{
+         FEPrivate`If[
+          CurrentValue["MouseOver"], 
+          EdgeForm[{
+            GrayLevel[0.5], 
+            AbsoluteThickness[1.5], 
+            Opacity[0.66]}], {}, {}], 
+         RectangleBox[{620, 0}, {640, 5}]},
+        ImageSizeCache->{{238.0101823708207, 245.61534954407296`}, {
+         99.50591123577945, 103.03778676483914`}}], InsetBox[
+        StyleBox["5",
+         StripOnInput->False,
+         FrontFaceColor->GrayLevel[0],
+         BackFaceColor->GrayLevel[0],
+         GraphicsColor->GrayLevel[0],
+         FontColor->GrayLevel[0]], Offset[{0, 4}, {630, 5}], 
+        ImageScaled[{0.5, 0}]]}, {
+       DynamicBox[{
+         FEPrivate`If[
+          CurrentValue["MouseOver"], 
+          EdgeForm[{
+            GrayLevel[0.5], 
+            AbsoluteThickness[1.5], 
+            Opacity[0.66]}], {}, {}], 
+         RectangleBox[{640, 0}, {660, 3}]},
+        ImageSizeCache->{{245.11534954407296`, 252.72051671732524`}, {
+         100.71866144740332`, 103.03778676483914`}}], InsetBox[
+        StyleBox["3",
+         StripOnInput->False,
+         FrontFaceColor->GrayLevel[0],
+         BackFaceColor->GrayLevel[0],
+         GraphicsColor->GrayLevel[0],
+         FontColor->GrayLevel[0]], Offset[{0, 4}, {650, 3}], 
+        ImageScaled[{0.5, 0}]]}, {
+       DynamicBox[{
+         FEPrivate`If[
+          CurrentValue["MouseOver"], 
+          EdgeForm[{
+            GrayLevel[0.5], 
+            AbsoluteThickness[1.5], 
+            Opacity[0.66]}], {}, {}], 
+         RectangleBox[{660, 0}, {680, 2}]},
+        ImageSizeCache->{{252.22051671732524`, 259.8256838905775}, {
+         101.32503655321526`, 103.03778676483914`}}], InsetBox[
+        StyleBox["2",
+         StripOnInput->False,
+         FrontFaceColor->GrayLevel[0],
+         BackFaceColor->GrayLevel[0],
+         GraphicsColor->GrayLevel[0],
+         FontColor->GrayLevel[0]], Offset[{0, 4}, {670, 2}], 
+        ImageScaled[{0.5, 0}]]}, {
+       DynamicBox[{
+         FEPrivate`If[
+          CurrentValue["MouseOver"], 
+          EdgeForm[{
+            GrayLevel[0.5], 
+            AbsoluteThickness[1.5], 
+            Opacity[0.66]}], {}, {}], 
+         RectangleBox[{680, 0}, {700, 3}]},
+        ImageSizeCache->{{259.3256838905775, 266.93085106382983`}, {
+         100.71866144740332`, 103.03778676483914`}}], InsetBox[
+        StyleBox["3",
+         StripOnInput->False,
+         FrontFaceColor->GrayLevel[0],
+         BackFaceColor->GrayLevel[0],
+         GraphicsColor->GrayLevel[0],
+         FontColor->GrayLevel[0]], Offset[{0, 4}, {690, 3}], 
+        ImageScaled[{0.5, 0}]]}, {
+       DynamicBox[{
+         FEPrivate`If[
+          CurrentValue["MouseOver"], 
+          EdgeForm[{
+            GrayLevel[0.5], 
+            AbsoluteThickness[1.5], 
+            Opacity[0.66]}], {}, {}], 
+         RectangleBox[{700, 0}, {720, 2}]},
+        ImageSizeCache->{{266.43085106382983`, 274.0360182370821}, {
+         101.32503655321526`, 103.03778676483914`}}], InsetBox[
+        StyleBox["2",
+         StripOnInput->False,
+         FrontFaceColor->GrayLevel[0],
+         BackFaceColor->GrayLevel[0],
+         GraphicsColor->GrayLevel[0],
+         FontColor->GrayLevel[0]], Offset[{0, 4}, {710, 2}], 
+        ImageScaled[{0.5, 0}]]}, {
+       DynamicBox[{
+         FEPrivate`If[
+          CurrentValue["MouseOver"], 
+          EdgeForm[{
+            GrayLevel[0.5], 
+            AbsoluteThickness[1.5], 
+            Opacity[0.66]}], {}, {}], 
+         RectangleBox[{720, 0}, {740, 1}]},
+        ImageSizeCache->{{273.5360182370821, 281.14118541033434`}, {
+         101.9314116590272, 103.03778676483914`}}], InsetBox[
+        StyleBox["1",
+         StripOnInput->False,
+         FrontFaceColor->GrayLevel[0],
+         BackFaceColor->GrayLevel[0],
+         GraphicsColor->GrayLevel[0],
+         FontColor->GrayLevel[0]], Offset[{0, 4}, {730, 1}], 
+        ImageScaled[{0.5, 0}]]}, {
+       DynamicBox[{
+         FEPrivate`If[
+          CurrentValue["MouseOver"], 
+          EdgeForm[{
+            GrayLevel[0.5], 
+            AbsoluteThickness[1.5], 
+            Opacity[0.66]}], {}, {}], 
+         RectangleBox[{740, 0}, {760, 3}]},
+        ImageSizeCache->{{280.64118541033434`, 288.24635258358666`}, {
+         100.71866144740332`, 103.03778676483914`}}], InsetBox[
+        StyleBox["3",
+         StripOnInput->False,
+         FrontFaceColor->GrayLevel[0],
+         BackFaceColor->GrayLevel[0],
+         GraphicsColor->GrayLevel[0],
+         FontColor->GrayLevel[0]], Offset[{0, 4}, {750, 3}], 
+        ImageScaled[{0.5, 0}]]}, {
+       DynamicBox[{
+         FEPrivate`If[
+          CurrentValue["MouseOver"], 
+          EdgeForm[{
+            GrayLevel[0.5], 
+            AbsoluteThickness[1.5], 
+            Opacity[0.66]}], {}, {}], 
+         RectangleBox[{760, 0}, {780, 1}]},
+        ImageSizeCache->{{287.74635258358666`, 295.3515197568389}, {
+         101.9314116590272, 103.03778676483914`}}], InsetBox[
+        StyleBox["1",
+         StripOnInput->False,
+         FrontFaceColor->GrayLevel[0],
+         BackFaceColor->GrayLevel[0],
+         GraphicsColor->GrayLevel[0],
+         FontColor->GrayLevel[0]], Offset[{0, 4}, {770, 1}], 
+        ImageScaled[{0.5, 0}]]}, {
+       DynamicBox[{
+         FEPrivate`If[
+          CurrentValue["MouseOver"], 
+          EdgeForm[{
+            GrayLevel[0.5], 
+            AbsoluteThickness[1.5], 
+            Opacity[0.66]}], {}, {}], 
+         RectangleBox[{780, 0}, {800, 1}]},
+        ImageSizeCache->{{294.8515197568389, 302.4566869300912}, {
+         101.9314116590272, 103.03778676483914`}}], InsetBox[
+        StyleBox["1",
+         StripOnInput->False,
+         FrontFaceColor->GrayLevel[0],
+         BackFaceColor->GrayLevel[0],
+         GraphicsColor->GrayLevel[0],
+         FontColor->GrayLevel[0]], Offset[{0, 4}, {790, 1}], 
+        ImageScaled[{0.5, 0}]]}, {}, {
+       DynamicBox[{
+         FEPrivate`If[
+          CurrentValue["MouseOver"], 
+          EdgeForm[{
+            GrayLevel[0.5], 
+            AbsoluteThickness[1.5], 
+            Opacity[0.66]}], {}, {}], 
+         RectangleBox[{820, 0}, {840, 3}]},
+        ImageSizeCache->{{309.0618541033435, 316.6670212765958}, {
+         100.71866144740332`, 103.03778676483914`}}], InsetBox[
+        StyleBox["3",
+         StripOnInput->False,
+         FrontFaceColor->GrayLevel[0],
+         BackFaceColor->GrayLevel[0],
+         GraphicsColor->GrayLevel[0],
+         FontColor->GrayLevel[0]], Offset[{0, 4}, {830, 3}], 
+        ImageScaled[{0.5, 0}]]}, {
+       DynamicBox[{
+         FEPrivate`If[
+          CurrentValue["MouseOver"], 
+          EdgeForm[{
+            GrayLevel[0.5], 
+            AbsoluteThickness[1.5], 
+            Opacity[0.66]}], {}, {}], 
+         RectangleBox[{840, 0}, {860, 1}]},
+        ImageSizeCache->{{316.1670212765958, 323.77218844984804`}, {
+         101.9314116590272, 103.03778676483914`}}], InsetBox[
+        StyleBox["1",
+         StripOnInput->False,
+         FrontFaceColor->GrayLevel[0],
+         BackFaceColor->GrayLevel[0],
+         GraphicsColor->GrayLevel[0],
+         FontColor->GrayLevel[0]], Offset[{0, 4}, {850, 1}], 
+        ImageScaled[{0.5, 0}]]}, {
+       DynamicBox[{
+         FEPrivate`If[
+          CurrentValue["MouseOver"], 
+          EdgeForm[{
+            GrayLevel[0.5], 
+            AbsoluteThickness[1.5], 
+            Opacity[0.66]}], {}, {}], 
+         RectangleBox[{860, 0}, {880, 1}]},
+        ImageSizeCache->{{323.27218844984804`, 330.87735562310036`}, {
+         101.9314116590272, 103.03778676483914`}}], InsetBox[
+        StyleBox["1",
+         StripOnInput->False,
+         FrontFaceColor->GrayLevel[0],
+         BackFaceColor->GrayLevel[0],
+         GraphicsColor->GrayLevel[0],
+         FontColor->GrayLevel[0]], Offset[{0, 4}, {870, 1}], 
+        ImageScaled[{0.5, 0}]]}, {
+       DynamicBox[{
+         FEPrivate`If[
+          CurrentValue["MouseOver"], 
+          EdgeForm[{
+            GrayLevel[0.5], 
+            AbsoluteThickness[1.5], 
+            Opacity[0.66]}], {}, {}], 
+         RectangleBox[{880, 0}, {900, 1}]},
+        ImageSizeCache->{{330.37735562310036`, 337.9825227963526}, {
+         101.9314116590272, 103.03778676483914`}}], InsetBox[
+        StyleBox["1",
+         StripOnInput->False,
+         FrontFaceColor->GrayLevel[0],
+         BackFaceColor->GrayLevel[0],
+         GraphicsColor->GrayLevel[0],
+         FontColor->GrayLevel[0]], Offset[{0, 4}, {890, 1}], 
+        ImageScaled[{0.5, 0}]]}, {
+       DynamicBox[{
+         FEPrivate`If[
+          CurrentValue["MouseOver"], 
+          EdgeForm[{
+            GrayLevel[0.5], 
+            AbsoluteThickness[1.5], 
+            Opacity[0.66]}], {}, {}], 
+         RectangleBox[{900, 0}, {920, 3}]},
+        ImageSizeCache->{{337.4825227963526, 345.08768996960487`}, {
+         100.71866144740332`, 103.03778676483914`}}], InsetBox[
+        StyleBox["3",
+         StripOnInput->False,
+         FrontFaceColor->GrayLevel[0],
+         BackFaceColor->GrayLevel[0],
+         GraphicsColor->GrayLevel[0],
+         FontColor->GrayLevel[0]], Offset[{0, 4}, {910, 3}], 
+        ImageScaled[{0.5, 0}]]}, {
+       DynamicBox[{
+         FEPrivate`If[
+          CurrentValue["MouseOver"], 
+          EdgeForm[{
+            GrayLevel[0.5], 
+            AbsoluteThickness[1.5], 
+            Opacity[0.66]}], {}, {}], 
+         RectangleBox[{920, 0}, {940, 2}]},
+        ImageSizeCache->{{344.58768996960487`, 352.1928571428572}, {
+         101.32503655321526`, 103.03778676483914`}}], InsetBox[
+        StyleBox["2",
+         StripOnInput->False,
+         FrontFaceColor->GrayLevel[0],
+         BackFaceColor->GrayLevel[0],
+         GraphicsColor->GrayLevel[0],
+         FontColor->GrayLevel[0]], Offset[{0, 4}, {930, 2}], 
+        ImageScaled[{0.5, 0}]]}}, {}, {}},
+    AspectRatio->NCache[GoldenRatio^(-1), 0.6180339887498948],
+    Axes->{True, True},
+    AxesOrigin->{0, 0},
+    FrameTicks->{{Automatic, Automatic}, {Automatic, Automatic}},
+    ImageSize->Medium,
+    PlotLabel->FormBox[
+      RowBox[{"P", "(", 
+        RowBox[{"C", "|", 
+          RowBox[{"X", "\[LongEqual]", "3.`"}]}], ")"}], TraditionalForm],
+    PlotRange->{{0, 940}, {All, All}},
+    PlotRangePadding->{{
+       Scaled[0.02], 
+       Scaled[0.02]}, {
+       Scaled[0.02], 
+       Scaled[0.1]}},
+    Ticks->{Automatic, Automatic}], ",", 
+   GraphicsBox[
+    {RGBColor[0.798413061722744, 0.824719615472648, 0.968322270542458], 
+     EdgeForm[Opacity[0.7]]},
+    AspectRatio->NCache[GoldenRatio^(-1), 0.6180339887498948],
+    Axes->{True, True},
+    AxesOrigin->{0, 0},
+    FrameTicks->{{Automatic, Automatic}, {Automatic, Automatic}},
+    ImageSize->Medium,
+    PlotLabel->FormBox[
+      RowBox[{"P", "(", 
+        RowBox[{"C", "|", 
+          RowBox[{"X", "\[LongEqual]", "3.5`"}]}], ")"}], TraditionalForm],
+    PlotRange->{{All, All}, {All, All}},
+    PlotRangePadding->{{
+       Scaled[0.02], 
+       Scaled[0.02]}, {
+       Scaled[0.02], 
+       Scaled[0.1]}},
+    Ticks->{Automatic, Automatic}], ",", 
+   GraphicsBox[
+    {RGBColor[0.798413061722744, 0.824719615472648, 0.968322270542458], 
+     EdgeForm[Opacity[0.7]], {}, 
+     {RGBColor[0.798413061722744, 0.824719615472648, 0.968322270542458], 
+      EdgeForm[Opacity[0.7]], {
+       DynamicBox[{
+         FEPrivate`If[
+          CurrentValue["MouseOver"], 
+          EdgeForm[{
+            GrayLevel[0.5], 
+            AbsoluteThickness[1.5], 
+            Opacity[0.66]}], {}, {}], 
+         RectangleBox[{0, 0}, {20, 448}]},
+        ImageSizeCache->{{17.75, 24.87}, {1.0241325940172175`, 
+         100.00448746383027`}}], InsetBox[
+        StyleBox["448",
+         StripOnInput->False,
+         FrontFaceColor->GrayLevel[0],
+         BackFaceColor->GrayLevel[0],
+         GraphicsColor->GrayLevel[0],
+         FontColor->GrayLevel[0]], Offset[{0, 4}, {10, 448}], 
+        ImageScaled[{0.5, 0}]]}, {
+       DynamicBox[{
+         FEPrivate`If[
+          CurrentValue["MouseOver"], 
+          EdgeForm[{
+            GrayLevel[0.5], 
+            AbsoluteThickness[1.5], 
+            Opacity[0.66]}], {}, {}], 
+         RectangleBox[{20, 0}, {40, 772}]},
+        ImageSizeCache->{{24.37, 31.490000000000002`}, {-70.19826691004401, 
+         100.00448746383027`}}], InsetBox[
+        StyleBox["772",
+         StripOnInput->False,
+         FrontFaceColor->GrayLevel[0],
+         BackFaceColor->GrayLevel[0],
+         GraphicsColor->GrayLevel[0],
+         FontColor->GrayLevel[0]], Offset[{0, 4}, {30, 772}], 
+        ImageScaled[{0.5, 0}]]}, {
+       DynamicBox[{
+         FEPrivate`If[
+          CurrentValue["MouseOver"], 
+          EdgeForm[{
+            GrayLevel[0.5], 
+            AbsoluteThickness[1.5], 
+            Opacity[0.66]}], {}, {}], 
+         RectangleBox[{40, 0}, {60, 836}]},
+        ImageSizeCache->{{30.990000000000002`, 38.11}, {-84.26688903430302, 
+         100.00448746383027`}}], InsetBox[
+        StyleBox["836",
+         StripOnInput->False,
+         FrontFaceColor->GrayLevel[0],
+         BackFaceColor->GrayLevel[0],
+         GraphicsColor->GrayLevel[0],
+         FontColor->GrayLevel[0]], Offset[{0, 4}, {50, 836}], 
+        ImageScaled[{0.5, 0}]]}, {
+       DynamicBox[{
+         FEPrivate`If[
+          CurrentValue["MouseOver"], 
+          EdgeForm[{
+            GrayLevel[0.5], 
+            AbsoluteThickness[1.5], 
+            Opacity[0.66]}], {}, {}], 
+         RectangleBox[{60, 0}, {80, 752}]},
+        ImageSizeCache->{{37.61, 44.730000000000004`}, {-65.80182249621306, 
+         100.00448746383027`}}], InsetBox[
+        StyleBox["752",
+         StripOnInput->False,
+         FrontFaceColor->GrayLevel[0],
+         BackFaceColor->GrayLevel[0],
+         GraphicsColor->GrayLevel[0],
+         FontColor->GrayLevel[0]], Offset[{0, 4}, {70, 752}], 
+        ImageScaled[{0.5, 0}]]}, {
+       DynamicBox[{
+         FEPrivate`If[
+          CurrentValue["MouseOver"], 
+          EdgeForm[{
+            GrayLevel[0.5], 
+            AbsoluteThickness[1.5], 
+            Opacity[0.66]}], {}, {}], 
+         RectangleBox[{80, 0}, {100, 643}]},
+        ImageSizeCache->{{44.230000000000004`, 51.35}, {-41.84120044083444, 
+         100.00448746383027`}}], InsetBox[
+        StyleBox["643",
+         StripOnInput->False,
+         FrontFaceColor->GrayLevel[0],
+         BackFaceColor->GrayLevel[0],
+         GraphicsColor->GrayLevel[0],
+         FontColor->GrayLevel[0]], Offset[{0, 4}, {90, 643}], 
+        ImageScaled[{0.5, 0}]]}, {
+       DynamicBox[{
+         FEPrivate`If[
+          CurrentValue["MouseOver"], 
+          EdgeForm[{
+            GrayLevel[0.5], 
+            AbsoluteThickness[1.5], 
+            Opacity[0.66]}], {}, {}], 
+         RectangleBox[{100, 0}, {120, 595}]},
+        ImageSizeCache->{{50.85, 57.97}, {-31.289733847640193`, 
+         100.00448746383027`}}], InsetBox[
+        StyleBox["595",
+         StripOnInput->False,
+         FrontFaceColor->GrayLevel[0],
+         BackFaceColor->GrayLevel[0],
+         GraphicsColor->GrayLevel[0],
+         FontColor->GrayLevel[0]], Offset[{0, 4}, {110, 595}], 
+        ImageScaled[{0.5, 0}]]}, {
+       DynamicBox[{
+         FEPrivate`If[
+          CurrentValue["MouseOver"], 
+          EdgeForm[{
+            GrayLevel[0.5], 
+            AbsoluteThickness[1.5], 
+            Opacity[0.66]}], {}, {}], 
+         RectangleBox[{120, 0}, {140, 488}]},
+        ImageSizeCache->{{57.47, 64.59}, {-7.768756233644666, 
+         100.00448746383027`}}], InsetBox[
+        StyleBox["488",
+         StripOnInput->False,
+         FrontFaceColor->GrayLevel[0],
+         BackFaceColor->GrayLevel[0],
+         GraphicsColor->GrayLevel[0],
+         FontColor->GrayLevel[0]], Offset[{0, 4}, {130, 488}], 
+        ImageScaled[{0.5, 0}]]}, {
+       DynamicBox[{
+         FEPrivate`If[
+          CurrentValue["MouseOver"], 
+          EdgeForm[{
+            GrayLevel[0.5], 
+            AbsoluteThickness[1.5], 
+            Opacity[0.66]}], {}, {}], 
+         RectangleBox[{140, 0}, {160, 368}]},
+        ImageSizeCache->{{64.09, 71.21000000000001}, {18.609910249340984`, 
+         100.00448746383027`}}], InsetBox[
+        StyleBox["368",
+         StripOnInput->False,
+         FrontFaceColor->GrayLevel[0],
+         BackFaceColor->GrayLevel[0],
+         GraphicsColor->GrayLevel[0],
+         FontColor->GrayLevel[0]], Offset[{0, 4}, {150, 368}], 
+        ImageScaled[{0.5, 0}]]}, {
+       DynamicBox[{
+         FEPrivate`If[
+          CurrentValue["MouseOver"], 
+          EdgeForm[{
+            GrayLevel[0.5], 
+            AbsoluteThickness[1.5], 
+            Opacity[0.66]}], {}, {}], 
+         RectangleBox[{160, 0}, {180, 298}]},
+        ImageSizeCache->{{70.71000000000001, 77.83000000000001}, {
+         33.99746569774926, 100.00448746383027`}}], InsetBox[
+        StyleBox["298",
+         StripOnInput->False,
+         FrontFaceColor->GrayLevel[0],
+         BackFaceColor->GrayLevel[0],
+         GraphicsColor->GrayLevel[0],
+         FontColor->GrayLevel[0]], Offset[{0, 4}, {170, 298}], 
+        ImageScaled[{0.5, 0}]]}, {
+       DynamicBox[{
+         FEPrivate`If[
+          CurrentValue["MouseOver"], 
+          EdgeForm[{
+            GrayLevel[0.5], 
+            AbsoluteThickness[1.5], 
+            Opacity[0.66]}], {}, {}], 
+         RectangleBox[{180, 0}, {200, 251}]},
+        ImageSizeCache->{{77.33000000000001, 84.45}, {44.32911007025198, 
+         100.00448746383027`}}], InsetBox[
+        StyleBox["251",
+         StripOnInput->False,
+         FrontFaceColor->GrayLevel[0],
+         BackFaceColor->GrayLevel[0],
+         GraphicsColor->GrayLevel[0],
+         FontColor->GrayLevel[0]], Offset[{0, 4}, {190, 251}], 
+        ImageScaled[{0.5, 0}]]}, {
+       DynamicBox[{
+         FEPrivate`If[
+          CurrentValue["MouseOver"], 
+          EdgeForm[{
+            GrayLevel[0.5], 
+            AbsoluteThickness[1.5], 
+            Opacity[0.66]}], {}, {}], 
+         RectangleBox[{200, 0}, {220, 244}]},
+        ImageSizeCache->{{83.95, 91.07000000000001}, {45.8678656150928, 
+         100.00448746383027`}}], InsetBox[
+        StyleBox["244",
+         StripOnInput->False,
+         FrontFaceColor->GrayLevel[0],
+         BackFaceColor->GrayLevel[0],
+         GraphicsColor->GrayLevel[0],
+         FontColor->GrayLevel[0]], Offset[{0, 4}, {210, 244}], 
+        ImageScaled[{0.5, 0}]]}, {
+       DynamicBox[{
+         FEPrivate`If[
+          CurrentValue["MouseOver"], 
+          EdgeForm[{
+            GrayLevel[0.5], 
+            AbsoluteThickness[1.5], 
+            Opacity[0.66]}], {}, {}], 
+         RectangleBox[{220, 0}, {240, 149}]},
+        ImageSizeCache->{{90.57000000000001, 97.69}, {66.75097658078977, 
+         100.00448746383027`}}], InsetBox[
+        StyleBox["149",
+         StripOnInput->False,
+         FrontFaceColor->GrayLevel[0],
+         BackFaceColor->GrayLevel[0],
+         GraphicsColor->GrayLevel[0],
+         FontColor->GrayLevel[0]], Offset[{0, 4}, {230, 149}], 
+        ImageScaled[{0.5, 0}]]}, {
+       DynamicBox[{
+         FEPrivate`If[
+          CurrentValue["MouseOver"], 
+          EdgeForm[{
+            GrayLevel[0.5], 
+            AbsoluteThickness[1.5], 
+            Opacity[0.66]}], {}, {}], 
+         RectangleBox[{240, 0}, {260, 134}]},
+        ImageSizeCache->{{97.19, 104.31}, {70.04830989116297, 
+         100.00448746383027`}}], InsetBox[
+        StyleBox["134",
+         StripOnInput->False,
+         FrontFaceColor->GrayLevel[0],
+         BackFaceColor->GrayLevel[0],
+         GraphicsColor->GrayLevel[0],
+         FontColor->GrayLevel[0]], Offset[{0, 4}, {250, 134}], 
+        ImageScaled[{0.5, 0}]]}, {
+       DynamicBox[{
+         FEPrivate`If[
+          CurrentValue["MouseOver"], 
+          EdgeForm[{
+            GrayLevel[0.5], 
+            AbsoluteThickness[1.5], 
+            Opacity[0.66]}], {}, {}], 
+         RectangleBox[{260, 0}, {280, 118}]},
+        ImageSizeCache->{{103.81, 110.93}, {73.56546542222773, 
+         100.00448746383027`}}], InsetBox[
+        StyleBox["118",
+         StripOnInput->False,
+         FrontFaceColor->GrayLevel[0],
+         BackFaceColor->GrayLevel[0],
+         GraphicsColor->GrayLevel[0],
+         FontColor->GrayLevel[0]], Offset[{0, 4}, {270, 118}], 
+        ImageScaled[{0.5, 0}]]}, {
+       DynamicBox[{
+         FEPrivate`If[
+          CurrentValue["MouseOver"], 
+          EdgeForm[{
+            GrayLevel[0.5], 
+            AbsoluteThickness[1.5], 
+            Opacity[0.66]}], {}, {}], 
+         RectangleBox[{280, 0}, {300, 87}]},
+        ImageSizeCache->{{110.43, 117.55000000000001`}, {80.37995426366568, 
+         100.00448746383027`}}], InsetBox[
+        StyleBox["87",
+         StripOnInput->False,
+         FrontFaceColor->GrayLevel[0],
+         BackFaceColor->GrayLevel[0],
+         GraphicsColor->GrayLevel[0],
+         FontColor->GrayLevel[0]], Offset[{0, 4}, {290, 87}], 
+        ImageScaled[{0.5, 0}]]}, {
+       DynamicBox[{
+         FEPrivate`If[
+          CurrentValue["MouseOver"], 
+          EdgeForm[{
+            GrayLevel[0.5], 
+            AbsoluteThickness[1.5], 
+            Opacity[0.66]}], {}, {}], 
+         RectangleBox[{300, 0}, {320, 94}]},
+        ImageSizeCache->{{117.05000000000001`, 124.17}, {78.84119871882486, 
+         100.00448746383027`}}], InsetBox[
+        StyleBox["94",
+         StripOnInput->False,
+         FrontFaceColor->GrayLevel[0],
+         BackFaceColor->GrayLevel[0],
+         GraphicsColor->GrayLevel[0],
+         FontColor->GrayLevel[0]], Offset[{0, 4}, {310, 94}], 
+        ImageScaled[{0.5, 0}]]}, {
+       DynamicBox[{
+         FEPrivate`If[
+          CurrentValue["MouseOver"], 
+          EdgeForm[{
+            GrayLevel[0.5], 
+            AbsoluteThickness[1.5], 
+            Opacity[0.66]}], {}, {}], 
+         RectangleBox[{320, 0}, {340, 60}]},
+        ImageSizeCache->{{123.67, 130.79000000000002`}, {86.31515422233745, 
+         100.00448746383027`}}], InsetBox[
+        StyleBox["60",
+         StripOnInput->False,
+         FrontFaceColor->GrayLevel[0],
+         BackFaceColor->GrayLevel[0],
+         GraphicsColor->GrayLevel[0],
+         FontColor->GrayLevel[0]], Offset[{0, 4}, {330, 60}], 
+        ImageScaled[{0.5, 0}]]}, {
+       DynamicBox[{
+         FEPrivate`If[
+          CurrentValue["MouseOver"], 
+          EdgeForm[{
+            GrayLevel[0.5], 
+            AbsoluteThickness[1.5], 
+            Opacity[0.66]}], {}, {}], 
+         RectangleBox[{340, 0}, {360, 54}]},
+        ImageSizeCache->{{130.29000000000002`, 137.41000000000003`}, {
+         87.63408754648674, 100.00448746383027`}}], InsetBox[
+        StyleBox["54",
+         StripOnInput->False,
+         FrontFaceColor->GrayLevel[0],
+         BackFaceColor->GrayLevel[0],
+         GraphicsColor->GrayLevel[0],
+         FontColor->GrayLevel[0]], Offset[{0, 4}, {350, 54}], 
+        ImageScaled[{0.5, 0}]]}, {
+       DynamicBox[{
+         FEPrivate`If[
+          CurrentValue["MouseOver"], 
+          EdgeForm[{
+            GrayLevel[0.5], 
+            AbsoluteThickness[1.5], 
+            Opacity[0.66]}], {}, {}], 
+         RectangleBox[{360, 0}, {380, 49}]},
+        ImageSizeCache->{{136.91000000000003`, 144.03}, {88.73319864994447, 
+         100.00448746383027`}}], InsetBox[
+        StyleBox["49",
+         StripOnInput->False,
+         FrontFaceColor->GrayLevel[0],
+         BackFaceColor->GrayLevel[0],
+         GraphicsColor->GrayLevel[0],
+         FontColor->GrayLevel[0]], Offset[{0, 4}, {370, 49}], 
+        ImageScaled[{0.5, 0}]]}, {
+       DynamicBox[{
+         FEPrivate`If[
+          CurrentValue["MouseOver"], 
+          EdgeForm[{
+            GrayLevel[0.5], 
+            AbsoluteThickness[1.5], 
+            Opacity[0.66]}], {}, {}], 
+         RectangleBox[{380, 0}, {400, 38}]},
+        ImageSizeCache->{{143.53, 150.65}, {91.15124307755148, 
+         100.00448746383027`}}], InsetBox[
+        StyleBox["38",
+         StripOnInput->False,
+         FrontFaceColor->GrayLevel[0],
+         BackFaceColor->GrayLevel[0],
+         GraphicsColor->GrayLevel[0],
+         FontColor->GrayLevel[0]], Offset[{0, 4}, {390, 38}], 
+        ImageScaled[{0.5, 0}]]}, {
+       DynamicBox[{
+         FEPrivate`If[
+          CurrentValue["MouseOver"], 
+          EdgeForm[{
+            GrayLevel[0.5], 
+            AbsoluteThickness[1.5], 
+            Opacity[0.66]}], {}, {}], 
+         RectangleBox[{400, 0}, {420, 27}]},
+        ImageSizeCache->{{150.15, 157.27}, {93.5692875051585, 
+         100.00448746383027`}}], InsetBox[
+        StyleBox["27",
+         StripOnInput->False,
+         FrontFaceColor->GrayLevel[0],
+         BackFaceColor->GrayLevel[0],
+         GraphicsColor->GrayLevel[0],
+         FontColor->GrayLevel[0]], Offset[{0, 4}, {410, 27}], 
+        ImageScaled[{0.5, 0}]]}, {
+       DynamicBox[{
+         FEPrivate`If[
+          CurrentValue["MouseOver"], 
+          EdgeForm[{
+            GrayLevel[0.5], 
+            AbsoluteThickness[1.5], 
+            Opacity[0.66]}], {}, {}], 
+         RectangleBox[{420, 0}, {440, 28}]},
+        ImageSizeCache->{{156.77, 163.89000000000001`}, {93.34946528446696, 
+         100.00448746383027`}}], InsetBox[
+        StyleBox["28",
+         StripOnInput->False,
+         FrontFaceColor->GrayLevel[0],
+         BackFaceColor->GrayLevel[0],
+         GraphicsColor->GrayLevel[0],
+         FontColor->GrayLevel[0]], Offset[{0, 4}, {430, 28}], 
+        ImageScaled[{0.5, 0}]]}, {
+       DynamicBox[{
+         FEPrivate`If[
+          CurrentValue["MouseOver"], 
+          EdgeForm[{
+            GrayLevel[0.5], 
+            AbsoluteThickness[1.5], 
+            Opacity[0.66]}], {}, {}], 
+         RectangleBox[{440, 0}, {460, 17}]},
+        ImageSizeCache->{{163.39000000000001`, 170.51000000000002`}, {
+         95.76750971207397, 100.00448746383027`}}], InsetBox[
+        StyleBox["17",
+         StripOnInput->False,
+         FrontFaceColor->GrayLevel[0],
+         BackFaceColor->GrayLevel[0],
+         GraphicsColor->GrayLevel[0],
+         FontColor->GrayLevel[0]], Offset[{0, 4}, {450, 17}], 
+        ImageScaled[{0.5, 0}]]}, {
+       DynamicBox[{
+         FEPrivate`If[
+          CurrentValue["MouseOver"], 
+          EdgeForm[{
+            GrayLevel[0.5], 
+            AbsoluteThickness[1.5], 
+            Opacity[0.66]}], {}, {}], 
+         RectangleBox[{460, 0}, {480, 14}]},
+        ImageSizeCache->{{170.01000000000002`, 177.13}, {96.42697637414861, 
+         100.00448746383027`}}], InsetBox[
+        StyleBox["14",
+         StripOnInput->False,
+         FrontFaceColor->GrayLevel[0],
+         BackFaceColor->GrayLevel[0],
+         GraphicsColor->GrayLevel[0],
+         FontColor->GrayLevel[0]], Offset[{0, 4}, {470, 14}], 
+        ImageScaled[{0.5, 0}]]}, {
+       DynamicBox[{
+         FEPrivate`If[
+          CurrentValue["MouseOver"], 
+          EdgeForm[{
+            GrayLevel[0.5], 
+            AbsoluteThickness[1.5], 
+            Opacity[0.66]}], {}, {}], 
+         RectangleBox[{480, 0}, {500, 19}]},
+        ImageSizeCache->{{176.63, 183.75}, {95.32786527069088, 
+         100.00448746383027`}}], InsetBox[
+        StyleBox["19",
+         StripOnInput->False,
+         FrontFaceColor->GrayLevel[0],
+         BackFaceColor->GrayLevel[0],
+         GraphicsColor->GrayLevel[0],
+         FontColor->GrayLevel[0]], Offset[{0, 4}, {490, 19}], 
+        ImageScaled[{0.5, 0}]]}, {
+       DynamicBox[{
+         FEPrivate`If[
+          CurrentValue["MouseOver"], 
+          EdgeForm[{
+            GrayLevel[0.5], 
+            AbsoluteThickness[1.5], 
+            Opacity[0.66]}], {}, {}], 
+         RectangleBox[{500, 0}, {520, 13}]},
+        ImageSizeCache->{{183.25, 190.37}, {96.64679859484016, 
+         100.00448746383027`}}], InsetBox[
+        StyleBox["13",
+         StripOnInput->False,
+         FrontFaceColor->GrayLevel[0],
+         BackFaceColor->GrayLevel[0],
+         GraphicsColor->GrayLevel[0],
+         FontColor->GrayLevel[0]], Offset[{0, 4}, {510, 13}], 
+        ImageScaled[{0.5, 0}]]}, {
+       DynamicBox[{
+         FEPrivate`If[
+          CurrentValue["MouseOver"], 
+          EdgeForm[{
+            GrayLevel[0.5], 
+            AbsoluteThickness[1.5], 
+            Opacity[0.66]}], {}, {}], 
+         RectangleBox[{520, 0}, {540, 8}]},
+        ImageSizeCache->{{189.87, 196.99}, {97.7459096982979, 
+         100.00448746383027`}}], InsetBox[
+        StyleBox["8",
+         StripOnInput->False,
+         FrontFaceColor->GrayLevel[0],
+         BackFaceColor->GrayLevel[0],
+         GraphicsColor->GrayLevel[0],
+         FontColor->GrayLevel[0]], Offset[{0, 4}, {530, 8}], 
+        ImageScaled[{0.5, 0}]]}, {
+       DynamicBox[{
+         FEPrivate`If[
+          CurrentValue["MouseOver"], 
+          EdgeForm[{
+            GrayLevel[0.5], 
+            AbsoluteThickness[1.5], 
+            Opacity[0.66]}], {}, {}], 
+         RectangleBox[{540, 0}, {560, 10}]},
+        ImageSizeCache->{{196.49, 203.61}, {97.3062652569148, 
+         100.00448746383027`}}], InsetBox[
+        StyleBox["10",
+         StripOnInput->False,
+         FrontFaceColor->GrayLevel[0],
+         BackFaceColor->GrayLevel[0],
+         GraphicsColor->GrayLevel[0],
+         FontColor->GrayLevel[0]], Offset[{0, 4}, {550, 10}], 
+        ImageScaled[{0.5, 0}]]}, {
+       DynamicBox[{
+         FEPrivate`If[
+          CurrentValue["MouseOver"], 
+          EdgeForm[{
+            GrayLevel[0.5], 
+            AbsoluteThickness[1.5], 
+            Opacity[0.66]}], {}, {}], 
+         RectangleBox[{560, 0}, {580, 7}]},
+        ImageSizeCache->{{203.11, 210.23000000000002`}, {97.96573191898945, 
+         100.00448746383027`}}], InsetBox[
+        StyleBox["7",
+         StripOnInput->False,
+         FrontFaceColor->GrayLevel[0],
+         BackFaceColor->GrayLevel[0],
+         GraphicsColor->GrayLevel[0],
+         FontColor->GrayLevel[0]], Offset[{0, 4}, {570, 7}], 
+        ImageScaled[{0.5, 0}]]}, {
+       DynamicBox[{
+         FEPrivate`If[
+          CurrentValue["MouseOver"], 
+          EdgeForm[{
+            GrayLevel[0.5], 
+            AbsoluteThickness[1.5], 
+            Opacity[0.66]}], {}, {}], 
+         RectangleBox[{580, 0}, {600, 13}]},
+        ImageSizeCache->{{209.73000000000002`, 216.85000000000002`}, {
+         96.64679859484016, 100.00448746383027`}}], InsetBox[
+        StyleBox["13",
+         StripOnInput->False,
+         FrontFaceColor->GrayLevel[0],
+         BackFaceColor->GrayLevel[0],
+         GraphicsColor->GrayLevel[0],
+         FontColor->GrayLevel[0]], Offset[{0, 4}, {590, 13}], 
+        ImageScaled[{0.5, 0}]]}, {
+       DynamicBox[{
+         FEPrivate`If[
+          CurrentValue["MouseOver"], 
+          EdgeForm[{
+            GrayLevel[0.5], 
+            AbsoluteThickness[1.5], 
+            Opacity[0.66]}], {}, {}], 
+         RectangleBox[{600, 0}, {620, 3}]},
+        ImageSizeCache->{{216.35000000000002`, 223.47}, {98.84502080175564, 
+         100.00448746383027`}}], InsetBox[
+        StyleBox["3",
+         StripOnInput->False,
+         FrontFaceColor->GrayLevel[0],
+         BackFaceColor->GrayLevel[0],
+         GraphicsColor->GrayLevel[0],
+         FontColor->GrayLevel[0]], Offset[{0, 4}, {610, 3}], 
+        ImageScaled[{0.5, 0}]]}, {
+       DynamicBox[{
+         FEPrivate`If[
+          CurrentValue["MouseOver"], 
+          EdgeForm[{
+            GrayLevel[0.5], 
+            AbsoluteThickness[1.5], 
+            Opacity[0.66]}], {}, {}], 
+         RectangleBox[{620, 0}, {640, 2}]},
+        ImageSizeCache->{{222.97, 230.09}, {99.06484302244718, 
+         100.00448746383027`}}], InsetBox[
+        StyleBox["2",
+         StripOnInput->False,
+         FrontFaceColor->GrayLevel[0],
+         BackFaceColor->GrayLevel[0],
+         GraphicsColor->GrayLevel[0],
+         FontColor->GrayLevel[0]], Offset[{0, 4}, {630, 2}], 
+        ImageScaled[{0.5, 0}]]}, {
+       DynamicBox[{
+         FEPrivate`If[
+          CurrentValue["MouseOver"], 
+          EdgeForm[{
+            GrayLevel[0.5], 
+            AbsoluteThickness[1.5], 
+            Opacity[0.66]}], {}, {}], 
+         RectangleBox[{640, 0}, {660, 4}]},
+        ImageSizeCache->{{229.59, 236.71}, {98.62519858106408, 
+         100.00448746383027`}}], InsetBox[
+        StyleBox["4",
+         StripOnInput->False,
+         FrontFaceColor->GrayLevel[0],
+         BackFaceColor->GrayLevel[0],
+         GraphicsColor->GrayLevel[0],
+         FontColor->GrayLevel[0]], Offset[{0, 4}, {650, 4}], 
+        ImageScaled[{0.5, 0}]]}, {
+       DynamicBox[{
+         FEPrivate`If[
+          CurrentValue["MouseOver"], 
+          EdgeForm[{
+            GrayLevel[0.5], 
+            AbsoluteThickness[1.5], 
+            Opacity[0.66]}], {}, {}], 
+         RectangleBox[{660, 0}, {680, 3}]},
+        ImageSizeCache->{{236.21, 243.33}, {98.84502080175564, 
+         100.00448746383027`}}], InsetBox[
+        StyleBox["3",
+         StripOnInput->False,
+         FrontFaceColor->GrayLevel[0],
+         BackFaceColor->GrayLevel[0],
+         GraphicsColor->GrayLevel[0],
+         FontColor->GrayLevel[0]], Offset[{0, 4}, {670, 3}], 
+        ImageScaled[{0.5, 0}]]}, {
+       DynamicBox[{
+         FEPrivate`If[
+          CurrentValue["MouseOver"], 
+          EdgeForm[{
+            GrayLevel[0.5], 
+            AbsoluteThickness[1.5], 
+            Opacity[0.66]}], {}, {}], 
+         RectangleBox[{680, 0}, {700, 2}]},
+        ImageSizeCache->{{242.83, 249.95000000000002`}, {99.06484302244718, 
+         100.00448746383027`}}], InsetBox[
+        StyleBox["2",
+         StripOnInput->False,
+         FrontFaceColor->GrayLevel[0],
+         BackFaceColor->GrayLevel[0],
+         GraphicsColor->GrayLevel[0],
+         FontColor->GrayLevel[0]], Offset[{0, 4}, {690, 2}], 
+        ImageScaled[{0.5, 0}]]}, {
+       DynamicBox[{
+         FEPrivate`If[
+          CurrentValue["MouseOver"], 
+          EdgeForm[{
+            GrayLevel[0.5], 
+            AbsoluteThickness[1.5], 
+            Opacity[0.66]}], {}, {}], 
+         RectangleBox[{700, 0}, {720, 2}]},
+        ImageSizeCache->{{249.45000000000002`, 256.57000000000005`}, {
+         99.06484302244718, 100.00448746383027`}}], InsetBox[
+        StyleBox["2",
+         StripOnInput->False,
+         FrontFaceColor->GrayLevel[0],
+         BackFaceColor->GrayLevel[0],
+         GraphicsColor->GrayLevel[0],
+         FontColor->GrayLevel[0]], Offset[{0, 4}, {710, 2}], 
+        ImageScaled[{0.5, 0}]]}, {
+       DynamicBox[{
+         FEPrivate`If[
+          CurrentValue["MouseOver"], 
+          EdgeForm[{
+            GrayLevel[0.5], 
+            AbsoluteThickness[1.5], 
+            Opacity[0.66]}], {}, {}], 
+         RectangleBox[{720, 0}, {740, 4}]},
+        ImageSizeCache->{{256.07000000000005`, 263.19000000000005`}, {
+         98.62519858106408, 100.00448746383027`}}], InsetBox[
+        StyleBox["4",
+         StripOnInput->False,
+         FrontFaceColor->GrayLevel[0],
+         BackFaceColor->GrayLevel[0],
+         GraphicsColor->GrayLevel[0],
+         FontColor->GrayLevel[0]], Offset[{0, 4}, {730, 4}], 
+        ImageScaled[{0.5, 0}]]}, {}, {
+       DynamicBox[{
+         FEPrivate`If[
+          CurrentValue["MouseOver"], 
+          EdgeForm[{
+            GrayLevel[0.5], 
+            AbsoluteThickness[1.5], 
+            Opacity[0.66]}], {}, {}], 
+         RectangleBox[{760, 0}, {780, 2}]},
+        ImageSizeCache->{{269.31, 276.43}, {99.06484302244718, 
+         100.00448746383027`}}], InsetBox[
+        StyleBox["2",
+         StripOnInput->False,
+         FrontFaceColor->GrayLevel[0],
+         BackFaceColor->GrayLevel[0],
+         GraphicsColor->GrayLevel[0],
+         FontColor->GrayLevel[0]], Offset[{0, 4}, {770, 2}], 
+        ImageScaled[{0.5, 0}]]}, {}, {
+       DynamicBox[{
+         FEPrivate`If[
+          CurrentValue["MouseOver"], 
+          EdgeForm[{
+            GrayLevel[0.5], 
+            AbsoluteThickness[1.5], 
+            Opacity[0.66]}], {}, {}], 
+         RectangleBox[{800, 0}, {820, 1}]},
+        ImageSizeCache->{{282.55, 289.67}, {99.28466524313873, 
+         100.00448746383027`}}], InsetBox[
+        StyleBox["1",
+         StripOnInput->False,
+         FrontFaceColor->GrayLevel[0],
+         BackFaceColor->GrayLevel[0],
+         GraphicsColor->GrayLevel[0],
+         FontColor->GrayLevel[0]], Offset[{0, 4}, {810, 1}], 
+        ImageScaled[{0.5, 0}]]}, {
+       DynamicBox[{
+         FEPrivate`If[
+          CurrentValue["MouseOver"], 
+          EdgeForm[{
+            GrayLevel[0.5], 
+            AbsoluteThickness[1.5], 
+            Opacity[0.66]}], {}, {}], 
+         RectangleBox[{820, 0}, {840, 2}]},
+        ImageSizeCache->{{289.17, 296.29}, {99.06484302244718, 
+         100.00448746383027`}}], InsetBox[
+        StyleBox["2",
+         StripOnInput->False,
+         FrontFaceColor->GrayLevel[0],
+         BackFaceColor->GrayLevel[0],
+         GraphicsColor->GrayLevel[0],
+         FontColor->GrayLevel[0]], Offset[{0, 4}, {830, 2}], 
+        ImageScaled[{0.5, 0}]]}, {
+       DynamicBox[{
+         FEPrivate`If[
+          CurrentValue["MouseOver"], 
+          EdgeForm[{
+            GrayLevel[0.5], 
+            AbsoluteThickness[1.5], 
+            Opacity[0.66]}], {}, {}], 
+         RectangleBox[{840, 0}, {860, 1}]},
+        ImageSizeCache->{{295.79, 302.91}, {99.28466524313873, 
+         100.00448746383027`}}], InsetBox[
+        StyleBox["1",
+         StripOnInput->False,
+         FrontFaceColor->GrayLevel[0],
+         BackFaceColor->GrayLevel[0],
+         GraphicsColor->GrayLevel[0],
+         FontColor->GrayLevel[0]], Offset[{0, 4}, {850, 1}], 
+        ImageScaled[{0.5, 0}]]}, {
+       DynamicBox[{
+         FEPrivate`If[
+          CurrentValue["MouseOver"], 
+          EdgeForm[{
+            GrayLevel[0.5], 
+            AbsoluteThickness[1.5], 
+            Opacity[0.66]}], {}, {}], 
+         RectangleBox[{860, 0}, {880, 3}]},
+        ImageSizeCache->{{302.41, 309.53000000000003`}, {98.84502080175564, 
+         100.00448746383027`}}], InsetBox[
+        StyleBox["3",
+         StripOnInput->False,
+         FrontFaceColor->GrayLevel[0],
+         BackFaceColor->GrayLevel[0],
+         GraphicsColor->GrayLevel[0],
+         FontColor->GrayLevel[0]], Offset[{0, 4}, {870, 3}], 
+        ImageScaled[{0.5, 0}]]}, {
+       DynamicBox[{
+         FEPrivate`If[
+          CurrentValue["MouseOver"], 
+          EdgeForm[{
+            GrayLevel[0.5], 
+            AbsoluteThickness[1.5], 
+            Opacity[0.66]}], {}, {}], 
+         RectangleBox[{880, 0}, {900, 1}]},
+        ImageSizeCache->{{309.03000000000003`, 316.15000000000003`}, {
+         99.28466524313873, 100.00448746383027`}}], InsetBox[
+        StyleBox["1",
+         StripOnInput->False,
+         FrontFaceColor->GrayLevel[0],
+         BackFaceColor->GrayLevel[0],
+         GraphicsColor->GrayLevel[0],
+         FontColor->GrayLevel[0]], Offset[{0, 4}, {890, 1}], 
+        ImageScaled[{0.5, 0}]]}, {}, {}, {}, {
+       DynamicBox[{
+         FEPrivate`If[
+          CurrentValue["MouseOver"], 
+          EdgeForm[{
+            GrayLevel[0.5], 
+            AbsoluteThickness[1.5], 
+            Opacity[0.66]}], {}, {}], 
+         RectangleBox[{960, 0}, {980, 1}]},
+        ImageSizeCache->{{335.51, 342.63}, {99.28466524313873, 
+         100.00448746383027`}}], InsetBox[
+        StyleBox["1",
+         StripOnInput->False,
+         FrontFaceColor->GrayLevel[0],
+         BackFaceColor->GrayLevel[0],
+         GraphicsColor->GrayLevel[0],
+         FontColor->GrayLevel[0]], Offset[{0, 4}, {970, 1}], 
+        ImageScaled[{0.5, 0}]]}}, {}, {}},
+    AspectRatio->NCache[GoldenRatio^(-1), 0.6180339887498948],
+    Axes->{True, True},
+    AxesOrigin->{0, 0},
+    FrameTicks->{{Automatic, Automatic}, {Automatic, Automatic}},
+    ImageSize->Medium,
+    PlotLabel->FormBox[
+      RowBox[{"P", "(", 
+        RowBox[{"C", "|", 
+          RowBox[{"X", "\[LongEqual]", "4.`"}]}], ")"}], TraditionalForm],
+    PlotRange->{{0, 980}, {All, All}},
+    PlotRangePadding->{{
+       Scaled[0.02], 
+       Scaled[0.02]}, {
+       Scaled[0.02], 
+       Scaled[0.1]}},
+    Ticks->{Automatic, Automatic}], ",", 
+   GraphicsBox[
+    {RGBColor[0.798413061722744, 0.824719615472648, 0.968322270542458], 
+     EdgeForm[Opacity[0.7]]},
+    AspectRatio->NCache[GoldenRatio^(-1), 0.6180339887498948],
+    Axes->{True, True},
+    AxesOrigin->{0, 0},
+    FrameTicks->{{Automatic, Automatic}, {Automatic, Automatic}},
+    ImageSize->Medium,
+    PlotLabel->FormBox[
+      RowBox[{"P", "(", 
+        RowBox[{"C", "|", 
+          RowBox[{"X", "\[LongEqual]", "4.5`"}]}], ")"}], TraditionalForm],
+    PlotRange->{{All, All}, {All, All}},
+    PlotRangePadding->{{
+       Scaled[0.02], 
+       Scaled[0.02]}, {
+       Scaled[0.02], 
+       Scaled[0.1]}},
+    Ticks->{Automatic, Automatic}]}], "}"}]], "Input",
+ CellChangeTimes->{{3.605803065233543*^9, 3.6058030688267484`*^9}}]
+}, Open  ]]
+},
+WindowSize->{1522, 805},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+FrontEndVersion->"7.0 for Microsoft Windows (64-bit) (February 18, 2009)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[567, 22, 97, 1, 83, "Title"],
+Cell[CellGroupData[{
+Cell[689, 27, 438, 11, 31, "Input"],
+Cell[1130, 40, 8186, 224, 174, "Output"]
+}, Open  ]],
+Cell[9331, 267, 222, 3, 31, "Input"],
+Cell[CellGroupData[{
+Cell[9578, 274, 718, 17, 52, "Input"],
+Cell[10299, 293, 59291, 1644, 491, "Output"],
+Cell[69593, 1939, 80, 1, 30, "Output"]
+}, Open  ]],
+Cell[69688, 1943, 1384, 35, 112, "Input"],
+Cell[71075, 1980, 90273, 2404, 1075, InheritFromParent]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)
