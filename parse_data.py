@@ -95,6 +95,7 @@ def build_review_list():
     return review_list
 
 def build_business_dict():
+    biz_categories = {}
     # Reading the business dataset
     f = open('yelp_academic_dataset_business.json','r');
     
@@ -102,13 +103,14 @@ def build_business_dict():
     for line in f:
         business_obj = json.loads(line)
         business_dict[business_obj['business_id']] = business_obj
-        
+        for cat in business_obj['categories']:
+            biz_categories[cat] = biz_categories.get(cat, 0) + 1
     #pprint.pprint(business_dict)
     f.close()
-    return business_dict
+    return business_dict, biz_categories
 
 def build_user_dict():
-    
+    usr_elites = {}
     # Reading the user dataset
     f = open('yelp_academic_dataset_user.json','r');
 
@@ -116,15 +118,21 @@ def build_user_dict():
     for line in f:
         user_obj = json.loads(line)
         user_dict[user_obj['user_id']] = user_obj
-        
+        for elite in user_obj['elite']:
+            usr_elites[elite] = usr_elites.get(elite, 0) + 1
     #pprint.pprint(user_dict)
         
     f.close()
-    return user_dict
+    return user_dict, usr_elites
 
+# Stat the elites of users and categories of businesses
 # Store businesses and users as dict for random access
-business_dict = build_business_dict()
-user_dict = build_user_dict()
+business_dict, biz_categories = build_business_dict()
+user_dict, usr_elites = build_user_dict()
+pprint.pprint(biz_categories)
+pprint.pprint(usr_elites)
+print 'Categories: %d' % (len(biz_categories.keys()))
+print 'Elites: %d' % (len(usr_elites.keys()))
 
 # List of dictionary objects(each JSON object)
 review_list = []
