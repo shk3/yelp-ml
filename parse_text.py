@@ -4,139 +4,144 @@ Created on Apr 14, 2014
 @author: Amod Samant
 @updated: George Hongkai Sun
 '''
+##### THIS SCRIPT ONLY VALID FOR TRAINING #####
+from __future__ import print_function
+from __future__ import unicode_literals
 import json
-import pprint
+from pprint import pprint
 import re
 from string import punctuation
 import csv
+import nltk
+import sys
 
-def create_csv(review_list,user_dict,business_dict):
-        
-    headers = [
-        'review_id', 'true_stars', 'word_count', 
-        'word_cap_count', 'text_polarity',
-        'biz_stars', 'biz_review_count', 
-        'usr_avrstars', 'usr_review_count', 'usr_fans', 
-    ]
-    with open('feature_review.csv', 'w') as csvfile:
-        csvwriter = csv.DictWriter(csvfile, 
-            fieldnames=headers, 
-            delimiter=',',
-            quotechar='"', 
-            quoting=csv.QUOTE_MINIMAL,
-            lineterminator='\n')
-        csvwriter.writeheader()
-        
-        i = 0
-        for review_obj in review_list:
-            i += 1
-            feature_data = {
-                'review_id': i,
-                'true_stars': review_obj['stars'],
-            }
-            
-            # Text Features
-            review_text = review_obj['text']
-            [num_of_words,cap_words_count] = calc_words_plus_cap(review_text)
-            feature_data['word_count'] = num_of_words
-            feature_data['word_cap_count'] = cap_words_count
-            feature_data['text_polarity'] = review_obj['text_polarity']
-            
-            # Reference to business' features
-            biz_obj = business_dict[review_obj['business_id']]
-            feature_data['biz_stars'] = biz_obj['stars']
-            feature_data['biz_review_count'] = biz_obj['review_count']
-            # TODO: Bag of Categories
-            
-            # Reference to user's features
-            usr_obj = user_dict[review_obj['user_id']]
-            feature_data['usr_avrstars'] = usr_obj['average_stars']
-            feature_data['usr_review_count'] = usr_obj['review_count']
-            feature_data['usr_fans'] = usr_obj['fans']
-            # TODO: Bag of Elites and yelping_since
-            #pprint.pprint(feature_data)
-            csvwriter.writerow(feature_data)
-               
+if len(sys.argv) < 2:
+    print('[USAGE] %s <CSV INPUT>' % sys.argv[0])
+    exit()
+else:
+    IN_FILE = sys.argv[1]
+    file_text = IN_FILE.split('.')
+    file_text[-2] = file_text[-2] + '-bag-words'
+    OUT_FILE1 = '.'.join(file_text)
+    file_text[-2] = file_text[-2] + '-pos'
+    OUT_FILE2 = '.'.join(file_text)
+
+def encode_tagged(word_tag):
+    return '##'.join(word_tag)
+
+# Reading the review dataset
+f = open('yelp_academic_dataset_review.json','r')
+
+dicts = {}
+dicts_tag = {}
+
+reviews = []
+for line in f:
+    review_obj = json.loads(line)
+    reviews.append(review_obj)
+f.close()
+
+# Read the source CSV
+src_f = open(IN_FILE, 'r+', encoding='utf8')
+src = csv.DictReader(src_f)
+
+bow_list = []
+bow_tag_list = []
+# Tag in
+for row in src:
+    rid = int(row['review_id']) - 1
+    # if rid > 100:
+        # break
+    text = reviews[rid]['text']
+    bow_row = {
+        'review_id': rid + 1
+    }
+    bow_tag_row = {
+        'review_id': rid + 1
+    }
     
-    print len(review_list)
+    # Sentence Tokenize
+    sents = nltk.tokenize.sent_tokenize(text)
+    for sent in sents:
+        # Word Tokenize
+        words = nltk.tokenize.word_tokenize(sent)
+        # PoS Tagging
+        tagged_words = nltk.pos_tag(words)
+        # Add in
+        for word in words:
+            word = word.lower()
+            if word not in bow_row:
+                bow_row[word] = 0
+                if word not in dicts:
+                    dicts[word] = [0, 0]
+                dicts[word][1] += 1
+            bow_row[word] += 1
+            dicts[word][0] += 1
+        for tagged_word in tagged_words:
+            tagged_word = list(tagged_word)
+            tagged_word[0] = tagged_word[0].lower()
+            word = encode_tagged(tagged_word)
+            if word not in bow_tag_row:
+                bow_tag_row[word] = 0
+                if word not in dicts_tag:
+                    dicts_tag[word] = [0, 0]
+                dicts_tag[word][1] += 1
+            bow_tag_row[word] += 1
+            dicts_tag[word][0] += 1
+    bow_list.append(bow_row)
+    bow_tag_list.append(bow_tag_row)
+    print('Tokenized %d' % rid)
+src_f.close()
+# Print Stat
+f1 = open('dict.dat', 'w+')
+f2 = open('dict-tag.dat', 'w+')
+print('word\tcount\toccurrence', file=f1)
+print('word\ttag\tcount\toccurrence', file=f2)
+for k, v in dicts.items():
+    print('%s\t%d\t%d' % (k, v[0], v[1]), file=f1)
     
-    return 
-
-def calc_words_plus_cap(text_string):
+for k, v in dicts_tag.items():
+    ks = k.split('##')
+    print('%s\t%s\t%d\t%d' % (ks[0], ks[1], v[0], v[1]), file=f2)
+f1.close()
+f2.close()
     
-    # cap_word_count: Count of capital first  letter words in the review text
-    cap_word_count = 0
+# Output BoW CSV
+headers = [
+    'review_id',
+]
+headers.extend(dicts.keys())
+with open(OUT_FILE1, 'w') as csvfile:
+    csvwriter = csv.DictWriter(csvfile, 
+        fieldnames=headers, 
+        delimiter=',',
+        quotechar='"', 
+        quoting=csv.QUOTE_MINIMAL,
+        lineterminator='\n')
+    csvwriter.writeheader()
     
-    reg_exp = re.compile(r'[{}]'.format(punctuation))
-    new_strs = reg_exp.sub(' ',text_string)
+    for row in bow_list:
+        for h in headers:
+            if h not in row:
+                row[h] = 0
+        csvwriter.writerow(row)
+# Output Tagged BoW CSV
+headers = [
+    'review_id',
+]
+headers.extend(dicts_tag.keys())
+with open(OUT_FILE2, 'w') as csvfile:
+    csvwriter = csv.DictWriter(csvfile, 
+        fieldnames=headers, 
+        delimiter=',',
+        quotechar='"', 
+        quoting=csv.QUOTE_MINIMAL,
+        lineterminator='\n')
+    csvwriter.writeheader()
     
-    for w in new_strs:
-        if w[0].isupper():
-            cap_word_count +=1
-    
-    # word_len: Count of total words in review text
-    word_len = len(new_strs.split())
-    
-    return word_len,cap_word_count
+    for row in bow_tag_list:
+        for h in headers:
+            if h not in row:
+                row[h] = 0
+        csvwriter.writerow(row)
 
-
-
-
-def build_review_list():
-    # Reading the review dataset
-    f = open('yelp_academic_dataset_review.json','r');
-    
-    review_list = []
-    for line in f:
-        review_obj = json.loads(line)
-        review_list.append(review_obj)
-#    pprint.pprint(review_list)
-
-    f.close()
-    return review_list
-
-def build_business_dict():
-    biz_categories = {}
-    # Reading the business dataset
-    f = open('yelp_academic_dataset_business.json','r');
-    
-    business_dict = {}
-    for line in f:
-        business_obj = json.loads(line)
-        business_dict[business_obj['business_id']] = business_obj
-        for cat in business_obj['categories']:
-            biz_categories[cat] = biz_categories.get(cat, 0) + 1
-    #pprint.pprint(business_dict)
-    f.close()
-    return business_dict, biz_categories
-
-def build_user_dict():
-    usr_elites = {}
-    # Reading the user dataset
-    f = open('yelp_academic_dataset_user.json','r');
-
-    user_dict = {}
-    for line in f:
-        user_obj = json.loads(line)
-        user_dict[user_obj['user_id']] = user_obj
-        for elite in user_obj['elite']:
-            usr_elites[elite] = usr_elites.get(elite, 0) + 1
-    #pprint.pprint(user_dict)
-        
-    f.close()
-    return user_dict, usr_elites
-
-# Stat the elites of users and categories of businesses
-# Store businesses and users as dict for random access
-business_dict, biz_categories = build_business_dict()
-user_dict, usr_elites = build_user_dict()
-pprint.pprint(biz_categories)
-pprint.pprint(usr_elites)
-print 'Categories: %d' % (len(biz_categories.keys()))
-print 'Elites: %d' % (len(usr_elites.keys()))
-
-# List of dictionary objects(each JSON object)
-review_list = []
-review_list = build_review_list()
-
-create_csv(review_list,user_dict,business_dict)
