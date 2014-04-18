@@ -15,6 +15,7 @@ import csv
 import nltk
 import sys
 import logging
+import pickle
 
 if len(sys.argv) < 2:
     print('[USAGE] %s <CSV INPUT>' % sys.argv[0])
@@ -110,6 +111,8 @@ for k, v in dicts_tag.items():
 f1.close()
 f2.close()
     
+pickle.dump(bow_list, open('bow_list.pickle', 'wb'))
+pickle.dump(bow_tag_list, open('bow_tag_list.pickle', 'wb'))
 # Output BoW CSV
 headers = [
     'review_id',
@@ -124,12 +127,13 @@ with open(OUT_FILE1, 'w', encoding='utf8') as csvfile:
         lineterminator='\n')
     csvwriter.writeheader()
     
-    for row in bow_list:
+    for (i, row) in enumerate(bow_list):
         try:
             for h in headers:
                 if h not in row:
                     row[h] = 0
             csvwriter.writerow(row)
+            print('D%d' % i)
         except:
             logging.exception('')
 # Output Tagged BoW CSV
@@ -146,12 +150,13 @@ with open(OUT_FILE2, 'w', encoding='utf8') as csvfile:
         lineterminator='\n')
     csvwriter.writeheader()
     
-    for row in bow_tag_list:
+    for (i, row) in enumerate(bow_tag_list):
         try:
             for h in headers:
                 if h not in row:
                     row[h] = 0
             csvwriter.writerow(row)
+            print('D%d' % i)
         except:
             logging.exception('')
 
