@@ -32,7 +32,11 @@ def decode_tagged(s):
     return r
 
 classes = range(1,6)
-SKIP_TAGS = []
+SKIP_TAGS = [
+    "''", '#NN', '$', ',', '.', ':', '``', 'CD',
+    'EX', 'FW', '-LRB-', 'LS', 'POS', 'PRP', 'PRP$',
+    'TO', 'WDT', 'WP', 'WP$', 'WRB',
+]
     
 bow_tag_list = pickle.load(open(TOKEN_FILE, 'rb'))
 words = {}
@@ -47,8 +51,8 @@ for i in classes:   # init
 
 src = csv.DictReader(open(IN_FILE, 'r+', encoding='utf8'))
 for i, row in enumerate(src):
-    if i > 300:
-        break
+    # if i > 300:
+        # break
     true_rating = int(row['true_stars'])
     
     for k, v in bow_tag_list[i].items():
