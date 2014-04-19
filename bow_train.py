@@ -16,15 +16,12 @@ import sys
 import logging
 import pickle
 
-if len(sys.argv) < 2:
-    print('[USAGE] %s <CSV INPUT>' % sys.argv[0])
+if len(sys.argv) < 3:
+    print('[USAGE] %s <CSV INPUT> <OUTPUT NAME>' % sys.argv[0])
     exit()
 else:
     IN_FILE = sys.argv[1]
-    file_text = IN_FILE.split('.')
-    file_text[-2] = file_text[-2] + '-bag-words-pos-occur'
-    file_text[-1] = 'dat'
-    OUT_FILE1 = '.'.join(file_text)
+    OUT_NAME = sys.argv[2]
 
 def decode_tagged(s):
     return s.split('##', 1)
@@ -63,7 +60,7 @@ for i, row in enumerate(src):
                 counters[true_rating]['#total'] += 1
 
 # Print out estimated results
-dst = open(OUT_FILE1, 'w+', encoding='utf8')
+dst = open(OUT_NAME + '.dat', 'w+', encoding='utf8')
 words = sorted(list(words.keys()))
 for word in words:
     print(word, end='\t', file=dst)
@@ -73,3 +70,6 @@ for word in words:
         print(counters[c][word] / counters[c]['#total'], end='\t', file=dst)
     print(file=dst)
 dst.close()
+
+# Dump as pickle for further Python use
+pickle.dump(counters, open(OUT_NAME + '.pickle', 'wb'))
