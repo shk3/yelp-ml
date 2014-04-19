@@ -15,29 +15,33 @@ import csv
 import sys
 import logging
 import pickle
+import os.path
 
-if len(sys.argv) < 3:
-    print('[USAGE] %s <CSV INPUT> <OUTPUT NAME>' % sys.argv[0])
+if len(sys.argv) < 4:
+    print('[USAGE] %s <CSV INPUT> <TOKENIZATION PICKLE> <TYPE>' % sys.argv[0])
     exit()
 else:
     IN_FILE = sys.argv[1]
-    OUT_NAME = sys.argv[2]
+    TOKEN_FILE = sys.argv[2]
+    OUT_NAME = os.path.splitext(IN_FILE)[0] + '-bag-words-' + sys.argv[3]
 
 def decode_tagged(s):
-    return s.split('##', 1)
+    r = s.split('##', 1)
+    if len(r) < 2:
+        r.append(None)
+    return r
 
 classes = range(1,6)
 SKIP_TAGS = []
     
-# bow_list = pickle.load(open('bow_list.pickle', 'rb'))
-bow_tag_list = pickle.load(open('bow_tag_list.pickle', 'rb'))
+bow_tag_list = pickle.load(open(TOKEN_FILE, 'rb'))
 words = {}
 
 # MLE for the features
 counters = {}
 for i in classes:   # init
     counter = {
-        '#total': 0,
+        '#total': [0, 0],
     }
     counters[i] = counter
 
@@ -54,20 +58,33 @@ for i, row in enumerate(src):
         if t not in SKIP_TAGS:
             words[k] = None
             if k not in counters[true_rating]:
-                counters[true_rating][k] = 0
+                counters[true_rating][k] = [0, 0]
             if v > 0:
-                counters[true_rating][k] += 1
-                counters[true_rating]['#total'] += 1
+                counters[true_rating][k][0] += 1
+                counters[true_rating][k][1] += v
+                counters[true_rating]['#total'][0] += 1
+                counters[true_rating]['#total'][1] += v
 
 # Print out estimated results
-dst = open(OUT_NAME + '.dat', 'w+', encoding='utf8')
 words = sorted(list(words.keys()))
+    # occur
+dst = open(OUT_NAME + '-occur.dat', 'w+', encoding='utf8')
 for word in words:
     print(word, end='\t', file=dst)
     for c in classes:
         if word not in counters[c]:
-            counters[c][word] = 0
-        print(counters[c][word] / counters[c]['#total'], end='\t', file=dst)
+            counters[c][word] = [0, 0]
+        print(counters[c][word][0] / counters[c]['#total'][0], end='\t', file=dst)
+    print(file=dst)
+dst.close()
+    # count
+dst = open(OUT_NAME + '-count.dat', 'w+', encoding='utf8')
+for word in words:
+    print(word, end='\t', file=dst)
+    for c in classes:
+        if word not in counters[c]:
+            counters[c][word] = [0, 0]
+        print(counters[c][word][1] / counters[c]['#total'][1], end='\t', file=dst)
     print(file=dst)
 dst.close()
 
